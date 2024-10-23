@@ -19,6 +19,7 @@ const CanSwagger: React.FC<CanSwaggerProps> = ({ imageUrl }) => {
           style={{
             background: `url(${imageUrl}) repeat-x, url('/can.png')`,
             maskImage: "url('/can.png')",
+            backgroundSize: "auto 100%"
           }}
         />
       </div>
