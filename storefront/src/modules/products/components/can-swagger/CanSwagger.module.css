@@ -1,0 +1,35 @@
+.canSwagger {
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+}
+
+.canContainer {
+    width: 500px;
+    height: 500px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-25%, -50%);
+    z-index: 1;
+    transition: .7s;
+}
+
+.can {
+    width: 280px;
+    aspect-ratio: 4 / 8.2;
+    background-size: auto 100%, auto 100%; 
+    background-blend-mode: multiply;
+    mask-size: auto 100%;
+    transition: .7s;
+    animation: rotateCan 60s linear infinite;
+}
+
+@keyframes rotateCan {
+    0% {
+        background-position: 0 0, 0 0;
+    }
+    100% {
+        background-position: -1000% 0, 0 0;
+    }
+}
