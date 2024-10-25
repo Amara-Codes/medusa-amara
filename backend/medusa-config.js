@@ -140,7 +140,8 @@ const completeConfig = {
   plugins,
   modules,
   admin: {
-    ...!isDev && { backendUrl }
+    ...!isDev && { backendUrl },
+    path: '/admin'
   }
 };
 
