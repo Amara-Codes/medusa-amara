@@ -1,8 +1,7 @@
 "use client"
 
 import { Button } from "@medusajs/ui"
-import { isEqual } from "lodash"
-import { useParams } from "next/navigation"
+import { useParams, useRouter } from "next/navigation"
 import { useEffect, useMemo, useRef, useState } from "react"
 
 import { useIntersection } from "@lib/hooks/use-in-view"
@@ -14,6 +13,9 @@ import ProductPrice from "../product-price"
 import { addToCart } from "@lib/data/cart"
 import { HttpTypes } from "@medusajs/types"
 
+
+
+
 type ProductActionsProps = {
   product: HttpTypes.StoreProduct
   region: HttpTypes.StoreRegion
@@ -21,12 +23,7 @@ type ProductActionsProps = {
 }
 
 const optionsAsKeymap = (variantOptions: any) => {
-  return variantOptions?.reduce((acc: Record<string, string | undefined>, varopt: any) => {
-    if (varopt.option && varopt.value !== null && varopt.value !== undefined) {
-      acc[varopt.option.title] = varopt.value
-    }
-    return acc
-  }, {})
+  return variantOptions?.[0]?.value || ""
 }
 
 export default function ProductActions({
@@ -37,6 +34,7 @@ export default function ProductActions({
   const [options, setOptions] = useState<Record<string, string | undefined>>({})
   const [isAdding, setIsAdding] = useState(false)
   const countryCode = useParams().countryCode as string
+  const router = useRouter()
 
   // If there is only 1 variant, preselect the options
   useEffect(() => {
@@ -52,8 +50,9 @@ export default function ProductActions({
     }
 
     return product.variants.find((v) => {
-      const variantOptions = optionsAsKeymap(v.options)
-      return isEqual(variantOptions, options)
+      const variantValue = optionsAsKeymap(v.options) // ottieni solo il valore di KEGS
+      const optionsValue = Object.values(options)[0] // prendi il primo valore di options (ignorando la chiave dinamica)
+      return variantValue === optionsValue
     })
   }, [product.variants, options])
 
@@ -96,7 +95,14 @@ export default function ProductActions({
   // add the selected variant to the cart
   const handleAddToCart = async () => {
     if (!selectedVariant?.id) return null
-
+  
+    // Controllo condizionale sul titolo della variante selezionata
+    if (selectedVariant.title !== "can") {
+      router.push("/brewery")
+      return
+    }
+  
+    console.log(selectedVariant, 'adding to cart')
     setIsAdding(true)
 
     await addToCart({
