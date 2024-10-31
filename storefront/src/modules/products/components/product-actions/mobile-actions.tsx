@@ -88,7 +88,8 @@ const MobileActions: React.FC<MobileActionsProps> = ({
                         selectedPrice.price_type === "sale",
                     })}
                   >
-                    {selectedPrice.calculated_price}
+                    {variant?.options?.[0]?.value !== "can" ? "From " : ""}
+                    {selectedPrice.calculated_price} 
                   </span>
                 </div>
               ) : (
