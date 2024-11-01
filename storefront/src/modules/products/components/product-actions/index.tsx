@@ -95,14 +95,13 @@ export default function ProductActions({
   // add the selected variant to the cart
   const handleAddToCart = async () => {
     if (!selectedVariant?.id) return null
-  
+
     // Controllo condizionale sul titolo della variante selezionata
     if (selectedVariant.title !== "can") {
-      router.push("/brewery")
+      router.push("/request-info")
       return
     }
-  
-    console.log(selectedVariant, 'adding to cart')
+
     setIsAdding(true)
 
     await addToCart({
@@ -149,11 +148,14 @@ export default function ProductActions({
           isLoading={isAdding}
           data-testid="add-product-button"
         >
+
           {!selectedVariant
             ? "Select variant"
             : !inStock
-            ? "Out of stock"
-            : "Add to cart"}
+              ? "Out of stock"
+              : selectedVariant.options?.[0]?.value !== "can"
+                ? "Request Info"
+                : "Add to cart"}
         </Button>
         <MobileActions
           product={product}
