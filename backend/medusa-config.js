@@ -124,9 +124,9 @@ if (resendConfigured) {
 /** @type {import('@medusajs/medusa').ConfigModule['projectConfig']} */
 const projectConfig = {
   http: {
-    adminCors: process.env.ADMIN_CORS,
-    authCors: process.env.AUTH_CORS,
-    storeCors: process.env.STORE_CORS,
+    adminCors: "*",
+    authCors: "*",
+    storeCors: "*",
     jwtSecret: process.env.JWT_SECRET,
     cookieSecret: process.env.COOKIE_SECRET
   },
