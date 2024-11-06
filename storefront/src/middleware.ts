@@ -142,5 +142,5 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/((?!api|_next/static|favicon.ico|can.png).*)"],
+  matcher: ["/((?!api|_next/static|favicon.ico|can.png|Beer-can.gltf|Beer-can.bin).*)"],
 }

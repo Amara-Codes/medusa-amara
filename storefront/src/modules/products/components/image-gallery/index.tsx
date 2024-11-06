@@ -2,6 +2,7 @@ import { HttpTypes } from "@medusajs/types"
 import { Container } from "@medusajs/ui"
 import Image from "next/image"
 import CanSwagger from "../can-swagger";
+import { BeerSwagger } from "../beer-swagger";
 
 type ImageGalleryProps = {
   images: HttpTypes.StoreProductImage[]
@@ -21,7 +22,7 @@ const ImageGallery = ({ images }: ImageGalleryProps) => {
 
 
               {i === 0 && image.url ? (
-                <CanSwagger imageUrl={image.url} />
+                <BeerSwagger urlImg={image.url} />
               ) : image.url ? (
                 <Image
                   src={image.url}
