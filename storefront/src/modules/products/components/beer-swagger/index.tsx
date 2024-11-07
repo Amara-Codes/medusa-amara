@@ -4,7 +4,7 @@ import { useGLTF, useTexture } from "@react-three/drei";
 import * as THREE from "three";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Float } from "@react-three/drei";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { Group } from "three";
 
 // Tipizza i nodi del file GLTF
@@ -23,14 +23,17 @@ export type BeerSwaggerProps = {
 };
 
 export function BeerSwagger({ urlImg, scale = 1.5 }: BeerSwaggerProps) {
+  const [isHovered, setIsHovered] = useState(false);
+
   return (
     <Canvas
       style={{
         position: "absolute",
         left: "50%",
-        transform: "translateX(-50%)",
+        top: "75%",
+        transform: "translate(-50%, -50%)",
         overflow: "hidden",
-        pointerEvents: "none",
+        pointerEvents: "auto",
         zIndex: 30,
       }}
       shadows
@@ -39,11 +42,13 @@ export function BeerSwagger({ urlImg, scale = 1.5 }: BeerSwaggerProps) {
       camera={{
         fov: 30,
       }}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
     >
       <ambientLight intensity={15} color={"#fffafa"} />
       <directionalLight position={[5, 0, 5]} intensity={4} castShadow />
 
-      {urlImg && <Scene urlImg={urlImg} scale={scale} />}
+      {urlImg && <Scene urlImg={urlImg} scale={scale} isHovered={isHovered} />}
     </Canvas>
   );
 }
@@ -52,22 +57,30 @@ export function BeerSwagger({ urlImg, scale = 1.5 }: BeerSwaggerProps) {
 type SceneProps = {
   urlImg: string;
   scale: number;
+  isHovered: boolean;
 };
 
-function Scene({ urlImg, scale }: SceneProps) {
+function Scene({ urlImg, scale, isHovered }: SceneProps) {
   const { nodes } = useGLTF("/Beer-can.gltf") as unknown as GLTFResult;
   const label = useTexture(urlImg);
-
-  // Prevenzione rotazione inversa per la texture
   label.flipY = false;
 
   const groupRef = useRef<Group>(null);
+  const rotationSpeed = useRef(0.01); // Velocità iniziale della rotazione
+  const damping = 0.02; // Fattore di smorzamento per rallentare la rotazione
 
   useFrame(() => {
     if (groupRef.current) {
-      groupRef.current.rotation.y += 0.01;
+      if (isHovered && rotationSpeed.current > 0) {
+        // Riduci gradualmente la velocità di rotazione
+        rotationSpeed.current = Math.max(rotationSpeed.current - damping * rotationSpeed.current, 0);
+      } else if (!isHovered && rotationSpeed.current < 0.01) {
+        // Aumenta gradualmente la velocità di rotazione fino alla velocità normale
+        rotationSpeed.current = Math.min(rotationSpeed.current + damping * (0.01 - rotationSpeed.current), 0.01);
+      }
+
+      groupRef.current.rotation.y += rotationSpeed.current;
     }
-    
   });
 
   const metalMaterial = new THREE.MeshStandardMaterial({
@@ -82,7 +95,13 @@ function Scene({ urlImg, scale }: SceneProps) {
       floatIntensity={1.5}
       floatingRange={[-0.1, 0.1]}
     >
-      <group ref={groupRef} dispose={null} scale={scale} rotation={[0, -Math.PI, 0]} position={[0, 0.5, 0]}>
+      <group
+        ref={groupRef}
+        dispose={null}
+        scale={scale}
+        rotation={[0, -Math.PI, 0]}
+        position={[0, 0.5, 0]}
+      >
         <mesh castShadow receiveShadow geometry={nodes.cylinder.geometry} material={metalMaterial} />
         <mesh castShadow receiveShadow geometry={nodes.cylinder_1.geometry}>
           <meshStandardMaterial roughness={0.15} metalness={0.9} map={label} />
