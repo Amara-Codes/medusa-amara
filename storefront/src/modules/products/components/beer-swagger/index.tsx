@@ -4,26 +4,25 @@ import { useGLTF, useTexture } from "@react-three/drei";
 import * as THREE from "three";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Float } from "@react-three/drei";
-import { useRef, useEffect, useState } from "react";
+import { useRef } from "react";
 import { Group } from "three";
-import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 
-// Define GLTF result type
-type GLTFResult = GLTFLoader & {
+// Tipizza i nodi del file GLTF
+type GLTFResult = {
   nodes: {
     cylinder: THREE.Mesh;
     cylinder_1: THREE.Mesh;
     Tab: THREE.Mesh;
   };
-};
+} & THREE.Object3D;
 
-// Define props for BeerSwagger component
+// Tipizza le props per il componente BeerSwagger
 export type BeerSwaggerProps = {
-  urlImg: string;
+  urlImg?: string; // Rende opzionale l'URL
   scale?: number;
 };
 
-export function BeerSwagger({ urlImg, scale = 2 }: BeerSwaggerProps) {
+export function BeerSwagger({ urlImg, scale = 1.5 }: BeerSwaggerProps) {
   return (
     <Canvas
       style={{
@@ -41,15 +40,15 @@ export function BeerSwagger({ urlImg, scale = 2 }: BeerSwaggerProps) {
         fov: 30,
       }}
     >
-      <ambientLight intensity={10} color={"#fff9d7"} />
-      <directionalLight position={[5, 0, 5]} intensity={8} castShadow />
+      <ambientLight intensity={15} color={"#fffafa"} />
+      <directionalLight position={[5, 0, 5]} intensity={4} castShadow />
 
       {urlImg && <Scene urlImg={urlImg} scale={scale} />}
     </Canvas>
   );
 }
 
-// Define props for Scene component
+// Tipizza le props per il componente Scene
 type SceneProps = {
   urlImg: string;
   scale: number;
@@ -57,41 +56,23 @@ type SceneProps = {
 
 function Scene({ urlImg, scale }: SceneProps) {
   const { nodes } = useGLTF("/Beer-can.gltf") as unknown as GLTFResult;
+  const label = useTexture(urlImg);
+
+  // Prevenzione rotazione inversa per la texture
+  label.flipY = false;
+
   const groupRef = useRef<Group>(null);
-  const [label, setLabel] = useState<THREE.Texture | null>(null);
-
-  useEffect(() => {
-    const loadTexture = async () => {
-      try {
-        const loadedTexture = await new Promise<THREE.Texture>((resolve, reject) => {
-          const texture = new THREE.TextureLoader().load(
-            urlImg,
-            resolve,
-            undefined,
-            () => reject(new Error("Texture not found"))
-          );
-          texture.flipY = false;
-        });
-        setLabel(loadedTexture);
-      } catch (error) {
-        console.warn("Texture not found, using default material.");
-        setLabel(null); // Imposta null per usare il materiale senza texture
-      }
-    };
-
-    loadTexture();
-  }, [urlImg]);
 
   useFrame(() => {
     if (groupRef.current) {
-      groupRef.current.rotation.y += 0.01; // Velocità della rotazione
+      groupRef.current.rotation.y += 0.01;
     }
+    
   });
 
   const metalMaterial = new THREE.MeshStandardMaterial({
-    roughness: 0.3,
-    metalness: 0.92,
-    color: "#bbbbbb",
+    metalness: 0.9,
+    color: "#bbbbbb"
   });
 
   return (
@@ -101,10 +82,10 @@ function Scene({ urlImg, scale }: SceneProps) {
       floatIntensity={1.5}
       floatingRange={[-0.1, 0.1]}
     >
-      <group ref={groupRef} dispose={null} scale={scale} rotation={[0, -Math.PI, 0]} position={[0, 0.3, 0]}>
+      <group ref={groupRef} dispose={null} scale={scale} rotation={[0, -Math.PI, 0]} position={[0, 0.5, 0]}>
         <mesh castShadow receiveShadow geometry={nodes.cylinder.geometry} material={metalMaterial} />
         <mesh castShadow receiveShadow geometry={nodes.cylinder_1.geometry}>
-          <meshStandardMaterial roughness={0.15} metalness={0.9} map={label || undefined} />
+          <meshStandardMaterial roughness={0.15} metalness={0.9} map={label} />
         </mesh>
         <mesh castShadow receiveShadow geometry={nodes.Tab.geometry} material={metalMaterial} />
       </group>

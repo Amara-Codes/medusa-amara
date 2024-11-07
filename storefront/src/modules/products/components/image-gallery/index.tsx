@@ -1,7 +1,6 @@
 import { HttpTypes } from "@medusajs/types"
 import { Container } from "@medusajs/ui"
 import Image from "next/image"
-import CanSwagger from "../can-swagger";
 import { BeerSwagger } from "../beer-swagger";
 
 type ImageGalleryProps = {
@@ -16,7 +15,7 @@ const ImageGallery = ({ images }: ImageGalleryProps) => {
           return (
             <Container
               key={image.id}
-              className="relative aspect-[29/34] w-full overflow-hidden bg-ui-bg-subtle"
+              className="relative aspect-[29/34] w-full overflow-hidden shadow-none"
               id={image.id}
             >
 
