@@ -46,8 +46,8 @@ export function BeerSwagger({ urlImg, scale = 1.5 }: BeerSwaggerProps) {
       onMouseLeave={() => setIsHovered(false)}
     >
       <ambientLight intensity={15} color={"#fffafa"} />
-      <directionalLight position={[5, 0, 5]} intensity={4} castShadow />
-
+      <directionalLight position={[5, -5, 5]} intensity={2} castShadow />
+      <directionalLight position={[-5, 5, 5]} intensity={2} castShadow />
       {urlImg && <Scene urlImg={urlImg} scale={scale} isHovered={isHovered} />}
     </Canvas>
   );
@@ -104,7 +104,7 @@ function Scene({ urlImg, scale, isHovered }: SceneProps) {
       >
         <mesh castShadow receiveShadow geometry={nodes.cylinder.geometry} material={metalMaterial} />
         <mesh castShadow receiveShadow geometry={nodes.cylinder_1.geometry}>
-          <meshStandardMaterial roughness={0.15} metalness={0.9} map={label} />
+          <meshStandardMaterial roughness={0.3} metalness={0.9} map={label} />
         </mesh>
         <mesh castShadow receiveShadow geometry={nodes.Tab.geometry} material={metalMaterial} />
       </group>

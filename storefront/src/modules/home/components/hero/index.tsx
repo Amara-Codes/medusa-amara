@@ -7,6 +7,7 @@ const Hero = () => {
       backgroundImage: "url('/images/hero.png')",
       backgroundSize: "cover",
       backgroundPosition: "center",
+      top: "-120px"
     }}
     >
       <div className="absolute inset-0 z-10 flex flex-col justify-center items-center text-center small:p-32 gap-6">
