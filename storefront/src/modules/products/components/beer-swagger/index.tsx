@@ -4,7 +4,7 @@ import { useGLTF, useTexture } from "@react-three/drei";
 import * as THREE from "three";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Float } from "@react-three/drei";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { Group } from "three";
 
 // Tipizza i nodi del file GLTF
@@ -22,8 +22,31 @@ export type BeerSwaggerProps = {
   scale?: number;
 };
 
+// Helper function to verify if an image URL is accessible
+async function isImageAccessible(url: string): Promise<boolean> {
+  try {
+    const response = await fetch(url, { method: "GET", mode: "cors" });
+    if (!response.ok) return false;
+
+    const blob = await response.blob();
+    // Check if the blob is an actual image
+    return blob.type.startsWith("image/");
+  } catch {
+    return false; // Return false if there's any error, including CORS issues
+  }
+}
+
 export function BeerSwagger({ urlImg, scale = 1.5 }: BeerSwaggerProps) {
   const [isHovered, setIsHovered] = useState(false);
+  const [isImageValid, setIsImageValid] = useState(false);
+
+  useEffect(() => {
+    if (urlImg) {
+      isImageAccessible(urlImg).then(setIsImageValid);
+    } else {
+      setIsImageValid(false); // If no URL is provided, set the image as invalid
+    }
+  }, [urlImg]);
 
   return (
     <Canvas
@@ -48,22 +71,22 @@ export function BeerSwagger({ urlImg, scale = 1.5 }: BeerSwaggerProps) {
       <ambientLight intensity={15} color={"#fffafa"} />
       <directionalLight position={[5, -5, 5]} intensity={2} castShadow />
       <directionalLight position={[-5, 5, 5]} intensity={2} castShadow />
-      {urlImg && <Scene urlImg={urlImg} scale={scale} isHovered={isHovered} />}
+      <Scene urlImg={isImageValid ? urlImg : undefined} scale={scale} isHovered={isHovered} />
     </Canvas>
   );
 }
 
 // Tipizza le props per il componente Scene
 type SceneProps = {
-  urlImg: string;
+  urlImg?: string;
   scale: number;
   isHovered: boolean;
 };
 
 function Scene({ urlImg, scale, isHovered }: SceneProps) {
   const { nodes } = useGLTF("/Beer-can.gltf") as unknown as GLTFResult;
-  const label = useTexture(urlImg);
-  label.flipY = false;
+  const label = urlImg ? useTexture(urlImg) : null;
+  if (label) label.flipY = false;
 
   const groupRef = useRef<Group>(null);
   const rotationSpeed = useRef(0.01); // Velocità iniziale della rotazione
@@ -85,7 +108,7 @@ function Scene({ urlImg, scale, isHovered }: SceneProps) {
 
   const metalMaterial = new THREE.MeshStandardMaterial({
     metalness: 0.9,
-    color: "#bbbbbb"
+    color: "#bbbbbb",
   });
 
   return (
@@ -104,7 +127,11 @@ function Scene({ urlImg, scale, isHovered }: SceneProps) {
       >
         <mesh castShadow receiveShadow geometry={nodes.cylinder.geometry} material={metalMaterial} />
         <mesh castShadow receiveShadow geometry={nodes.cylinder_1.geometry}>
-          <meshStandardMaterial roughness={0.3} metalness={0.9} map={label} />
+          {label ? (
+            <meshStandardMaterial roughness={0.3} metalness={0.9} map={label} />
+          ) : (
+            <meshStandardMaterial roughness={0.3} metalness={0.9} color="#dddddd" /> // Fallback material
+          )}
         </mesh>
         <mesh castShadow receiveShadow geometry={nodes.Tab.geometry} material={metalMaterial} />
       </group>
