@@ -62,12 +62,11 @@ type SceneProps = {
 
 function Scene({ urlImg, scale, isHovered }: SceneProps) {
   const { nodes } = useGLTF("/Beer-can.gltf") as unknown as GLTFResult;
- 
-  const label = urlImg ? useTexture(urlImg) : null;
+  const image = urlImg ?? "/beer-wvagger/label-placeholder.png"
 
-  if(label) {
-    label.flipY = true;
-  }
+  const label = useTexture(image);
+  label.flipY = true;
+
 
   const groupRef = useRef<Group>(null);
   const rotationSpeed = useRef(0.01); // Velocità iniziale della rotazione
@@ -112,7 +111,7 @@ function Scene({ urlImg, scale, isHovered }: SceneProps) {
 
             <meshStandardMaterial roughness={0.3} metalness={0.9} map={label} />
           ) : (
-            <meshStandardMaterial roughness={0.3} metalness={0.9}/>
+            <meshStandardMaterial roughness={0.3} metalness={0.9} />
           )}
         </mesh>
         <mesh castShadow receiveShadow geometry={nodes.Tab.geometry} material={metalMaterial} />
