@@ -62,7 +62,7 @@ type SceneProps = {
 
 function Scene({ urlImg, scale, isHovered }: SceneProps) {
   const { nodes } = useGLTF("/Beer-can.gltf") as unknown as GLTFResult;
-  const image = urlImg ?? "/beer-wvagger/label-placeholder.png"
+  const image = "/beer-wvagger/label-placeholder.png"
 
   const label = useTexture(image);
   label.flipY = true;
