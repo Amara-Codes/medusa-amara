@@ -18,7 +18,7 @@ type GLTFResult = {
 
 // Tipizza le props per il componente BeerSwagger
 export type BeerSwaggerProps = {
-  urlImg?: string; // Rende opzionale l'URL
+  urlImg: string; // Rende opzionale l'URL
   scale?: number;
 };
 
@@ -48,7 +48,7 @@ export function BeerSwagger({ urlImg, scale = 1.5 }: BeerSwaggerProps) {
       <ambientLight intensity={15} color={"#fffafa"} />
       <directionalLight position={[5, -5, 5]} intensity={2} castShadow />
       <directionalLight position={[-5, 5, 5]} intensity={2} castShadow />
-      {urlImg && <Scene urlImg={urlImg} scale={scale} isHovered={isHovered} />}
+      <Scene urlImg={urlImg} scale={scale} isHovered={isHovered} />
     </Canvas>
   );
 }
@@ -62,7 +62,7 @@ type SceneProps = {
 
 function Scene({ urlImg, scale, isHovered }: SceneProps) {
   const { nodes } = useGLTF("/Beer-can.gltf") as unknown as GLTFResult;
-  const image = "/beer-wvagger/label-placeholder.png"
+  const image = "/images/beer-swagger/label-placeholder.png"
 
   const label = useTexture(image);
   label.flipY = true;
