@@ -60,13 +60,13 @@ type SceneProps = {
   isHovered: boolean;
 };
 
+
+
 function Scene({ urlImg, scale, isHovered }: SceneProps) {
   const { nodes } = useGLTF("/Beer-can.gltf") as unknown as GLTFResult;
-  const image = "/images/beer-swagger/label-placeholder.png"
-
-  const label = useTexture(image);
-  label.flipY = true;
-
+  const image = urlImg ?? "/images/beer-swagger/label-placeholder.png";
+  const label = useTexture(urlImg);
+  label.flipY = false;
 
   const groupRef = useRef<Group>(null);
   const rotationSpeed = useRef(0.01); // Velocità iniziale della rotazione
