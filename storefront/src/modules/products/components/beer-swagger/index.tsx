@@ -26,18 +26,25 @@ const DEFAULT_DAMPING = 0.0002;
 
 export function BeerSwagger({ urlImg, scale = 1.5 }: BeerSwaggerProps) {
   const [isHovered, setIsHovered] = useState(false);
-  const [isTouched, setIsTouched] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
+  const isTouchDevice = useRef(false);
 
-  const handleMouseEnter = () => setIsHovered(true);
-  const handleMouseLeave = () => setIsHovered(false);
+  useEffect(() => {
+    // Rileva se il dispositivo è touchscreen
+    isTouchDevice.current = window.matchMedia("(pointer: coarse)").matches;
+  }, []);
 
-  const handleTouchStart = () => {
-    setIsTouched(true);
-    setIsPaused(prev => !prev); // Inverte lo stato di pausa
+  const handleMouseEnter = () => {
+    if (!isTouchDevice.current) setIsHovered(true); // Abilita solo se non è touchscreen
   };
 
-  const handleTouchEnd = () => setIsTouched(false);
+  const handleMouseLeave = () => {
+    if (!isTouchDevice.current) setIsHovered(false); // Abilita solo se non è touchscreen
+  };
+
+  const handleTouch = () => {
+    if (isTouchDevice.current) setIsPaused((prev) => !prev); // Abilita solo su touchscreen
+  };
 
   return (
     <Canvas
@@ -58,16 +65,16 @@ export function BeerSwagger({ urlImg, scale = 1.5 }: BeerSwaggerProps) {
       }}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      onTouchStart={handleTouchStart}
-      onTouchEnd={handleTouchEnd}
+      onTouchStart={handleTouch}
     >
       <ambientLight intensity={15} color={"#fffafa"} />
       <directionalLight position={[5, -5, 5]} intensity={2} castShadow />
       <directionalLight position={[-5, 5, 5]} intensity={2} castShadow />
-      <Scene urlImg={urlImg} scale={scale} isHovered={isHovered || isTouched} isPaused={isPaused} />
+      <Scene urlImg={urlImg} scale={scale} isHovered={isHovered} isPaused={isPaused} />
     </Canvas>
   );
 }
+
 
 type SceneProps = {
   urlImg: string;
@@ -81,23 +88,21 @@ function Scene({ urlImg, scale, isHovered, isPaused }: SceneProps) {
   const label = useTexture(urlImg ?? "/images/beer-swagger/label-placeholder.png");
   label.flipY = false;
 
-  const defaultRotationSpeed = 0.03,
-    defaultDamping = 0.0002;
   const groupRef = useRef<Group>(null);
-  const rotationSpeed = useRef(defaultRotationSpeed);
-  const damping = defaultDamping;
-  const initialMousePosition = useRef<{ x: number; y: number } | null>(null);
-  const initialRotation = useRef<{ x: number; y: number } | null>(null);
+  const rotationSpeed = useRef(DEFAULT_ROTATION_SPEED);
   const [isFollowingMouse, setIsFollowingMouse] = useState(false);
+  const [initialMousePosition, setInitialMousePosition] = useState<{ x: number; y: number } | null>(null);
+  const [initialRotation, setInitialRotation] = useState<{ x: number; y: number } | null>(null);
 
+  // Attiva il movimento di rotazione su spostamento mouse
   useEffect(() => {
     const handleMouseMove = (event: MouseEvent) => {
-      if (initialMousePosition.current && initialRotation.current && groupRef.current) {
-        const deltaX = (event.clientX - initialMousePosition.current.x) / window.innerWidth;
-        const deltaY = (event.clientY - initialMousePosition.current.y) / window.innerHeight;
+      if (initialMousePosition && initialRotation && groupRef.current) {
+        const deltaX = (event.clientX - initialMousePosition.x) / window.innerWidth;
+        const deltaY = (event.clientY - initialMousePosition.y) / window.innerHeight;
   
-        groupRef.current.rotation.x = initialRotation.current.x + deltaY * Math.PI * 0.2;
-        groupRef.current.rotation.y = initialRotation.current.y + deltaX * Math.PI * 0.4;
+        groupRef.current.rotation.x = initialRotation.x + deltaY * Math.PI * 0.2;
+        groupRef.current.rotation.y = initialRotation.y + deltaX * Math.PI * 0.4;
       }
     };
   
@@ -106,7 +111,7 @@ function Scene({ urlImg, scale, isHovered, isPaused }: SceneProps) {
     } 
   
     return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, [isFollowingMouse]);
+  }, [isFollowingMouse, initialMousePosition, initialRotation]);
 
   useFrame(() => {
     if (groupRef.current) {
@@ -119,21 +124,21 @@ function Scene({ urlImg, scale, isHovered, isPaused }: SceneProps) {
         if (rotationSpeed.current > 0) {
           rotationSpeed.current = 0;
         } else if (!isFollowingMouse) {
-          initialRotation.current = {
+          setInitialRotation({
             x: groupRef.current.rotation.x,
             y: groupRef.current.rotation.y,
-          };
-          initialMousePosition.current = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
+          });
+          setInitialMousePosition({ x: window.innerWidth / 2, y: window.innerHeight / 2 });
           setIsFollowingMouse(true);
         }
       } else {
         if (isFollowingMouse) {
           setIsFollowingMouse(false);
-          initialRotation.current = null;
-          initialMousePosition.current = null;
+          setInitialRotation(null);
+          setInitialMousePosition(null);
         }
-        if (rotationSpeed.current < defaultRotationSpeed) {
-          rotationSpeed.current += damping;
+        if (rotationSpeed.current < DEFAULT_ROTATION_SPEED) {
+          rotationSpeed.current += DEFAULT_DAMPING;
         }
         groupRef.current.rotation.y += rotationSpeed.current;
       }
