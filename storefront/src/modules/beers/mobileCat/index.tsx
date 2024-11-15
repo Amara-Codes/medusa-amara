@@ -1,7 +1,7 @@
-import { getCategoriesList } from "@lib/data"
+import { getCategoriesList } from "@lib/data/categories"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 import { clx } from "@medusajs/ui"
-import TypoParagraphBlock from "@modules/layout/components/typo-par-block"
+import TypoParagraphBlock from "@modules/common/components/blocks/typo-par-block"
 
 export default async function MobileCategories() {
   const { product_categories } = await getCategoriesList(0, 6)
