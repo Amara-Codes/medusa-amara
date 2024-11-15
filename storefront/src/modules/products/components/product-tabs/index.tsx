@@ -3,15 +3,25 @@
 import Back from "@modules/common/icons/back"
 import FastDelivery from "@modules/common/icons/fast-delivery"
 import Refresh from "@modules/common/icons/refresh"
-
+import { Heading } from "@medusajs/ui"
 import Accordion from "./accordion"
 import { HttpTypes } from "@medusajs/types"
+import { clx } from "@medusajs/ui"
+
+
+const isEcom = process.env.AMARA_ECOM_ACTIVATED; 
 
 type ProductTabsProps = {
   product: HttpTypes.StoreProduct
 }
 
 const ProductTabs = ({ product }: ProductTabsProps) => {
+  if (!isEcom) {
+    // Mostra solo ProductInfoTab se isEcom è false
+    return <ProductInfoTab product={product} />
+  }
+
+  // Mostra entrambe le schede come Accordion se isEcom è true
   const tabs = [
     {
       label: "Geek insights",
@@ -43,10 +53,20 @@ const ProductTabs = ({ product }: ProductTabsProps) => {
 
 const ProductInfoTab = ({ product }: ProductTabsProps) => {
   return (
-    <div className="text-small-regular py-8">
+    <div className={clx(
+      'text-small-regular',
+      {
+        'py-8': isEcom
+      }
+    )}>
+      {!isEcom && (
+        <Heading level="h3">Geek Insights</Heading>
+      )}
       <div className="grid grid-cols-2 gap-x-8">
         <div className="flex flex-col gap-y-4">
-         <p className="font-normal font-sans txt-medium text-ui-fg-subtle whitespace-pre-line">{product.subtitle}</p>
+          <p className="font-normal font-sans txt-medium text-ui-fg-subtle whitespace-pre-line">
+            {product.subtitle}
+          </p>
         </div>
       </div>
     </div>

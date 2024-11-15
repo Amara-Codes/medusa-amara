@@ -8,12 +8,17 @@ import LocalizedClientLink from "@modules/common/components/localized-client-lin
 import CountrySelect from "../country-select"
 import { HttpTypes } from "@medusajs/types"
 
+const isEcom = process.env.AMARA_ECOM_ACTIVATED;
+
 const SideMenuItems = {
   Brewery: "/brewery",
-  Store: "/store",
-  Account: "/account",
-  Cart: "/cart",
-}
+  ...(isEcom
+    ? { Store: "/store", Account: "/account", Cart: "/cart" }
+    : { Beers: "/beers" }),
+    Contacts: "/contacts"
+};
+
+
 
 const SideMenu = ({ regions }: { regions: HttpTypes.StoreRegion[] | null }) => {
   const toggleState = useToggleState()
@@ -55,14 +60,25 @@ const SideMenu = ({ regions }: { regions: HttpTypes.StoreRegion[] | null }) => {
                 <Popover.Panel className="flex flex-col absolute w-full pr-4 sm:pr-0 sm:w-1/3 2xl:w-1/4 sm:min-w-min h-[calc(100vh-1rem)] z-30 inset-x-0 text-sm text-ui-fg-on-color m-2 backdrop-blur-2xl top-0">
                   <div
                     data-testid="nav-menu-popup"
-                    className="flex flex-col h-full bg-[rgba(3,7,18,0.5)] rounded-rounded justify-between p-6"
+                    
+                    className={clx(
+                      'flex flex-col h-full bg-[rgba(3,7,18,0.5)] rounded-rounded p-6', 
+                      {
+                        'justify-between' : isEcom,
+                        'justify-center' : !isEcom
+                      }
+                    )}
                   >
                     <div className="flex justify-end" id="xmark">
                       <button data-testid="close-menu-button" onClick={close}>
                         <XMark />
                       </button>
                     </div>
-                    <ul className="flex flex-col gap-6 items-start justify-start">
+                    <ul className={clx(
+                      'flex flex-col gap-6 items-start justify-start', {
+                        'grow mt-8': !isEcom
+                      }
+                    )}>
                       {Object.entries(SideMenuItems).map(([name, href]) => {
                         return (
                           <li key={name}>
@@ -78,6 +94,8 @@ const SideMenu = ({ regions }: { regions: HttpTypes.StoreRegion[] | null }) => {
                         )
                       })}
                     </ul>
+                    {isEcom && (
+
                     <div className="flex flex-col gap-y-6">
                       <div
                         className="flex justify-between"
@@ -98,6 +116,7 @@ const SideMenu = ({ regions }: { regions: HttpTypes.StoreRegion[] | null }) => {
                         />
                       </div>
                     </div>
+                    )}
                   </div>
                 </Popover.Panel>
               </Transition>

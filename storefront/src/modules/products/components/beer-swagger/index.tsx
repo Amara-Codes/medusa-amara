@@ -7,6 +7,7 @@ import { Float } from "@react-three/drei";
 import { useRef, useState, useEffect } from "react";
 import { Group } from "three";
 
+const isEcom = process.env.AMARA_ECOM_ACTIVATED;
 // Tipizza i nodi del file GLTF
 type GLTFResult = {
   nodes: {
@@ -51,7 +52,7 @@ export function BeerSwagger({ urlImg, scale = 1.5 }: BeerSwaggerProps) {
       style={{
         position: "absolute",
         left: "50%",
-        top: "75%",
+        top: isEcom? '75%' : '50%',
         transform: "translate(-50%, -50%)",
         overflow: "hidden",
         pointerEvents: "auto",

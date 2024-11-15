@@ -7,7 +7,9 @@ import CartButton from "@modules/layout/components/cart-button"
 import SideMenu from "@modules/layout/components/side-menu"
 import Image from "next/image"
 import Logo from '../../../../../public/logo.png'
-import { User, ShoppingBag, MagnifyingGlass } from "@medusajs/icons"
+import { clx } from "@medusajs/ui"
+
+const isEcom = process.env.AMARA_ECOM_ACTIVATED;
 
 export default async function Nav() {
   const regions = await listRegions().then((regions: StoreRegion[]) => regions)
@@ -23,7 +25,12 @@ export default async function Nav() {
             </div>
           </div>
 
-          <div className="flex items-center h-full">
+          <div className={clx(
+            'flex items-center h-full', {
+
+              'grow': !isEcom
+            }
+          )}>
             <LocalizedClientLink
               href="/"
               className="txt-compact-xlarge-plus hover:text-ui-fg-base uppercase"
@@ -40,6 +47,8 @@ export default async function Nav() {
               </Image>
             </LocalizedClientLink>
           </div>
+
+{isEcom && (
 
           <div className="flex items-center gap-x-6 h-full flex-1 basis-0 justify-end">
             <div className="hidden small:flex items-center gap-x-6 h-full">
@@ -69,6 +78,7 @@ export default async function Nav() {
               <CartButton />
             </Suspense>
           </div>
+)}
         </nav>
       </header>
     </div>

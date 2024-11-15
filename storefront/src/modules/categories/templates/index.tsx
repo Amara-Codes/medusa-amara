@@ -33,7 +33,11 @@ export default function CategoryTemplate({
       className="flex flex-col small:flex-row small:items-start py-6 content-container"
       data-testid="category-container"
     >
+            {process.env.AMARA_ECOM_ACTIVATED && (
+
+
       <RefinementList sortBy={sort} data-testid="sort-by-container" />
+)}
       <div className="w-full">
         <div className="flex flex-row mb-8 text-2xl-semi gap-4">
           {parents &&
