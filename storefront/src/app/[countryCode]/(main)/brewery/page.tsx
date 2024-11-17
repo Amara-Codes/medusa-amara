@@ -1,6 +1,7 @@
 import ParagraphBlock from "@modules/common/components/blocks/par-block";
 import TypoParagraphBlock from "@modules/common/components/blocks/typo-par-block";
 import CTABlock from "@modules/common/components/blocks/cta-block";
+import ArticlesList from "@modules/brewery/components/articles-list";
 export default function Brewery() {
   return (
     <div className="lg:pb-48">
@@ -62,6 +63,8 @@ export default function Brewery() {
         ctaText="Our campains"
         ctaCss="block text-center mt-8"
       />
+
+     <ArticlesList mode="deep" />
     </div>
   )
 }
