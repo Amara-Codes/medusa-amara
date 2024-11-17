@@ -156,6 +156,9 @@ module.exports = {
         "slide-in": "slide-in 1.2s cubic-bezier(.41,.73,.51,1.02)",
         leave: "leave 150ms ease-in forwards",
       },
+      boxShadow: {
+        'aura': '0px 0px 38px 49px rgba(217,119,6,0.81)',
+      }
     },
   },
   plugins: [require("tailwindcss-radix")()],

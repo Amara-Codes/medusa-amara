@@ -21,7 +21,10 @@ const ImageGallery = ({ images }: ImageGalleryProps) => {
 
 
               {i === 0 && image.url ? (
-                <BeerSwagger urlImg={image.url} />
+           
+
+                  <BeerSwagger urlImg={image.url} />
+      
               ) : image.url ? (
                 <Image
                   src={image.url}
