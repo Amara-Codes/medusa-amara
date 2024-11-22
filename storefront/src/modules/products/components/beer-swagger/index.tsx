@@ -30,7 +30,7 @@ export type BeerSwaggerProps = {
   scale?: number;
 };
 
-const DEFAULT_ROTATION_SPEED = 0.08;
+const DEFAULT_ROTATION_SPEED = 0.02;
 const DEFAULT_DAMPING = 0.0002;
 
 export function BeerSwagger({ urlImg, scale = 10 }: BeerSwaggerProps) {
@@ -57,7 +57,7 @@ export function BeerSwagger({ urlImg, scale = 10 }: BeerSwaggerProps) {
 
   return (
     <div
-      className="w-full h-full rounded-lg bg-transparent contrast-[1.35] saturate-[1.1] brightness-[1.05] top-16 md:top-8"
+      className="w-full h-full rounded-lg bg-transparent contrast-[1.45] saturate-[1.3] brightness-[1.05] top-16 md:top-8"
       style={{
         position: "absolute",
         left: "50%",
