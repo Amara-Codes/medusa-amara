@@ -51,7 +51,7 @@
 			"name":"Metal",
 			"pbrMetallicRoughness":{
 				"roughnessFactor":0.25,
-				"metallicFactor":0.98
+				"metallicFactor":0.90
 			}
 		},
 		{
@@ -59,7 +59,7 @@
 			"name":"Can Body",
 			"pbrMetallicRoughness":{
 				"roughnessFactor":0.45,
-				"metallicFactor":0.975
+				"metallicFactor":0.75
 			}
 		},
 		{
@@ -67,13 +67,14 @@
 			"name":"Can Label",
 			"pbrMetallicRoughness":{
 				"baseColorFactor":[
-					0.092,
-					0.092,
-					0.092,
+					1,
+					1,
+					1,
 					1
 				],
 				"roughnessFactor":0.95,
-				"metallicFactor": 0.00000001
+				"metallicFactor":0.95
+
 			}
 		}
 	],

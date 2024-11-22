@@ -30,10 +30,10 @@ export type BeerSwaggerProps = {
   scale?: number;
 };
 
-const DEFAULT_ROTATION_SPEED = 0.02;
+const DEFAULT_ROTATION_SPEED = 0.08;
 const DEFAULT_DAMPING = 0.0002;
 
-export function BeerSwagger({ urlImg, scale = 8 }: BeerSwaggerProps) {
+export function BeerSwagger({ urlImg, scale = 10 }: BeerSwaggerProps) {
   const [isHovered, setIsHovered] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
   const isTouchDevice = useRef(false);
@@ -57,11 +57,10 @@ export function BeerSwagger({ urlImg, scale = 8 }: BeerSwaggerProps) {
 
   return (
     <div
-      className="w-full h-full rounded-lg bg-transparent"
+      className="w-full h-full rounded-lg bg-transparent contrast-[1.35] saturate-[1.1] brightness-[1.05] top-16 md:top-8"
       style={{
         position: "absolute",
         left: "50%",
-        top: isEcom ? "50%" : "0%",
         transform: "translate(-50%, -0%)",
         overflow: "hidden",
         pointerEvents: "auto",
@@ -83,9 +82,9 @@ export function BeerSwagger({ urlImg, scale = 8 }: BeerSwaggerProps) {
         onMouseLeave={handleMouseLeave}
         onTouchStart={handleTouch}
       >
-        <ambientLight intensity={10} color={"#fffafa"} />
-        <directionalLight position={[5, -5, 5]} intensity={2} castShadow/>
-        <directionalLight position={[-5, 5, 5]} intensity={2} castShadow/>
+        <ambientLight intensity={.5} color={"#ffffff"} />
+        <directionalLight position={[8, -8, 8]} intensity={2.5} />
+        <directionalLight position={[-5, 5, 5]} intensity={3} />
         <Scene
           urlImg={urlImg}
           scale={scale}
@@ -156,9 +155,9 @@ function Scene({ urlImg, scale, isHovered, isPaused }: SceneProps) {
 
         // Update target rotation instead of directly setting the rotation
         targetRotation.current.x =
-          initialRotation.x + deltaY * Math.PI * 0.1; // Reduced sensitivity
+          initialRotation.x + deltaY * Math.PI * 0.2; // Reduced sensitivity
         targetRotation.current.y =
-          initialRotation.y + deltaX * Math.PI * 0.2; // Reduced sensitivity
+          initialRotation.y + deltaX * Math.PI * 0.8; // Reduced sensitivity
       }
     };
 
