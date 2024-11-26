@@ -30,7 +30,7 @@ export type BeerSwaggerProps = {
   scale?: number;
 };
 
-const DEFAULT_ROTATION_SPEED = 0.02;
+const DEFAULT_ROTATION_SPEED = 0.005;
 const DEFAULT_DAMPING = 0.0002;
 
 export function BeerSwagger({ urlImg, scale = 10 }: BeerSwaggerProps) {
