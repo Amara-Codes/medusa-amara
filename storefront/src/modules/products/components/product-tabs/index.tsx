@@ -8,35 +8,32 @@ import Accordion from "./accordion"
 import { HttpTypes } from "@medusajs/types"
 import { clx } from "@medusajs/ui"
 
-
-const isEcom = process.env.AMARA_ECOM_ACTIVATED; 
+const isEcom = process.env.AMARA_ECOM_ACTIVATED;
 
 type ProductTabsProps = {
   product: HttpTypes.StoreProduct
 }
 
 const ProductTabs = ({ product }: ProductTabsProps) => {
-  if (!isEcom) {
-    // Mostra solo ProductInfoTab se isEcom è false
-    return <ProductInfoTab product={product} />
-  }
-
-  // Mostra entrambe le schede come Accordion se isEcom è true
+  // Definiamo sempre i tab disponibili
   const tabs = [
     {
-      label: "Geek insights",
+      label: "Geek Insights",
       component: <ProductInfoTab product={product} />,
     },
     {
       label: "Shipping & Returns",
       component: <ShippingInfoTab />,
     },
-  ]
+  ];
+
+  // Filtriamo i tab in base alla condizione
+  const filteredTabs = !isEcom ? tabs.filter((tab) => tab.label === "Geek Insights") : tabs;
 
   return (
     <div className="w-full">
       <Accordion type="multiple">
-        {tabs.map((tab, i) => (
+        {filteredTabs.map((tab, i) => (
           <Accordion.Item
             key={i}
             title={tab.label}
@@ -59,9 +56,6 @@ const ProductInfoTab = ({ product }: ProductTabsProps) => {
         'py-8': isEcom
       }
     )}>
-      {!isEcom && (
-        <Heading level="h3">Geek Insights</Heading>
-      )}
       <div className="grid grid-cols-2 gap-x-8">
         <div className="flex flex-col gap-y-4">
           <p className="font-normal font-sans txt-medium text-ui-fg-subtle whitespace-pre-line">
