@@ -10,12 +10,12 @@ type ImageGalleryProps = {
 const ImageGallery = ({ images }: ImageGalleryProps) => {
   return (
     <div className="flex items-start relative">
-      <div className="flex flex-col flex-1 small:mx-16 gap-y-4">
+      <div className="flex flex-col flex-1 small:mx-16 gap-y-4 w-full h-auto">
         {images.map((image, i: number) => {
           return (
             <Container
               key={image.id}
-              className="relative aspect-[29/34] w-full overflow-hidden shadow-none"
+              className="relative aspect-[29/34] w-full overflow-hidden shadow-none h-dvh"
               id={image.id}
             >
 
