@@ -11,8 +11,8 @@ const Hero: React.FC<HeroElement> = ({
   return (
     <section className={`py-12 h-dvh ${HeroCssClasses}`}>
       <div className="container mx-auto px-4 text-center">
-        <h1 className="text-4xl font-bold mb-4">{HeroTitle}</h1>
-        <p className="text-lg mb-8">{HeroSubtitle}</p>
+        <h1 className="text-4xl font-bold mb-4 text-ui-fg-base">{HeroTitle}</h1>
+        <p className="text-lg mb-8 text-ui-fg-base">{HeroSubtitle}</p>
         {HeroButton && (
           <a
             href={HeroButton.ButtonLink}

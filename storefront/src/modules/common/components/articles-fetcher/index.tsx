@@ -1,14 +1,9 @@
 import React from "react";
 import qs from "qs";
 import ArticleCard from "../article-card";
-import componentMapping from "../componentMapping";
+
 
 type ArticleCategory = "news" | "activities" | "blog" | "*";
-type Mode = "preview" | "deep";
-
-interface ArticleData {
-  data: any;
-}
 
 type TransformedDataItem = {
   Title: string;
@@ -17,6 +12,7 @@ type TransformedDataItem = {
   Summary: string | null;
   ThumbnailUrl?: string;
   Content?: any[];
+  Id?: string;
 };
 
 type TransformedJson = {
@@ -41,12 +37,13 @@ function transformData(json: any): TransformedJson {
         Summary: attributes.Summary,
         ThumbnailUrl,
         Content,
+        Id: item.id,
       };
     }),
   };
 }
 
-async function getArticles(category: ArticleCategory = "*", mode: Mode = "preview") {
+async function getArticles(category: ArticleCategory = "*",  limit?: number) {
   const baseUrl = process.env.AMARA_STRAPI_URL ?? "http://localhost:1337";
   const path = "/api/articles";
 
@@ -56,10 +53,15 @@ async function getArticles(category: ArticleCategory = "*", mode: Mode = "previe
       Thumbnail: { fields: ["formats"] },
       Content: { fields: "*" },
     },
+    pagination: {},
   };
 
   if (category !== "*") {
     query.filters = { Category: category };
+  }
+
+  if (limit) {
+    query.pagination.limit = limit;
   }
 
   url.search = qs.stringify(query);
@@ -75,17 +77,14 @@ async function getArticles(category: ArticleCategory = "*", mode: Mode = "previe
 
 async function getArticleById(
   articleId: string,
-  category: ArticleCategory = "*",
-  mode: Mode = "preview"
+  category: ArticleCategory = "*"
 ) {
   const baseUrl = process.env.AMARA_STRAPI_URL ?? "http://localhost:1337";
   const path = `/api/articles/${articleId}`;
   const url = new URL(path, baseUrl);
 
   const query: Record<string, any> = {};
-  if (mode === "deep") {
-    query.populate = { Content: { fields: "*" } };
-  }
+
   if (category !== "*") {
     query.filters = { Category: category };
   }
@@ -103,24 +102,21 @@ async function getArticleById(
 
 interface ArticleFetcherProps {
   articleCategory?: ArticleCategory;
-  mode?: Mode;
+  limit?: number;
   articleId?: string;
 }
 
 export default async function ArticleFetcher({
   articleCategory = "*",
-  mode = "preview",
-  articleId,
+  limit
 }: ArticleFetcherProps) {
   let articles;
 
-  if (articleId) {
-    articles = await getArticleById(articleId, articleCategory, mode);
-  } else {
-    articles = await getArticles(articleCategory, mode);
-  }
 
-  if (mode === "preview") {
+    articles = await getArticles(articleCategory, limit);
+  
+
+
     return (
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:mb-48 mx-12 pb-12">
         {articles.data.map((article) => (
@@ -131,34 +127,10 @@ export default async function ArticleFetcher({
             thumbnailUrl={article.ThumbnailUrl}
             slug={article.Slug}
             type={article.Category}
+            id={article.Id ?? ''}
           />
         ))}
       </div>
     );
-  }
 
-  if (mode === "deep") {
-    return (
-      <div>
-        {articles.data.map((article) => (
-          <div key={article.Slug} className="my-8 mx-12">
-            {article.Content &&
-              article.Content.map((contentItem: any, index: number) => {
-                const Component = componentMapping[contentItem.Component];
-                if (!Component) {
-                  return (
-                    <pre key={index}>
-                      {JSON.stringify(contentItem, null, 2)}
-                    </pre>
-                  );
-                }
-                return <Component key={index} {...contentItem} />;
-              })}
-          </div>
-        ))}
-      </div>
-    );
-  }
-
-  return null;
 }

@@ -8,7 +8,7 @@ const Paragraph: React.FC<ParagraphElement> = ({
   ParagraphCssClasses = '',
 }) => {
   return (
-    <div className={`prose max-w-none py-8 ${ParagraphCssClasses}`}>
+    <div className={`prose max-w-none py-8 text-ui-fg-base ${ParagraphCssClasses}`}>
       <ReactMarkdown>{ParagraphContent}</ReactMarkdown>
     </div>
   );

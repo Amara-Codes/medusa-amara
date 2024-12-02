@@ -3,7 +3,7 @@ import { Button, clx } from "@medusajs/ui"
 import React, { Fragment, useMemo } from "react"
 
 import useToggleState from "@lib/hooks/use-toggle-state"
-import ChevronDown from "@modules/common/icons/chevron-down"
+import Chevron from "@modules/common/icons/chevron"
 import X from "@modules/common/icons/x"
 
 import { getProductPrice } from "@lib/util/get-product-price"
@@ -109,7 +109,7 @@ const MobileActions: React.FC<MobileActionsProps> = ({
                       ? Object.values(options).join(" / ")
                       : "Select Options"}
                   </span>
-                  <ChevronDown />
+                  <Chevron />
                 </div>
               </Button>
               <Button

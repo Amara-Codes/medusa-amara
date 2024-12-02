@@ -12,6 +12,9 @@ const isEcom = process.env.AMARA_ECOM_ACTIVATED;
 
 const SideMenuItems = {
   Brewery: "/brewery",
+  Blog: "/blog",
+  Activities: "/activities",
+  News: "/news",
   ...(isEcom
     ? { Store: "/store", Account: "/account", Cart: "/cart" }
     : { Beers: "/beers" }),

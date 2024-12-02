@@ -10,10 +10,10 @@ export const metadata: Metadata = {
 
 export default async function PageLayout(props: { children: React.ReactNode }) {
   return (
-    <>
+    <div className="bg-ui-bg-base dark">
       <Nav />
       {props.children}
       <Footer />
-    </>
+    </div>
   )
 }
