@@ -16,7 +16,7 @@ type TransformedJson = {
 };
 
 function transformData(json: any): any {
-    const item = json.data; // Supponiamo che json.data sia un oggetto
+    const item = json.data; 
     const attributes = item.attributes;
 
     const ThumbnailUrl = attributes.Thumbnail?.data?.attributes?.formats?.small?.url;
@@ -33,7 +33,7 @@ function transformData(json: any): any {
         Summary: attributes.Summary,
         ThumbnailUrl,
         Content,
-        Id: item.id, // Inclusione dell'ID dell'articolo
+        Id: item.id, 
     };
 }
 
@@ -60,15 +60,14 @@ async function getArticleById(articleId: string, category: string = "*") {
     }
 
     const data = await res.json();
-    return transformData(data); // Lasciamo i dati grezzi per semplicità, ma puoi trasformarli se necessario.
+    return transformData(data); 
 }
 
 interface ActivitiesPageProps {
-    params: { id: string }; // Parametro dinamico della rotta
-    searchParams: { [key: string]: string | undefined }; // Query string
+    searchParams: { [key: string]: string | undefined }; 
 }
 
-const ActivitiesPage = async ({ params, searchParams }: ActivitiesPageProps) => {
+const ActivitiesPage = async ({ searchParams }: ActivitiesPageProps) => {
     const category = searchParams.category ?? "*";
     const id = searchParams.id ?? "";
 
