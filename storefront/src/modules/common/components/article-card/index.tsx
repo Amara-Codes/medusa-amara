@@ -1,6 +1,7 @@
 import React from "react";
 import Chevron from "@modules/common/icons/chevron";
 import Link from "next/link";
+import Image from "next/image";
 
 interface ArticleCardProps {
   title: string;
@@ -22,11 +23,14 @@ const ArticleCard: React.FC<ArticleCardProps> = ({
   return (
     <div className="border rounded-lg shadow-md p-4 mb-6 flex flex-col">
       {thumbnailUrl && (
-        <img
+        <Image
           src={thumbnailUrl}
           alt={title}
+          width={500}
+          height={500}
           className="w-full object-cover rounded-md mb-4 h-auto max-h-64"
         />
+
       )}
       <h2 className="text-xl font-bold mb-2 text-ui-fg-base">{title}</h2>
 
@@ -38,11 +42,11 @@ const ArticleCard: React.FC<ArticleCardProps> = ({
           pathname: `/${type}/${slug}`,
           query: { id },
         }}>
-          
+
           <span>Read more</span>
           <Chevron direction="right" />
-          </Link>
-       
+        </Link>
+
       </div>
 
     </div>
