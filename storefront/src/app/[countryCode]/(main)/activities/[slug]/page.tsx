@@ -11,10 +11,6 @@ type TransformedDataItem = {
     Content?: any[];
 };
 
-type TransformedJson = {
-    data: TransformedDataItem[];
-};
-
 function transformData(json: any): any {
     const item = json.data; 
     const attributes = item.attributes;
@@ -40,7 +36,7 @@ function transformData(json: any): any {
 
 
 
-async function getArticleById(articleId: string, category: string = "*") {
+async function getArticleById(articleId: string) {
     const baseUrl = process.env.AMARA_STRAPI_URL ?? "http://localhost:1337";
     const path = `/api/articles/${articleId}`;
     const url = new URL(path, baseUrl);
@@ -48,9 +44,7 @@ async function getArticleById(articleId: string, category: string = "*") {
     const query: Record<string, any> = {};
 
     query.populate = { Content: { fields: "*" } };
-    if (category !== "*") {
-        query.filters = { Category: category };
-    }
+
 
     url.search = qs.stringify(query);
     const res = await fetch(url);
@@ -68,14 +62,13 @@ interface ActivitiesPageProps {
 }
 
 const ActivitiesPage = async ({ searchParams }: ActivitiesPageProps) => {
-    const category = searchParams.category ?? "*";
     const id = searchParams.id ?? "";
 
     let article: any = null;
 
     try {
         if (id) {
-            article = await getArticleById(id, category);
+            article = await getArticleById(id);
         }
     } catch (error) {
         console.error("Error fetching article:", error);
