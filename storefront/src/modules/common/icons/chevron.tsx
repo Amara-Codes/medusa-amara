@@ -21,7 +21,7 @@ const Chevron: React.FC<ChevronProps> = ({
   ...attributes
 }) => {
   const rotation = rotationMap[direction]; // Ottieni il valore di rotazione dalla mappa
-  const sign = direction === 'right' ? '-' : '';
+  const sign = direction === "right" ? "-" : "";
   return (
     <svg
       width={size}
