@@ -33,6 +33,10 @@ const nextConfig = {
         protocol: "https",
         hostname: "admin.amarabeerlab.com",
       },
+      {
+        protocol: "https",
+        hostname: "res.cloudinary.com",
+      }
     ],
   },
   serverRuntimeConfig: {

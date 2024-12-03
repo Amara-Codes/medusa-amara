@@ -21,34 +21,37 @@ const ArticleCard: React.FC<ArticleCardProps> = ({
   id
 }) => {
   return (
-    <div className="border rounded-lg shadow-md p-4 mb-6 flex flex-col">
-      {thumbnailUrl && (
-        <Image
-          src={thumbnailUrl}
-          alt={title}
-          width={500}
-          height={500}
-          className="w-full object-cover rounded-md mb-4 h-auto max-h-64"
-        />
+    <div className="border rounded-lg shadow-md p-4 mb-6 flex">
+      <Link className="flex flex-col items-center text-ui-fg-base font-bold" href={{
+        pathname: `/${type}/${slug}`,
+        query: { id },
+      }}>
+        {thumbnailUrl && (
+          <Image
+            src={thumbnailUrl}
+            alt={title}
+            width={500}
+            height={500}
+            className="w-full object-cover rounded-md mb-4 h-auto max-h-64"
+          />
 
-      )}
-      <h2 className="text-xl font-bold mb-2 text-ui-fg-base">{title}</h2>
+        )}
+        <h2 className="text-xl font-bold mb-2 text-ui-fg-base">{title}</h2>
 
-      {caption && <p className="text-gray-600 mb-4">{caption}</p>}
-      <div className="mt-8 flex justify-end grow items-end">
+        {caption && <p className="text-gray-600 mb-4">{caption}</p>}
+        <div className="mt-8 flex w-full justify-end grow items-end">
 
 
-        <Link className="flex items-center text-ui-fg-base font-bold" href={{
-          pathname: `/${type}/${slug}`,
-          query: { id },
-        }}>
 
-          <span>Read more</span>
-          <Chevron direction="right" />
-        </Link>
+          <div className="flex items-center">
 
-      </div>
+            <p className="pb-1 pe-2">Read more</p>
+            <Chevron direction="right" />
+          </div>
 
+
+        </div>
+      </Link>
     </div>
   );
 };

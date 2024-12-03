@@ -158,6 +158,9 @@ module.exports = {
       },
       boxShadow: {
         'aura': '0px 0px 38px 49px rgba(217,119,6,0.81)',
+      },
+      rotate: {
+        '90': '90deg',
       }
     },
   },
