@@ -35,8 +35,8 @@ function transformData(json: any): TransformedDataItem {
 
         if (isComponentType(ComponentRaw)) {
             const imageName = componentImageMap[ComponentRaw],
-            componentImg = contentItem[imageName]?.data?.attributes?.formats?.small?.url;
-            contentComponentItem[imageName] = typeof(componentImg) === 'string' ? componentImg : ""         
+                componentImg = contentItem[imageName]?.data?.attributes?.formats?.small?.url;
+            contentComponentItem[imageName] = typeof (componentImg) === 'string' ? componentImg : ""
         }
         return { ...contentComponentItem, Component };
     });
@@ -63,13 +63,13 @@ async function getArticleById(articleId: string) {
         {
             populate: {
                 HeroBgImg: {
-                    fields: ["url", "formats"], 
+                    fields: ["url", "formats"],
                 },
                 ParagraphImg: {
-                    fields: ["url", "formats"], 
+                    fields: ["url", "formats"],
                 },
                 CtaBgImg: {
-                    fields: ["url", "formats"], 
+                    fields: ["url", "formats"],
                 },
             }
 
@@ -130,10 +130,10 @@ const ActivitiesPage = async ({ searchParams }: ActivitiesPageProps) => {
                                             </pre>
                                         );
                                     }
-                                    return(
-                                        <div>
-                                            <Component key={index} {...contentItem} />
-                                        </div>
+                                    return (
+
+                                        <Component key={index} {...contentItem} />
+
                                     );
                                 })}
                         </div>

@@ -36,13 +36,13 @@ function transformData(json: any): TransformedDataItem {
 
         if (isComponentType(ComponentRaw)) {
             const imageName = componentImageMap[ComponentRaw],
-            componentImg = contentItem[imageName]?.data?.attributes?.formats?.small?.url;
-            contentComponentItem[imageName] = typeof(componentImg) === 'string' ? componentImg : ""         
+                componentImg = contentItem[imageName]?.data?.attributes?.formats?.small?.url;
+            contentComponentItem[imageName] = typeof (componentImg) === 'string' ? componentImg : ""
         }
         return { ...contentComponentItem, Component };
     });
 
-    
+
     return {
         Title: attributes.Title,
         Slug: attributes.Slug,
@@ -65,13 +65,13 @@ async function getArticleById(articleId: string) {
         {
             populate: {
                 HeroBgImg: {
-                    fields: ["url", "formats"], 
+                    fields: ["url", "formats"],
                 },
                 ParagraphImg: {
-                    fields: ["url", "formats"], 
+                    fields: ["url", "formats"],
                 },
                 CtaBgImg: {
-                    fields: ["url", "formats"], 
+                    fields: ["url", "formats"],
                 },
             }
 
@@ -98,27 +98,23 @@ export async function generateMetadata({ searchParams }: BlogPageProps): Promise
     // Extract the article ID from searchParams
     const id = searchParams.id ?? '';
     let article: TransformedDataItem | null = null;
-  
+
     try {
-      if (id) {
-        // Fetch the article data
-        article = await getArticleById(id);
-      }
+        if (id) {
+            article = await getArticleById(id);
+        }
     } catch (error) {
-      console.error("Error fetching article for metadata:", error);
+        console.error("Error fetching article for metadata:", error);
     }
-  
-    // Return the metadata object
+
     return {
-      title: article?.Title || 'Blog',
-      description: article?.Summary || 'Discover the social initiatives of our brewery, but also news, insights, and reflections that go even beyond the brewery walls',
-      // You can add more metadata fields here
+        title: article?.Title || 'Blog',
+        description: article?.Summary || 'Discover the social initiatives of our brewery, but also news, insights, and reflections that go even beyond the brewery walls',
     };
-  }
+}
 
 const BlogPage = async ({ searchParams }: BlogPageProps) => {
     const id = searchParams.id ?? "";
-
     let article: any = null;
 
     try {
@@ -154,10 +150,8 @@ const BlogPage = async ({ searchParams }: BlogPageProps) => {
                                             </pre>
                                         );
                                     }
-                                    return(
-                                        <div>
-                                            <Component key={index} {...contentItem} />
-                                        </div>
+                                    return (
+                                        <Component key={index} {...contentItem} />
                                     );
                                 })}
                         </div>
