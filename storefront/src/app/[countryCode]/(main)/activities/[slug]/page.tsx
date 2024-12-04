@@ -1,6 +1,7 @@
 import qs from "qs";
 import componentMapping from "@modules/common/components/article/componentMapping";
 import BackLink from "@modules/common/components/back-link";
+import { Metadata } from 'next';
 
 //Parte che serve a mappare i nomi delle immagini nei componenti
 const componentImageMap = {
@@ -41,6 +42,7 @@ function transformData(json: any): TransformedDataItem {
         return { ...contentComponentItem, Component };
     });
 
+
     return {
         Title: attributes.Title,
         Slug: attributes.Slug,
@@ -55,7 +57,6 @@ async function getArticleById(articleId: string) {
     const baseUrl = process.env.AMARA_STRAPI_URL ?? "http://localhost:1337";
     const path = `/api/articles/${articleId}`;
     const url = new URL(path, baseUrl);
-
     const query: Record<string, any> = {};
 
     query.populate = {
@@ -76,7 +77,6 @@ async function getArticleById(articleId: string) {
         }
     };
 
-
     url.search = qs.stringify(query);
     const res = await fetch(url);
 
@@ -92,9 +92,26 @@ interface ActivitiesPageProps {
     searchParams: { [key: string]: string | undefined };
 }
 
+export async function generateMetadata({ searchParams }: ActivitiesPageProps): Promise<Metadata> {
+    const id = searchParams.id ?? '';
+    let article: TransformedDataItem | null = null;
+
+    try {
+        if (id) {
+            article = await getArticleById(id);
+        }
+    } catch (error) {
+        console.error("Error fetching article for metadata:", error);
+    }
+
+    return {
+        title: article ? "Activities: Engage & Explore - " + article.Title : 'Activities: Engage & Explore',
+        description: article?.Summary || 'Discover exciting activities at our brewery in Siem Reap, Cambodia. From community events and cultural workshops to exploring our sustainable craft beer tap room, there’s always something to enjoy.',
+    };
+}
+
 const ActivitiesPage = async ({ searchParams }: ActivitiesPageProps) => {
     const id = searchParams.id ?? "";
-
     let article: any = null;
 
     try {
@@ -118,7 +135,6 @@ const ActivitiesPage = async ({ searchParams }: ActivitiesPageProps) => {
                     </div>
 
                     {article ? (
-
                         <div>
                             {article.Content &&
                                 article.Content.map((contentItem: any, index: number) => {
@@ -131,9 +147,7 @@ const ActivitiesPage = async ({ searchParams }: ActivitiesPageProps) => {
                                         );
                                     }
                                     return (
-
                                         <Component key={index} {...contentItem} />
-
                                     );
                                 })}
                         </div>

@@ -6,5 +6,6 @@ export interface CtaElement {
     CtaCssClasses?: string;
     CtaType?: string;
     CtaButton?: ButtonElement;
+    CtaBgImg?: string
   }
   

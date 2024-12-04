@@ -28,6 +28,7 @@ type TransformedDataItem = {
 
 function transformData(json: any): TransformedDataItem {
     const item = json.data;
+    
     const attributes = item.attributes;
     const Content = attributes.Content?.map((contentItem: any) => {
         const contentComponentItem = { ...contentItem };
@@ -36,7 +37,8 @@ function transformData(json: any): TransformedDataItem {
 
         if (isComponentType(ComponentRaw)) {
             const imageName = componentImageMap[ComponentRaw],
-                componentImg = contentItem[imageName]?.data?.attributes?.formats?.small?.url;
+                componentImg = contentItem[imageName]?.data?.attributes?.formats?.medium?.url;
+
             contentComponentItem[imageName] = typeof (componentImg) === 'string' ? componentImg : ""
         }
         return { ...contentComponentItem, Component };
@@ -57,7 +59,6 @@ async function getArticleById(articleId: string) {
     const baseUrl = process.env.AMARA_STRAPI_URL ?? "http://localhost:1337";
     const path = `/api/articles/${articleId}`;
     const url = new URL(path, baseUrl);
-
     const query: Record<string, any> = {};
 
     query.populate = {
@@ -78,7 +79,6 @@ async function getArticleById(articleId: string) {
         }
     };
 
-
     url.search = qs.stringify(query);
     const res = await fetch(url);
 
@@ -95,7 +95,6 @@ interface BlogPageProps {
 }
 
 export async function generateMetadata({ searchParams }: BlogPageProps): Promise<Metadata> {
-    // Extract the article ID from searchParams
     const id = searchParams.id ?? '';
     let article: TransformedDataItem | null = null;
 
@@ -108,8 +107,8 @@ export async function generateMetadata({ searchParams }: BlogPageProps): Promise
     }
 
     return {
-        title: article?.Title || 'Blog',
-        description: article?.Summary || 'Discover the social initiatives of our brewery, but also news, insights, and reflections that go even beyond the brewery walls',
+        title: article ? "Blog and Stories - " + article.Title : 'Blog and Stories',
+        description: article?.Summary || 'Dive into our blog to uncover stories from our brewery in Siem Reap, Cambodia. Explore craft beer culture, sustainable brewing practices, and reflections on community and local traditions.',
     };
 }
 
@@ -131,15 +130,13 @@ const BlogPage = async ({ searchParams }: BlogPageProps) => {
             data-testid="news-container"
         >
             <div className="w-full">
-                <div className="mb-8 mx-12">
-                    <div>
+                <div className="mb-16 mx-12">
+                    <div className="mb-8">
                         <BackLink href={`/${article.Category}`} label={`Back to ${article.Category}`} className="text-ui-fg-base underline" />
-
                     </div>
 
                     {article ? (
-
-                        <div>
+                        <section>
                             {article.Content &&
                                 article.Content.map((contentItem: any, index: number) => {
                                     const Component = componentMapping[contentItem.Component];
@@ -151,10 +148,12 @@ const BlogPage = async ({ searchParams }: BlogPageProps) => {
                                         );
                                     }
                                     return (
-                                        <Component key={index} {...contentItem} />
+                            
+                                            <Component key={index} {...contentItem} />
+                                       
                                     );
                                 })}
-                        </div>
+                        </section>
                     ) : (
                         <p>No article found or missing ID.</p>
                     )}

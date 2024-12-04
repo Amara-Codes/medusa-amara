@@ -1,6 +1,7 @@
 import qs from "qs";
 import componentMapping from "@modules/common/components/article/componentMapping";
 import BackLink from "@modules/common/components/back-link";
+import { Metadata } from 'next';
 
 //Parte che serve a mappare i nomi delle immagini nei componenti
 const componentImageMap = {
@@ -41,6 +42,7 @@ function transformData(json: any): TransformedDataItem {
         return { ...contentComponentItem, Component };
     });
 
+
     return {
         Title: attributes.Title,
         Slug: attributes.Slug,
@@ -55,7 +57,6 @@ async function getArticleById(articleId: string) {
     const baseUrl = process.env.AMARA_STRAPI_URL ?? "http://localhost:1337";
     const path = `/api/articles/${articleId}`;
     const url = new URL(path, baseUrl);
-
     const query: Record<string, any> = {};
 
     query.populate = {
@@ -76,7 +77,6 @@ async function getArticleById(articleId: string) {
         }
     };
 
-
     url.search = qs.stringify(query);
     const res = await fetch(url);
 
@@ -92,9 +92,26 @@ interface NewsPageProps {
     searchParams: { [key: string]: string | undefined };
 }
 
+export async function generateMetadata({ searchParams }: NewsPageProps): Promise<Metadata> {
+    const id = searchParams.id ?? '';
+    let article: TransformedDataItem | null = null;
+
+    try {
+        if (id) {
+            article = await getArticleById(id);
+        }
+    } catch (error) {
+        console.error("Error fetching article for metadata:", error);
+    }
+
+    return {
+        title: "News and Insights - " + article?.Title || 'News and Insights',
+        description: article?.Summary || 'Stay informed with the latest news from our brewery in Siem Reap, Cambodia. Explore stories about craft beers, sustainability, community initiatives, and the rich local culture we celebrate in our tap room.',
+    };
+}
+
 const NewsPage = async ({ searchParams }: NewsPageProps) => {
     const id = searchParams.id ?? "";
-
     let article: any = null;
 
     try {
@@ -118,7 +135,6 @@ const NewsPage = async ({ searchParams }: NewsPageProps) => {
                     </div>
 
                     {article ? (
-
                         <div>
                             {article.Content &&
                                 article.Content.map((contentItem: any, index: number) => {
@@ -131,9 +147,7 @@ const NewsPage = async ({ searchParams }: NewsPageProps) => {
                                         );
                                     }
                                     return (
-
                                         <Component key={index} {...contentItem} />
-
                                     );
                                 })}
                         </div>

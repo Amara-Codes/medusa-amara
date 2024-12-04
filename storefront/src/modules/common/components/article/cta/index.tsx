@@ -12,9 +12,9 @@ const Cta: React.FC<CtaElement> = ({
   CtaType = "default",
   CtaButton,
 }) => {
-  const baseStyles = "p-6 rounded-lg shadow-lg text-center";
+  const baseStyles = "p-6";
   const typeStyles = {
-    default: "bg-gray-100 text-gray-900",
+    default: "bg-transparent",
     primary: "bg-blue-600 text-white",
     secondary: "bg-gray-800 text-white",
     warning: "bg-yellow-500 text-gray-900",
@@ -29,7 +29,7 @@ const Cta: React.FC<CtaElement> = ({
     <div className={resolvedStyles}>
 
       <CTABlock
-        className="min-h-[800px] lg:mx-12 lg:my-8 bg-bottom"
+        className="min-h-[400px] lg:mx-12 lg:my-8 bg-bottom"
         wrapperCss=""
         direction="dx"
         title={CtaTitle ?? ''}
