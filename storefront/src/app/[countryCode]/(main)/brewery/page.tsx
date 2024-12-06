@@ -64,7 +64,7 @@ export default function Brewery() {
         ctaCss="block text-center mt-8"
       />
 
-     <ArticlesList limit={6}/>
+     <ArticlesList limit={6} articleCategory="blog"/>
     </div>
   )
 }

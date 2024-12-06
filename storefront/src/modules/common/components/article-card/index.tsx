@@ -1,5 +1,5 @@
 import React from "react";
-import Chevron from "@modules/common/icons/chevron";
+import ThickChevron from "@modules/common/icons/thick-chevron";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -21,35 +21,39 @@ const ArticleCard: React.FC<ArticleCardProps> = ({
   id
 }) => {
   return (
-    <div className="border rounded-lg shadow-md p-4 mb-6 flex">
-      <Link className="flex flex-col items-center text-ui-fg-base font-bold" href={{
-        pathname: `/${type}/${slug}`,
-        query: { id },
-      }}>
-        {thumbnailUrl && (
-          <Image
-            src={thumbnailUrl}
-            alt={title}
-            width={500}
-            height={500}
-            className="w-full object-cover rounded-md mb-4 h-auto max-h-64"
-          />
+    <div className="border rounded-lg shadow-md p-4 mb-6 flex min-h-[500px]">
+      <Link
+        className="w-full h-full relative flex flex-col items-center text-ui-fg-base font-bold"
+        href={{
+          pathname: `/${type}/${slug}`,
+          query: { id },
+        }}
+      >
+        {/* Container per immagine e overlay */}
+        <div className="relative w-full h-full">
+          {thumbnailUrl && (
+            <Image
+              src={thumbnailUrl}
+              alt={title}
+              fill={true}
+              className="object-cover rounded-md"
+            />
+          )}
 
-        )}
-        <h2 className="text-xl font-bold mb-2 text-ui-fg-base">{title}</h2>
-
-        {caption && <p className="text-gray-600 mb-4">{caption}</p>}
-        <div className="mt-8 flex w-full justify-end grow items-end">
-
-
-
-          <div className="flex items-center">
-
-            <p className="pb-1 pe-2">Read more</p>
-            <Chevron direction="right" />
+          {/* Overlay con titolo e descrizione */}
+          <div className="absolute bottom-0 left-0 w-full backdrop-blur-sm bg-black/40 p-4 rounded-b-md h-60 max-h-60 flex flex-col">
+          <div className="grow flex  flex-col justify-between">
+            <h2 className="text-xl font-bold text-ui-fg-base mb-2">{title}</h2>
+            {caption && <p className="text-koiYellow font-light overflow-hidden text-ellipsis line-clamp-3">{caption}</p>}
           </div>
 
-
+            <div className="mt-8 flex w-full justify-end items-end hover:text-koiOrange transition duration-500">
+              <div className="flex items-center">
+                <p className="pb-1 pe-2">Read more</p>
+                <ThickChevron direction="right" size={16} />
+              </div>
+            </div>
+          </div>
         </div>
       </Link>
     </div>

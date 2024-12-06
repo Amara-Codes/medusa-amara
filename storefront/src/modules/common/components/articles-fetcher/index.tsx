@@ -1,7 +1,9 @@
 import React from "react";
 import qs from "qs";
 import ArticleCard from "../article-card";
-
+import LocalizedClientLink from "../localized-client-link";
+import Chevron from "@modules/common/icons/chevron";
+import ThickChevron from "@modules/common/icons/thick-chevron";
 
 type ArticleCategory = "news" | "activities" | "blog" | "*";
 
@@ -43,7 +45,7 @@ function transformData(json: any): TransformedJson {
   };
 }
 
-async function getArticles(category: ArticleCategory = "*",  limit?: number) {
+async function getArticles(category: ArticleCategory = "*", limit?: number) {
   const baseUrl = process.env.AMARA_STRAPI_URL ?? "http://localhost:1337";
   const path = "/api/articles";
 
@@ -113,12 +115,29 @@ export default async function ArticleFetcher({
   let articles;
 
 
-    articles = await getArticles(articleCategory, limit);
-  
+  articles = await getArticles(articleCategory, limit);
 
 
-    return (
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:mb-48 mx-12 pb-12">
+
+  return (
+    <div className="mx-12">
+      {(articleCategory !== "*" && limit) && (
+        <div className="mb-8">
+          <div className="flex justify-end mb-4">
+            <LocalizedClientLink href={`/${articleCategory}`} className="text-xl font-bold text-ui-fg-base flex items-center hover:text-koiOrange transition duration-500">
+              <span className="capitalize pe-2"> {`Go to ${articleCategory} Page`} </span>
+              <ThickChevron />
+            </LocalizedClientLink>
+          </div>
+
+          <div className="text-center">
+          <h3 className="capitalize text-koiRed text-4xl font-bold ">{`Last ${articleCategory} Posts`}</h3>
+          </div>
+        </div>
+
+
+      )}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:mb-48  pb-12">
         {articles.data.map((article) => (
           <ArticleCard
             key={article.Slug}
@@ -131,6 +150,7 @@ export default async function ArticleFetcher({
           />
         ))}
       </div>
-    );
+    </div>
+  );
 
 }

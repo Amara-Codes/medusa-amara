@@ -31,20 +31,29 @@ export default async function ProductPreview({
 
   return (
     <LocalizedClientLink href={`/products/${product.handle}`} className="group">
-      <div data-testid="product-wrapper">
+    <div className="relative" data-testid="product-wrapper">
+      {/* Contenitore Thumbnail con posizione relativa */}
+      <div className="relative">
         <Thumbnail
           thumbnail={product.thumbnail}
           images={product.images}
-          size="square"
+          size="full"
           isFeatured={isFeatured}
-          className="rounded-full"
+          className="max-h-80"
+          objectFit="contain"
         />
-        <div className="mt-4">
-          <Text className="text-ui-fg-subtle font-bold text-center" data-testid="product-title">
+
+        {/* Overlay e testo */}
+        <div className="absolute bottom-0 left-0 w-full backdrop-blur-sm bg-black/30 p-4">
+          <Text className="text-koiOrange text-6xl font-bold" data-testid="product-title">
             {product.title}
+          </Text>
+          <Text className="text-koiYellow truncate max-w-80">
+            {product.description}
           </Text>
         </div>
       </div>
-    </LocalizedClientLink>
+    </div>
+  </LocalizedClientLink>
   )
 }

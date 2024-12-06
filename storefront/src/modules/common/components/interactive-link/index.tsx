@@ -21,10 +21,10 @@ const InteractiveLink = ({
       onClick={onClick}
       {...props}
     >
-      <Text className="text-ui-fg-base">{children}</Text>
+      <Text className="text-koiYellow">{children}</Text>
       <ArrowUpRightMini
         className="group-hover:rotate-45 ease-in-out duration-150"
-        color="var(--fg-base)"
+        color="#FDD50E"
       />
     </LocalizedClientLink>
   )

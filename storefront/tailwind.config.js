@@ -1,3 +1,4 @@
+const { yellow } = require("ansi-colors")
 const path = require("path")
 
 module.exports = {
@@ -33,6 +34,34 @@ module.exports = {
           70: "#374151",
           80: "#1F2937",
           90: "#111827",
+        },
+        treefrogBlue: "#215B7E",
+        treefrogGreen: "#2CAE64",
+        treefrogLime: "#BEDE46",
+        treefrogOrange: "#F5B83F",
+        treefrogOranger: "#FE8945",
+        koiWhite: "#FFF6F2",
+        koiBlack: "#01194F",
+        koiRed: "#FA4700",
+        koiOrange: "#FF850E",
+        koiYellow: "#FDD50E",
+        ui: {
+          fg: {
+            base: "#FFF6F2", // Testo principale
+            subtle: "#FF850E", // Testo secondario
+            muted: "#7a7a7a"
+          },
+          bg: {
+            base: "#01194F", // Sfondo principale
+            subtle: "#f5f5f5", // Sfondo secondario
+          },
+          border: {
+            base: "#FF850E", // Colore per bordi
+          },
+          accent: {
+            primary: "#FA4700", // Accento primario
+            secondary: "#FF850E", // Accento secondario
+          },
         },
       },
       borderRadius: {
@@ -158,9 +187,6 @@ module.exports = {
       },
       boxShadow: {
         'aura': '0px 0px 38px 49px rgba(217,119,6,0.81)',
-      },
-      rotate: {
-        '90': '90deg',
       }
     },
   },

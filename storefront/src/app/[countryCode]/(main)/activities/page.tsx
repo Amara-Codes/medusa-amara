@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import ArticlesList from "@modules/common/components/articles-fetcher";
 import CTABlock from "@modules/common/components/blocks/cta-block";
 export const metadata: Metadata = {
-  title: "Activites",
+  title: "AActivities: Engage & Explore",
   description: "Discover the social initiatives of our brewery, from community engagement to sustainability projects.",
 }
 
@@ -15,9 +15,9 @@ export default function ActivitiesPage() {
     >
       <div className="w-full">
         <div className="mb-8 mx-12">
-          <h1 className="text-ui-fg-base text-2xl-semi mb-8" data-testid="news-page-title">Activities</h1>
+          <h1 className="text-koiRed text-4xl font-extrabold mb-8" data-testid="news-page-title">Activities</h1>
           <div className="text-justify mb-16">
-            <p className="text-ui-fg-base text-2xl">At our brewery, we believe that crafting great beer goes hand in hand with crafting a better world. Our social initiatives are rooted in our commitment to sustainability, community engagement, and cultural appreciation. From local environmental projects to educational workshops and collaborative events, we aim to create meaningful connections and lasting positive impacts. Explore our activities and join us in building a vibrant and responsible community where every pint makes a difference.</p>
+            <p className="text-koiYellow text-2xl">At our brewery, we believe that crafting great beer goes hand in hand with crafting a better world. Our social initiatives are rooted in our commitment to sustainability, community engagement, and cultural appreciation. From local environmental projects to educational workshops and collaborative events, we aim to create meaningful connections and lasting positive impacts. Explore our activities and join us in building a vibrant and responsible community where every pint makes a difference.</p>
           </div>
         </div>
         <ArticlesList articleCategory="activities" />

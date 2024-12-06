@@ -28,8 +28,8 @@ const Paragraph: React.FC<ParagraphElement> = ({
           components={{
             h1: ({ children, ...props }) => <h1 className="text-4xl font-extrabold text-ui-fg-base" {...props}>{children}</h1>,
             h2: ({ children, ...props }) => <h2 className="text-3xl font-semibold text-ui-fg-base" {...props}>{children}</h2>,
-            h3: ({ children, ...props }) => <h3 className="text-2xl font-bold text-ui-fg-base" {...props}>{children}</h3>,
-            h4: ({ children, ...props }) => <h4 className="text-lg font-bold text-ui-fg-base" {...props}>{children}</h4>,
+            h3: ({ children, ...props }) => <h3 className="text-2xl font-bold text-koiRed" {...props}>{children}</h3>,
+            h4: ({ children, ...props }) => <h4 className="text-lg font-bold text-koiOrange" {...props}>{children}</h4>,
             p: ({ children, ...props }) => <p className="text-base leading-relaxed text-ui-fg-base" {...props}>{children}</p>,
             strong: ({ children, ...props }) => <strong className="text-base leading-relaxed font-bold text-ui-fg-base" {...props}>{children}</strong>,
             li: ({ children, ...props }) => <li className="text-ui-fg-base" {...props}>{children}</li>,
