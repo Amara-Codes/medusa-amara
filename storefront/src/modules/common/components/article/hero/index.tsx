@@ -1,5 +1,6 @@
 import React from 'react';
 import { HeroElement } from 'types/strapi/hero';
+import LocalizedClientLink from '../../localized-client-link';
 
 const Hero: React.FC<HeroElement> = ({
   HeroTitle,
@@ -10,7 +11,7 @@ const Hero: React.FC<HeroElement> = ({
 }) => {
   return (
     <section
-      className={`relative h-dvh ${HeroCssClasses}`}
+      className={`relative h-dvh ${HeroCssClasses} mb-12`}
       style={{
         backgroundImage: `url(${HeroBgImg})`,
         backgroundSize: 'cover',
@@ -19,20 +20,19 @@ const Hero: React.FC<HeroElement> = ({
       }}
     >
       <div
-        className="flex flex-col justify-end items-center h-full text-center text-white">
+        className="flex flex-col justify-end items-center h-full text-center text-ui-fg-base ">
         <div className='backdrop-blur-sm bg-koiOrange/30 w-full pt-16'>
 
           <h1 className="text-4xl font-bold mb-4">{HeroTitle}</h1>
           <p className="text-lg mb-8">{HeroSubtitle}</p>
           {HeroButton && (
-            <a
-              href={HeroButton.ButtonLink}
-              className={`inline-block px-6 py-3 bg-blue-600 rounded-md hover:bg-blue-700 ${HeroButton.ButtonCssClasses}`}
-              role="button"
-              type={HeroButton.ButtonType}
-            >
+
+            <LocalizedClientLink  href={HeroButton.ButtonLink ?? "/"}
+            className={`inline-block px-6 py-3 ${HeroButton.ButtonCssClasses}`}
+            role="button">
               {HeroButton.ButtonLabel}
-            </a>
+              
+            </LocalizedClientLink>
           )}
         </div>
       </div>

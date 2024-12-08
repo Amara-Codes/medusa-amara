@@ -9,17 +9,17 @@ const Paragraph: React.FC<ParagraphElement> = ({
   ParagraphImg
 }) => {
   return (
-    <div className={`prose max-w-none pb-8 flex gap-6 ${ParagraphCssClasses}`}>
+    <div className={`prose max-w-none pb-8 flex flex-col small:flex-row gap-6 ${ParagraphCssClasses}`}>
       {ParagraphImg && (
-        <div className="flex-shrink-0 w-1/3 mb-4 md:mb-0 relative">
+        <div className="flex-shrink-0 small:w-1/3 mb-4 md:mb-0 relative">
           <Image
             src={ParagraphImg}
             alt="Paragraph Image"
             layout="responsive"
-            width={300} // Sostituisci con la larghezza reale o un valore dinamico
-            height={200} // Sostituisci con l'altezza reale o un valore dinamico
+            width={300} 
+            height={200} 
             objectFit="cover"
-            className="rounded-md" // Aggiunge angoli arrotondati se necessario
+            className="rounded-md" 
           />
         </div>
       )}

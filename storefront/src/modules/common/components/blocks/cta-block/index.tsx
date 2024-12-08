@@ -10,10 +10,10 @@ type ctaBlockProps = {
   titleCss?: string
   paragraph?: string
   parCss?: string
-  haveCta?: boolean
-  ctaText?: string
-  ctaCss?: string
-  ctaLink?: string
+  haveButton?: boolean
+  buttonText?: string
+  buttonCss?: string
+  buttonLink?: string
   backgroundImgUrl?: string
 }
 
@@ -26,16 +26,16 @@ const CTABlock = ({
   titleSize,
   paragraph,
   parCss,
-  haveCta,
-  ctaCss,
-  ctaText,
-  ctaLink,
+  haveButton,
+  buttonCss,
+  buttonText,
+  buttonLink,
   backgroundImgUrl,
 }: ctaBlockProps) => {
   return (
     <div
       className={clx(
-        "relative bg-cover bg-bottom p-8 rounded-lg shadow-lg grid gap-4 md:grid-cols-2 cta-block",
+        "relative bg-cover bg-bottom p-8 rounded-lg grid gap-4 md:grid-cols-2 cta-block",
         className
       )}
       style={{ backgroundImage: `url(${backgroundImgUrl})` }}
@@ -58,10 +58,10 @@ const CTABlock = ({
         <Text className={clx("mt-4", parCss)} size="xlarge">
           {paragraph}
         </Text>
-        {haveCta && (
-          <LocalizedClientLink href={ctaLink ?? ""} className={clx("", ctaCss)}>
-            <Button className="mx-auto rounded-none" size="large">
-              {ctaText}
+        {haveButton && (
+          <LocalizedClientLink href={buttonLink ?? ""} >
+            <Button className={clx("mx-auto rounded-none", buttonCss)} size="large">
+              {buttonText}
             </Button>
           </LocalizedClientLink>
         )}

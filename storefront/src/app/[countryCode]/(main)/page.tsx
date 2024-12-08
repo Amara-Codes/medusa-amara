@@ -49,14 +49,14 @@ export default async function Home({
           direction="dx"
           title="Handcraft Brewery based in Siem Reap"
           titleSize="h3"
-          titleCss="text-6xl mb-16 lg:mg-0"
+          titleCss="text-6xl mb-16 lg:mg-0 text-koiRed"
           paragraph={ctaPar}
-          parCss="text-justify px-4"
+          parCss="text-justify px-4 text-ui-fg-base"
           backgroundImgUrl={""}
-          haveCta={true}
-          ctaLink="/brewery"
-          ctaText="Discover more"
-          ctaCss="block text-center mt-8"
+          haveButton={true}
+          buttonLink="/brewery"
+          buttonText="Discover more"
+          buttonCss="block text-center mt-8 bg-koiOrange text-ui-fg-base"
         />
       </div>
     </>

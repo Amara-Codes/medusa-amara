@@ -58,10 +58,10 @@ export default function Brewery() {
         paragraph={"Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit suscipit obcaecati amet quas optio minus eius laboriosam maiores in quia itaque, veritatis alias officia molestias necessitatibus odio cum atque ullam. Natus alias distinctio porro voluptatibus! Quibusdam natus earum fugiat facere exercitationem tempore reiciendis quia molestias deleniti! Similique laborum blanditiis officia."}
         parCss="text-justify text-ui-fg-base px-4"
         backgroundImgUrl={""}
-        haveCta={true}
-        ctaLink="/"
-        ctaText="Our campains"
-        ctaCss="block text-center mt-8"
+        haveButton={true}
+        buttonLink="/"
+        buttonText="Our campains"
+        buttonCss="block text-center mt-8"
       />
 
      <ArticlesList limit={6} articleCategory="blog"/>

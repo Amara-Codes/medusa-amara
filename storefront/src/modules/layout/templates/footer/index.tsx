@@ -5,20 +5,19 @@ import Image from "next/image"
 import Logo from "../../../../../public/logo.png"
 
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
-import MedusaCTA from "@modules/layout/components/medusa-cta"
 
 export default async function Footer() {
   const { collections } = await getCollectionsList(0, 6)
   const { product_categories } = await getCategoriesList(0, 6)
 
   return (
-    <footer className="border-t border-ui-border-base w-full">
+    <footer className="border-t bg-koiOrange w-full">
       <div className="content-container flex flex-col w-full">
         <div className="flex flex-col gap-y-6 xsmall:flex-row items-start justify-between py-40">
           <div>
             <LocalizedClientLink
               href="/"
-              className="txt-compact-xlarge-plus text-ui-fg-subtle hover:text-ui-fg-base uppercase"
+              className="txt-compact-xlarge-plus text-ui-fg-base hover:text-ui-fg-base uppercase"
             >
               <Image
                 src={Logo}
@@ -32,7 +31,7 @@ export default async function Footer() {
           <div className="text-small-regular gap-10 md:gap-x-16 grid grid-cols-2 sm:grid-cols-3">
             {product_categories && product_categories?.length > 0 && (
               <div className="flex flex-col gap-y-2">
-                <span className="txt-small-plus txt-ui-fg-base">
+                <span className="text-ui-fg-base text-xl font-bold">
                   Categories
                 </span>
                 <ul
@@ -53,13 +52,13 @@ export default async function Footer() {
 
                     return (
                       <li
-                        className="flex flex-col gap-2 text-ui-fg-subtle txt-small"
+                        className="flex flex-col gap-2 text-ui-fg-base text-small"
                         key={c.id}
                       >
                         <LocalizedClientLink
                           className={clx(
-                            "hover:text-ui-fg-base",
-                            children && "txt-small-plus"
+                            "hover:text-koiRed transition duration-500",
+                            children && "text-small-plus"
                           )}
                           href={`/categories/${c.handle}`}
                           data-testid="category-link"
@@ -72,7 +71,7 @@ export default async function Footer() {
                               children.map((child) => (
                                 <li key={child.id}>
                                   <LocalizedClientLink
-                                    className="hover:text-ui-fg-base"
+                                    className="hover:text-koiRed transition duration-500"
                                     href={`/categories/${child.handle}`}
                                     data-testid="category-link"
                                   >
@@ -90,21 +89,21 @@ export default async function Footer() {
             )}
             {collections && collections.length > 0 && (
               <div className="flex flex-col gap-y-2">
-                <span className="txt-small-plus txt-ui-fg-base">
+                <span className="text-ui-fg-base text-xl font-bold">
                   Collections
                 </span>
                 <ul
                   className={clx(
-                    "grid grid-cols-1 gap-2 text-ui-fg-subtle txt-small",
+                    "grid grid-cols-1 gap-2 text-ui-fg-base text-small",
                     {
                       "grid-cols-2": (collections?.length || 0) > 3,
                     }
                   )}
                 >
                   {collections?.slice(0, 6).map((c) => (
-                    <li key={c.id}>
+                    <li key={c.id} className="text-ui-fg-base">
                       <LocalizedClientLink
-                        className="hover:text-ui-fg-base"
+                        className="hover:text-koiRed transition duration-500"
                         href={`/collections/${c.handle}`}
                       >
                         {c.title}
@@ -116,11 +115,10 @@ export default async function Footer() {
             )}
           </div>
         </div>
-        <div className="flex w-full mb-16 justify-between text-ui-fg-muted">
+        <div className="flex w-full mb-16 justify-between">
           <Text className="txt-compact-small">
             © {new Date().getFullYear()} Amara Beer Lab. All rights reserved.
           </Text>
-          <MedusaCTA />
         </div>
       </div>
     </footer>

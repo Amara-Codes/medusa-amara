@@ -120,7 +120,7 @@ export default async function ArticleFetcher({
 
 
   return (
-    <div className="mx-12">
+    <div className="small:mx-12">
       {(articleCategory !== "*" && limit) && (
         <div className="mb-8">
           <div className="flex justify-end mb-4">

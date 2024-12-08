@@ -15,14 +15,14 @@ export default function ActivitiesPage() {
     >
       <div className="w-full">
         <div className="mb-8 mx-12">
-          <h1 className="text-koiRed text-4xl font-extrabold mb-8" data-testid="news-page-title">Activities</h1>
+          <h1 className="text-koiRed text-4xl font-extrabold mb-8 text-center small:text-start" data-testid="activities-page-title">Activities</h1>
           <div className="text-justify mb-16">
             <p className="text-koiYellow text-2xl">At our brewery, we believe that crafting great beer goes hand in hand with crafting a better world. Our social initiatives are rooted in our commitment to sustainability, community engagement, and cultural appreciation. From local environmental projects to educational workshops and collaborative events, we aim to create meaningful connections and lasting positive impacts. Explore our activities and join us in building a vibrant and responsible community where every pint makes a difference.</p>
           </div>
         </div>
         <ArticlesList articleCategory="activities" />
 
-        <div className="mx-12">
+        <div className="small:mx-12">
           <CTABlock
             className="min-h-[800px] lg:mx-12 lg:my-8 bg-bottom"
             wrapperCss=""
@@ -33,10 +33,10 @@ export default function ActivitiesPage() {
             paragraph={"Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit suscipit obcaecati amet quas optio minus eius laboriosam maiores in quia itaque, veritatis alias officia molestias necessitatibus odio cum atque ullam. Natus alias distinctio porro voluptatibus! Quibusdam natus earum fugiat facere exercitationem tempore reiciendis quia molestias deleniti! Similique laborum blanditiis officia."}
             parCss="text-justify text-ui-fg-base px-4"
             backgroundImgUrl={""}
-            haveCta={true}
-            ctaLink="/brewery"
-            ctaText="Discover now"
-            ctaCss="block text-center mt-8"
+            haveButton={true}
+            buttonLink="/brewery"
+            buttonText="Discover now"
+            buttonCss="block text-center mt-8"
           />
         </div>
       </div>

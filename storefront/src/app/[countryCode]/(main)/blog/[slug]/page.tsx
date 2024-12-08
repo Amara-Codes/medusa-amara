@@ -130,7 +130,7 @@ const BlogPage = async ({ searchParams }: BlogPageProps) => {
             data-testid="news-container"
         >
             <div className="w-full">
-                <div className="mb-16 mx-12">
+                <div className="mb-16 small:mx-12">
                     <div className="mb-8">
                         <BackLink href={`/${article.Category}`} label={`Back to ${article.Category}`} className="text-ui-fg-base hover:text-koiOrange transition duration-500" />
                     </div>

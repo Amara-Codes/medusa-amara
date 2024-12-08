@@ -41,7 +41,7 @@ module.exports = {
         treefrogOrange: "#F5B83F",
         treefrogOranger: "#FE8945",
         koiWhite: "#FFF6F2",
-        koiBlack: "#01194F",
+        koiBlack: "#181B1C",
         koiRed: "#FA4700",
         koiOrange: "#FF850E",
         koiYellow: "#FDD50E",
@@ -52,7 +52,7 @@ module.exports = {
             muted: "#7a7a7a"
           },
           bg: {
-            base: "#01194F", // Sfondo principale
+            base: "#181B1C", // Sfondo principale
             subtle: "#f5f5f5", // Sfondo secondario
           },
           border: {

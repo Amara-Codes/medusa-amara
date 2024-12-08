@@ -38,10 +38,10 @@ const Cta: React.FC<CtaElement> = ({
         paragraph={CtaCaption ?? ''}
         parCss="text-justify text-ui-fg-base px-4"
         backgroundImgUrl={""}
-        haveCta={true}
-        ctaLink={CtaButton?.ButtonLink ?? '/'}
-        ctaText={CtaButton?.ButtonLabel ?? 'Home'}
-        ctaCss={CtaButton?.ButtonCssClasses ?? 'mt-12'}
+        haveButton={true}
+        buttonLink={CtaButton?.ButtonLink ?? '/'}
+        buttonText={CtaButton?.ButtonLabel ?? 'Home'}
+        buttonCss={CtaButton?.ButtonCssClasses ?? 'mt-12'}
       />
     </div>
   );

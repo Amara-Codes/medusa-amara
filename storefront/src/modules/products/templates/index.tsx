@@ -84,10 +84,10 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({
             paragraph={'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum voluptas itaque neque laboriosam consequatur consectetur distinctio quidem provident asperiores tempore architecto ea, voluptatibus in tempora nulla voluptates impedit aut, veniam repellendus eum molestiae. Quos iste, assumenda ex autem facilis tenetur dignissimos vero distinctio impedit, cupiditate eaque asperiores eveniet. Dignissimos, vero.'}
             parCss="text-justify px-4"
             backgroundImgUrl={""}
-            haveCta={true}
-            ctaLink="/brewery"
-            ctaText="Discover more"
-            ctaCss="block text-center mt-8"
+            haveButton={true}
+            buttonLink="/brewery"
+            buttonText="Discover more"
+            buttonCss="block text-center mt-8"
           />
         </div>
 
