@@ -36,7 +36,7 @@ const ProductTabs = ({ product }: ProductTabsProps) => {
           <Accordion.Item
             key={i}
             title={tab.label}
-            headingSize="medium"
+            headingSize="large"
             value={tab.label}
           >
             {tab.component}
@@ -55,11 +55,40 @@ const ProductInfoTab = ({ product }: ProductTabsProps) => {
         'py-8': isEcom
       }
     )}>
-      <div className="grid grid-cols-2 gap-x-8">
+      <div className="grid grid-cols-1 gap-x-8">
         <div className="flex flex-col gap-y-4">
-          <p className="font-normal font-sans txt-medium text-ui-fg-subtle whitespace-pre-line">
-            {product.subtitle}
-          </p>
+          <div className="font-normal font-sans txt-medium text-ui-fg-subtle whitespace-pre-line">
+            {product.subtitle && (() => {
+              try {
+                const parsedSubtitle: Record<string, any> = JSON.parse(product.subtitle);
+
+                if (typeof parsedSubtitle === 'object' && parsedSubtitle !== null) {
+                  return (
+                    <ul className="pt-4">
+                      {Object.entries(parsedSubtitle).map(([key, value]) => (
+                        <li key={key} className="flex gap-2 w-full mb-4">
+                          <p className="font-bold capitalize text-koiOrange">
+                            <strong>{key}:</strong>
+                          </p>
+                          {typeof value === "string" ? (
+                            <p className="font-normal text-koiYellow">{value}</p>
+                          ) : Array.isArray(value) ? (
+                            <p className="font-normal text-koiYellow">{value.join(", ")}</p>
+                          ) : (
+                            <p className="font-normal text-koiYellow">Info coming soon</p>
+                          )}
+                        </li>
+                      ))}
+                    </ul>
+                  );
+                } else {
+                  return <span>More info coming soon</span>;
+                }
+              } catch (error) {
+                return <span>More info coming soon, stay tuned</span>;
+              }
+            })()}
+          </div>
         </div>
       </div>
     </div>

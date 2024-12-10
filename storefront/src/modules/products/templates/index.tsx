@@ -10,6 +10,7 @@ import SkeletonRelatedProducts from "@modules/skeletons/templates/skeleton-relat
 import { notFound } from "next/navigation"
 import ProductActionsWrapper from "./product-actions-wrapper"
 import { HttpTypes } from "@medusajs/types"
+import ArticlePostFetcher from "../components/related-post-fetcher"
 import CTABlock from "@modules/common/components/blocks/cta-block"
 
 const isEcom = process.env.AMARA_ECOM_ACTIVATED;
@@ -28,6 +29,47 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({
   if (!product || !product.id) {
     return notFound()
   }
+
+  if(product.subtitle) {
+    try {
+      const parsedSubtitle = JSON.parse(product.subtitle),
+      tags = Object.values(parsedSubtitle),
+      tagArr = [];
+
+      tags.forEach(e => {
+        if(typeof(e) === "string"){
+          tagArr.push(e)
+        } else if (Array.isArray(e)) {
+          tagArr.push(...e); // Push di tutti gli elementi dell'array
+        }
+      });
+    } catch {
+
+    }
+  }
+
+  const getTagArr = (product: HttpTypes.StoreProduct): string[] | undefined => {
+    if (product.subtitle) {
+      try {
+        const parsedSubtitle = JSON.parse(product.subtitle) as Record<string, unknown>;
+        const tags = Object.values(parsedSubtitle);
+        const tagArr: string[] = []; // Tipizza tagArr come array di stringhe
+  
+        tags.forEach(e => {
+          if (typeof e === "string") {
+            tagArr.push(e);
+          } else if (Array.isArray(e)) {
+            tagArr.push(...(e as string[])); // Assumi che l'array contenga stringhe
+          }
+        });
+  
+        return tagArr;
+      } catch {
+        console.error("Failed to parse product.subtitle");
+      }
+    }
+    return undefined; // In caso non ci sia un sottotitolo o si verifichi un errore
+  };
 
   return (
     <>
@@ -73,6 +115,10 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({
             </div>
 
           </div>
+
+
+<ArticlePostFetcher articleTags={getTagArr(product)} limit={5} />
+
 
           <CTABlock
             className="min-h-[800px] lg:mx-12 lg:my-8 bg-bottom"
