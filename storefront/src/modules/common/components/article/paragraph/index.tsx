@@ -9,7 +9,7 @@ const Paragraph: React.FC<ParagraphElement> = ({
   ParagraphImg
 }) => {
   return (
-    <div className={`prose max-w-none pb-8 flex flex-col small:flex-row gap-6 ${ParagraphCssClasses}`}>
+    <div className={`prose max-w-none pb-8 flex flex-col gap-6 ${ParagraphCssClasses ?? "small:flex-row"}`}>
       {ParagraphImg && (
         <div className="flex-shrink-0 small:w-1/3 mb-4 md:mb-0 relative">
           <Image

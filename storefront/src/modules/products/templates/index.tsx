@@ -30,14 +30,14 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({
     return notFound()
   }
 
-  if(product.subtitle) {
+  if (product.subtitle) {
     try {
       const parsedSubtitle = JSON.parse(product.subtitle),
-      tags = Object.values(parsedSubtitle),
-      tagArr = [];
+        tags = Object.values(parsedSubtitle),
+        tagArr = [];
 
       tags.forEach(e => {
-        if(typeof(e) === "string"){
+        if (typeof (e) === "string") {
           tagArr.push(e)
         } else if (Array.isArray(e)) {
           tagArr.push(...e); // Push di tutti gli elementi dell'array
@@ -54,7 +54,7 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({
         const parsedSubtitle = JSON.parse(product.subtitle) as Record<string, unknown>;
         const tags = Object.values(parsedSubtitle);
         const tagArr: string[] = []; // Tipizza tagArr come array di stringhe
-  
+
         tags.forEach(e => {
           if (typeof e === "string") {
             tagArr.push(e);
@@ -62,7 +62,7 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({
             tagArr.push(...(e as string[])); // Assumi che l'array contenga stringhe
           }
         });
-  
+
         return tagArr;
       } catch {
         console.error("Failed to parse product.subtitle");
@@ -113,39 +113,35 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({
                 {product.description}
               </p>
             </div>
-
           </div>
-
-
-<ArticlePostFetcher articleTags={getTagArr(product)} limit={5} />
-
-
-          <CTABlock
-            className="min-h-[800px] lg:mx-12 lg:my-8 bg-bottom"
-            wrapperCss=""
-            direction="dx"
-            title="Discover how we brew"
-            titleSize="h3"
-            titleCss="text-6xl mb-16 lg:mg-0"
-            paragraph={'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum voluptas itaque neque laboriosam consequatur consectetur distinctio quidem provident asperiores tempore architecto ea, voluptatibus in tempora nulla voluptates impedit aut, veniam repellendus eum molestiae. Quos iste, assumenda ex autem facilis tenetur dignissimos vero distinctio impedit, cupiditate eaque asperiores eveniet. Dignissimos, vero.'}
-            parCss="text-justify px-4"
-            backgroundImgUrl={""}
-            haveButton={true}
-            buttonLink="/brewery"
-            buttonText="Discover more"
-            buttonCss="block text-center mt-8"
-          />
+          <ArticlePostFetcher articleTags={getTagArr(product)} limit={5} />
         </div>
-
-
       )}
       <div
-        className="content-container my-16 small:my-32"
+        className="content-container my-16"
         data-testid="related-products-container"
       >
         <Suspense fallback={<SkeletonRelatedProducts />}>
           <RelatedProducts product={product} countryCode={countryCode} />
         </Suspense>
+      </div>
+
+      <div className="content-container my-16 small:my-32" data-testid="cta-block-container">
+      <CTABlock
+            className="min-h-[400px] lg:mx-12 lg:my-8 bg-bottom"
+            wrapperCss=""
+            direction="dx"
+            title="Discover how we brew"
+            titleSize="h3"
+            titleCss="text-4xl mb-16 lg:mg-0 text-koiOrange"
+            paragraph={'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum voluptas itaque neque laboriosam consequatur consectetur distinctio quidem provident asperiores tempore architecto ea, voluptatibus in tempora nulla voluptates impedit aut, veniam repellendus eum molestiae. Quos iste, assumenda ex autem facilis tenetur dignissimos vero distinctio impedit, cupiditate eaque asperiores eveniet. Dignissimos, vero.'}
+            parCss="text-justify px-4 text-ui-fg-base"
+            backgroundImgUrl={""}
+            haveButton={true}
+            buttonLink="/brewery"
+            buttonText="Discover more"
+            buttonCss="block text-center mt-8 bg-koiRed text-ui-fg-base"
+          />
       </div>
     </>
   )

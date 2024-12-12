@@ -60,7 +60,7 @@ const CTABlock = ({
         </Text>
         {haveButton && (
           <LocalizedClientLink href={buttonLink ?? ""} >
-            <Button className={clx("mx-auto rounded-none", buttonCss)} size="large">
+            <Button className={clx("mx-auto rounded-none transition duration-500", buttonCss)} size="large">
               {buttonText}
             </Button>
           </LocalizedClientLink>

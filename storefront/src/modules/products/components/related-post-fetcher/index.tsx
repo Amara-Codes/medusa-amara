@@ -111,15 +111,15 @@ export default async function ArticlePostFetcher({
     articles = getRandomArticles(articles, 3);
 
     return (
-        <div className="small:mx-12">
+        <div className="mt-16">
           {(articleTags.length && articles.length) && (
-            <div className="mb-8">
+            <div className="my-16">
               <div className="text-center">
-              <h3 className="capitalize text-koiRed text-4xl font-bold ">Posts related to this Beer</h3>
+              <h3 className="capitalize text-koiRed text-4xl font-bold ">Highlights from this beer</h3>
               </div>
             </div>
           )}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:mb-48  pb-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:mb-24  pb-12">
             {articles.map((article) => (
               <ArticleCard
                 key={article.Slug}

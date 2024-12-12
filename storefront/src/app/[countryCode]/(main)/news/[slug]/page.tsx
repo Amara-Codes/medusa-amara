@@ -127,11 +127,10 @@ const NewsPage = async ({ searchParams }: NewsPageProps) => {
             className="flex flex-col small:flex-row small:items-start py-6 content-container"
             data-testid="news-container"
         >
-            <div className="w-full">
-                <div className="mb-8 mx-12">
-                    <div>
-                        <BackLink href={`/${article.Category}`} label={`Back to ${article.Category}`} className="text-ui-fg-base underline" />
-
+           <div className="w-full">
+                <div className="mb-16 small:mx-12">
+                    <div className="mb-8">
+                        <BackLink href={`/${article.Category}`} label={`Back to ${article.Category}`} className="text-ui-fg-base hover:text-koiOrange transition duration-500" />
                     </div>
 
                     {article ? (
