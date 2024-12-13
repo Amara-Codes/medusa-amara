@@ -15,7 +15,7 @@ export default function ActivitiesPage() {
     >
       <div className="w-full">
         <div className="mb-8 small:mx-12">
-          <h1 className="mb-8 font-extrabold text-2xl text-center font-dummy text-koiRed small:text-8xl small:text-start" data-testid="activities-page-title">Activities</h1>
+          <h1 className="mb-8 font-extrabold text-4xl text-center text-koiRed small:text-8xl small:text-start" data-testid="activities-page-title">Activities</h1>
           <div className="text-justify mb-16">
             <p className="text-koiYellow text-2xl">At our brewery, we believe that crafting great beer goes hand in hand with crafting a better world. Our social initiatives are rooted in our commitment to sustainability, community engagement, and cultural appreciation. From local environmental projects to educational workshops and collaborative events, we aim to create meaningful connections and lasting positive impacts. Explore our activities and join us in building a vibrant and responsible community where every pint makes a difference.</p>
           </div>

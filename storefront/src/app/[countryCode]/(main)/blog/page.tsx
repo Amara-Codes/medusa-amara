@@ -15,7 +15,7 @@ export default function BlogPage() {
     >
       <div className="w-full">
         <div className="mb-8 small:mx-12">
-          <h1 className="mb-8 font-extrabold text-2xl text-center font-dummy text-koiRed small:text-8xl small:text-start" data-testid="blog-page-title">Blog</h1>
+          <h1 className="mb-8 font-extrabold text-4xl text-center text-koiRed small:text-8xl small:text-start" data-testid="blog-page-title">Blog</h1>
           <div className="text-justify mb-16">
             <p className="text-koiYellow text-2xl">Welcome to our blog, a vibrant tapestry of stories, insights, and reflections that go beyond the brewery walls. Here, we share the pulse of everyday life, unravel the art and science of brewing, and explore the rich culture and hidden gems of Siem Reap. From heartfelt narratives about our community to practical tips, event highlights, and deep dives into the world of craft beer, this space is where creativity flows freely. Dive into a mosaic of diverse content that celebrates the connections, flavors, and moments that inspire us every day.</p>
           </div>

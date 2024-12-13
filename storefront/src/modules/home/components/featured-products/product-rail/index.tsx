@@ -22,7 +22,7 @@ export default function ProductRail({
       <div className="flex justify-between mb-4">
         <Text className="text-2xl text-bold text-koiOrange">{collection.title}</Text>
         <InteractiveLink href={`/collections/${collection.handle}`}>
-          View all
+          Explore this drop
         </InteractiveLink>
       </div>
       <ul className="grid grid-cols-1 md:grid-cols-2 small:grid-cols-3 gap-x-6 gap-y-6 small:gap-y-12">
