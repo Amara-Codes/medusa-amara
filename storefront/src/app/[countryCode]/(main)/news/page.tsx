@@ -15,7 +15,7 @@ export default function NewsPage() {
     >
       <div className="w-full">
         <div className="mb-8 small:mx-12">
-          <h1 className="text-koiRed text-4xl font-extrabold mb-8 text-center small:text-start" data-testid="news-page-title">News</h1>
+          <h1 className="mb-8 font-extrabold text-2xl text-center font-dummy text-koiRed small:text-8xl small:text-start" data-testid="news-page-title">News</h1>
           <div className="text-justify mb-16">
             <p className="text-koiYellow text-xl">Delve into the heart of our brewery&apos;s evolution through a curated collection of compelling updates and stories. This is where innovation meets tradition, unveiling the creative pulse behind every initiative, collaboration, and milestone. From unveiling pioneering brews to sharing the narratives that shape our vision, this space offers an insider&apos;s perspective on our journey. Explore the dynamic interplay of culture, craftsmanship, and community that defines our identity, and immerse yourself in the stories that make our brewery a living, evolving canvas of ideas.</p>
           </div>

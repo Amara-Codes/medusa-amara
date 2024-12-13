@@ -98,6 +98,7 @@ module.exports = {
           "Ubuntu",
           "sans-serif",
         ],
+        dummy: ["Dummy", "serif"]
       },
       keyframes: {
         ring: {

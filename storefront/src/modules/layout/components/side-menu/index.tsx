@@ -78,16 +78,16 @@ const SideMenu = ({ regions }: { regions: HttpTypes.StoreRegion[] | null }) => {
                       </button>
                     </div>
                     <ul className={clx(
-                      'flex flex-col gap-6 items-start justify-start', {
+                      'flex flex-col gap-8 items-start justify-start', {
                         'grow mt-8': !isEcom
                       }
                     )}>
                       {Object.entries(SideMenuItems).map(([name, href]) => {
                         return (
-                          <li key={name}>
+                          <li key={name} className="md:mb-8">
                             <LocalizedClientLink
                               href={href}
-                              className="text-3xl leading-10 hover:text-koiOrange transition duration-500"
+                              className="text-2xl small:text-4xl leading-10 hover:text-koiOrange transition duration-500 font-dummy"
                               onClick={close}
                               data-testid={`${name.toLowerCase()}-link`}
                             >
