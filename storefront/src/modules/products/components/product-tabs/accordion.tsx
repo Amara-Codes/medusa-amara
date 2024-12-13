@@ -59,7 +59,7 @@ const Item: React.FC<AccordionItemProps> = ({
         <div className="flex flex-col">
           <div className="flex w-full items-center justify-between">
             <div className="flex items-center gap-4">
-              <Text className="text-koiRed font-bold text-lg">{title}</Text>
+              <Text className="text-ui-fg-base font-bold text-lg font-dummy">{title}</Text>
             </div>
             {/* x@ts-expect-error */}
             <AccordionPrimitive.Trigger>
