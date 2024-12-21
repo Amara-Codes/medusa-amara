@@ -1,17 +1,14 @@
-import { Metadata } from "next"
-
+import { listRegions } from "@lib/data/regions";
 import Footer from "@modules/layout/templates/footer"
-import Nav from "@modules/layout/templates/nav"
-import { getBaseURL } from "@lib/util/env"
+import NavWrapper from "@modules/layout/templates/nav-wrapper"
 
-export const metadata: Metadata = {
-  metadataBase: new URL(getBaseURL()),
-}
+
 
 export default async function PageLayout(props: { children: React.ReactNode }) {
+   const regions = await listRegions();
   return (
     <div className="bg-ui-bg-base dark">
-      <Nav />
+      <NavWrapper regions={regions}/>
       {props.children}
       <Footer />
     </div>

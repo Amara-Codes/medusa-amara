@@ -6,6 +6,7 @@ import { getCollectionsWithProducts } from "@lib/data/collections"
 import { getRegion } from "@lib/data/regions"
 import CTABlock from "@modules/common/components/blocks/cta-block"
 
+
 const ctaPar = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi commodi minus expedita ut iusto consectetur cum. Dolore, quae ea. Ullam."
 
 export const metadata: Metadata = {

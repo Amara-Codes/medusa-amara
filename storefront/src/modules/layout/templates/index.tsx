@@ -1,18 +1,19 @@
+
 import React from "react"
 
 import Footer from "@modules/layout/templates/footer"
-import Nav from "@modules/layout/templates/nav"
+import NavWrapper from "./nav-wrapper"
+import { listRegions } from "@lib/data/regions";
 
-const Layout: React.FC<{
-  children: React.ReactNode
-}> = ({ children }) => {
+export default async function Layout({ children }: { children: React.ReactNode }) {
+  const regions = await listRegions();
+
   return (
     <div>
-      <Nav />
+      <NavWrapper regions={regions}/>
       <main className="relative">{children}</main>
       <Footer />
     </div>
   )
 }
 
-export default Layout
