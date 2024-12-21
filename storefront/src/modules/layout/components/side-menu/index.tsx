@@ -1,12 +1,12 @@
-"use client"
+"use client";
 
-import { Popover, Transition } from "@headlessui/react"
-import { ArrowRightMini, XMark } from "@medusajs/icons"
-import { clx, useToggleState } from "@medusajs/ui"
-import { Fragment } from "react"
-import LocalizedClientLink from "@modules/common/components/localized-client-link"
-import CountrySelect from "../country-select"
-import { HttpTypes } from "@medusajs/types"
+import { Popover, Transition } from "@headlessui/react";
+import { ArrowRightMini, XMark } from "@medusajs/icons";
+import { clx, useToggleState } from "@medusajs/ui";
+import { Fragment, useEffect, useState } from "react";
+import LocalizedClientLink from "@modules/common/components/localized-client-link";
+import CountrySelect from "../country-select";
+import { HttpTypes } from "@medusajs/types";
 
 const isEcom = process.env.AMARA_ECOM_ACTIVATED;
 
@@ -18,117 +18,156 @@ const SideMenuItems = {
   Blog: "/blog",
   Activities: "/activities",
   News: "/news",
-  Contacts: "/contacts"
+  Contacts: "/contacts",
 };
 
-
-
 const SideMenu = ({ regions }: { regions: HttpTypes.StoreRegion[] | null }) => {
-  const toggleState = useToggleState()
+  const toggleState = useToggleState();
+  const [lastScrollY, setLastScrollY] = useState(0);
+  const threshold = 10; // Soglia per lo scroll
 
   return (
     <div className="h-full">
       <div className="flex items-center h-full">
         <Popover className="h-full flex">
-          {({ open, close }) => (
-            <>
-              <div className="relative flex h-full">
-                <Popover.Button
-                  data-testid="nav-menu-button"
-                  className="relative h-full flex items-center transition-all ease-out duration-200 focus:outline-none hover:text-ui-fg-base"
-                >
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <g clipPath="url(#clip0_429_11066)">
-                      <path d="M3 6.00092H21M3 12.0009H21M3 18.0009H21" stroke="#292929" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-                    </g>
-                    <defs>
-                      <clipPath id="clip0_429_11066">
-                        <rect width="24" height="24" fill="white" transform="translate(0 0.000915527)" />
-                      </clipPath>
-                    </defs>
-                  </svg>
-                </Popover.Button>
-              </div>
+          {({ open, close }) => {
+            // Effetto per chiudere il menu quando si scrolla
+            useEffect(() => {
+              const handleScroll = () => {
+                const currentScrollY = window.scrollY;
 
-              <Transition
-                show={open}
-                as={Fragment}
-                enter="transition ease-out duration-150"
-                enterFrom="opacity-0"
-                enterTo="opacity-100 backdrop-blur-2xl"
-                leave="transition ease-in duration-150"
-                leaveFrom="opacity-100 backdrop-blur-2xl"
-                leaveTo="opacity-0"
-              >
-                <Popover.Panel className="flex flex-col absolute w-full pr-4 sm:pr-0 sm:w-1/3 2xl:w-1/4 sm:min-w-min h-[calc(100vh-1rem)] z-30 inset-x-0 text-sm text-ui-fg-on-color m-2 backdrop-blur-2xl top-0">
-                  <div
-                    data-testid="nav-menu-popup"
-                    
-                    className={clx(
-                      'flex flex-col h-full bg-[rgba(3,7,18,0.5)] rounded-rounded p-6', 
-                      {
-                        'justify-between' : isEcom,
-                        'justify-center' : !isEcom
-                      }
-                    )}
+                if (open && Math.abs(currentScrollY - lastScrollY) > threshold) {
+                  close();
+                }
+
+                setLastScrollY(currentScrollY);
+              };
+
+              window.addEventListener("scroll", handleScroll);
+
+              return () => {
+                window.removeEventListener("scroll", handleScroll);
+              };
+            }, [open, lastScrollY]);
+
+            return (
+              <>
+                <div className="relative flex h-full">
+                  <Popover.Button
+                    data-testid="nav-menu-button"
+                    className="relative h-full flex items-center transition-all ease-out duration-200 focus:outline-none hover:text-ui-fg-base"
                   >
-                    <div className="flex justify-end" id="xmark">
-                      <button data-testid="close-menu-button" onClick={close}>
-                        <XMark />
-                      </button>
-                    </div>
-                    <ul className={clx(
-                      'flex flex-col gap-8 items-start justify-start', {
-                        'grow mt-8': !isEcom
-                      }
-                    )}>
-                      {Object.entries(SideMenuItems).map(([name, href]) => {
-                        return (
-                          <li key={name} className="md:mb-8">
-                            <LocalizedClientLink
-                              href={href}
-                              className="text-2xl small:text-4xl leading-10 hover:text-koiOrange transition duration-500 font-dummy"
-                              onClick={close}
-                              data-testid={`${name.toLowerCase()}-link`}
-                            >
-                              {name}
-                            </LocalizedClientLink>
-                          </li>
-                        )
-                      })}
-                    </ul>
-                    {isEcom && (
-
-                    <div className="flex flex-col gap-y-6">
-                      <div
-                        className="flex justify-between"
-                        onMouseEnter={toggleState.open}
-                        onMouseLeave={toggleState.close}
-                      >
-                        {regions && (
-                          <CountrySelect
-                            toggleState={toggleState}
-                            regions={regions}
-                          />
-                        )}
-                        <ArrowRightMini
-                          className={clx(
-                            "transition-transform duration-150",
-                            toggleState.state ? "-rotate-90" : ""
-                          )}
+                    <svg
+                      width="22"
+                      height="22"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <g clipPath="url(#clip0_429_11066)">
+                        <path
+                          d="M3 6.00092H21M3 12.0009H21M3 18.0009H21"
+                          stroke="#292929"
+                          strokeWidth="2.5"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
                         />
+                      </g>
+                      <defs>
+                        <clipPath id="clip0_429_11066">
+                          <rect
+                            width="24"
+                            height="24"
+                            fill="white"
+                            transform="translate(0 0.000915527)"
+                          />
+                        </clipPath>
+                      </defs>
+                    </svg>
+                  </Popover.Button>
+                </div>
+
+                <Transition
+                  show={open}
+                  as={Fragment}
+                  enter="transition ease-out duration-150"
+                  enterFrom="opacity-0"
+                  enterTo="opacity-100 backdrop-blur-2xl"
+                  leave="transition ease-in duration-150"
+                  leaveFrom="opacity-100 backdrop-blur-2xl"
+                  leaveTo="opacity-0"
+                >
+                  <Popover.Panel className="flex flex-col absolute w-full pr-4 sm:pr-0 sm:w-1/3 2xl:w-1/4 sm:min-w-min h-[calc(100vh-1rem)] z-30 inset-x-0 text-sm text-ui-fg-on-color m-2 backdrop-blur-2xl top-0">
+                    <div
+                      data-testid="nav-menu-popup"
+                      className={clx(
+                        "flex flex-col h-full bg-[rgba(3,7,18,0.5)] rounded-rounded p-6",
+                        {
+                          "justify-between": isEcom,
+                          "justify-center": !isEcom,
+                        }
+                      )}
+                    >
+                      <div className="flex justify-end" id="xmark">
+                        <button data-testid="close-menu-button" onClick={close}>
+                          <XMark />
+                        </button>
                       </div>
+                      <ul
+                        className={clx(
+                          "flex flex-col gap-8 items-start justify-start",
+                          {
+                            "grow mt-8": !isEcom,
+                          }
+                        )}
+                      >
+                        {Object.entries(SideMenuItems).map(([name, href]) => {
+                          return (
+                            <li key={name} className="md:mb-8">
+                              <LocalizedClientLink
+                                href={href}
+                                className="text-2xl small:text-4xl leading-10 hover:text-koiOrange transition duration-500 font-dummy"
+                                onClick={close}
+                                data-testid={`${name.toLowerCase()}-link`}
+                              >
+                                {name}
+                              </LocalizedClientLink>
+                            </li>
+                          );
+                        })}
+                      </ul>
+                      {isEcom && (
+                        <div className="flex flex-col gap-y-6">
+                          <div
+                            className="flex justify-between"
+                            onMouseEnter={toggleState.open}
+                            onMouseLeave={toggleState.close}
+                          >
+                            {regions && (
+                              <CountrySelect
+                                toggleState={toggleState}
+                                regions={regions}
+                              />
+                            )}
+                            <ArrowRightMini
+                              className={clx(
+                                "transition-transform duration-150",
+                                toggleState.state ? "-rotate-90" : ""
+                              )}
+                            />
+                          </div>
+                        </div>
+                      )}
                     </div>
-                    )}
-                  </div>
-                </Popover.Panel>
-              </Transition>
-            </>
-          )}
+                  </Popover.Panel>
+                </Transition>
+              </>
+            );
+          }}
         </Popover>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default SideMenu
+export default SideMenu;

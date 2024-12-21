@@ -7,7 +7,7 @@ import { StoreRegion } from "@medusajs/types";
 const NavWrapper: React.FC<{ regions: StoreRegion[] }> = ({ regions }) => {
   const [isVisible, setIsVisible] = useState(true); // Inizia visibile
   const [lastScrollY, setLastScrollY] = useState(0);
-  const threshold = 10; // Soglia minima di movimento per cambiare stato
+  const threshold = 15; // Soglia minima di movimento per cambiare stato
 
   useEffect(() => {
     const handleScroll = () => {
@@ -38,7 +38,7 @@ const NavWrapper: React.FC<{ regions: StoreRegion[] }> = ({ regions }) => {
 
   return (
     <div
-      className={`sticky top-0 inset-x-0 z-50 group transition-transform duration-700 overflow-hidden ${
+      className={`sticky top-0 inset-x-0 z-50 group transition-transform duration-700 ${
         isVisible ? "translate-y-0" : "-translate-y-full"
       }`}
     >

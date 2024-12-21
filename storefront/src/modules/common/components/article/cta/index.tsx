@@ -1,7 +1,5 @@
 import React from 'react';
 import { CtaElement } from 'types/strapi/cta';
-import Link from 'next/link';
-
 import CTABlock from '@modules/common/components/blocks/cta-block';
 
 
@@ -24,10 +22,11 @@ const Cta: React.FC<CtaElement> = ({
   const resolvedStyles = `${baseStyles} ${typeStyles[CtaType as keyof typeof typeStyles] || typeStyles.default
     } ${CtaCssClasses}`;
 
+  // Se CtaButton è un array, prendi il primo elemento
+  const button = Array.isArray(CtaButton) ? CtaButton[0] : CtaButton;
+
   return (
-
     <div className={resolvedStyles}>
-
       <CTABlock
         className="min-h-[400px] lg:mx-12 lg:my-8 bg-bottom"
         wrapperCss=""
@@ -38,13 +37,14 @@ const Cta: React.FC<CtaElement> = ({
         paragraph={CtaCaption ?? ''}
         parCss="text-justify text-ui-fg-base px-4"
         backgroundImgUrl={""}
-        haveButton={true}
-        buttonLink={CtaButton?.ButtonLink ?? '/'}
-        buttonText={CtaButton?.ButtonLabel ?? 'Home'}
-        buttonCss={CtaButton?.ButtonCssClasses ?? 'mt-12'}
+        haveButton={!!button}
+        buttonLink={button?.ButtonLink ?? '/'}
+        buttonText={button?.ButtonLabel ?? 'Home'}
+        buttonCss={button?.ButtonCssClasses ?? 'mt-12'}
       />
     </div>
   );
 };
+
 
 export default Cta;
