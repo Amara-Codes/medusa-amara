@@ -1,4 +1,5 @@
 import qs from "qs";
+import { headers } from "next/headers";
 import componentMapping from "@modules/common/components/article/componentMapping";
 import BackLink from "@modules/common/components/back-link";
 import { Metadata } from 'next';
@@ -27,8 +28,8 @@ type TransformedDataItem = {
 };
 
 function transformData(json: any): TransformedDataItem {
-    const item = json.data;
-    
+    const item = json.data[0];
+
     const attributes = item.attributes;
     const Content = attributes.Content?.map((contentItem: any) => {
         const contentComponentItem = { ...contentItem };
@@ -55,12 +56,18 @@ function transformData(json: any): TransformedDataItem {
     };
 }
 
-async function getArticleById(articleId: string) {
+async function getArticleById(slug: string) {
+    console.log(slug)
     const baseUrl = process.env.AMARA_STRAPI_URL ?? "http://localhost:1337";
-    const path = `/api/articles/${articleId}`;
+    const path = `/api/articles/`;
     const url = new URL(path, baseUrl);
     const query: Record<string, any> = {};
 
+    query.filters = {
+        Slug: {
+            $eq: slug,
+        }
+    };
     query.populate = {
         Content:
         {
@@ -83,27 +90,32 @@ async function getArticleById(articleId: string) {
     const res = await fetch(url);
 
     if (!res.ok) {
-        throw new Error(`Failed to fetch article with ID: ${articleId}`);
+        throw new Error(`Failed to fetch article with ID: ${slug}`);
     }
 
     const data = await res.json();
     return transformData(data);
 }
 
-interface BlogPageProps {
-    searchParams: { [key: string]: string | undefined };
-}
 
-export async function generateMetadata({ searchParams }: BlogPageProps): Promise<Metadata> {
-    const id = searchParams.id ?? '';
-    let article: TransformedDataItem | null = null;
+export async function generateMetadata(): Promise<Metadata> {
+    let slug: string = "";
+    const headerList = headers();
+    const path = headerList.get("x-current-path");
+    if (path) {
+        const pathnameFields = path.split('/');
+        if (pathnameFields.length) {
+            slug = pathnameFields[pathnameFields.length - 1];
+        }
+    }
+    let article: any = null;
 
     try {
-        if (id) {
-            article = await getArticleById(id);
+        if (slug.length) {
+            article = await getArticleById(slug);
         }
     } catch (error) {
-        console.error("Error fetching article for metadata:", error);
+        console.error("Error fetching article:", error);
     }
 
     return {
@@ -112,13 +124,21 @@ export async function generateMetadata({ searchParams }: BlogPageProps): Promise
     };
 }
 
-const BlogPage = async ({ searchParams }: BlogPageProps) => {
-    const id = searchParams.id ?? "";
+const BlogPage = async () => {
+    let slug: string = "";
+    const headerList = headers();
+    const path = headerList.get("x-current-path");
+    if (path) {
+        const pathnameFields = path.split('/');
+        if (pathnameFields.length) {
+            slug = pathnameFields[pathnameFields.length - 1];
+        }
+    }
     let article: any = null;
 
     try {
-        if (id) {
-            article = await getArticleById(id);
+        if (slug.length) {
+            article = await getArticleById(slug);
         }
     } catch (error) {
         console.error("Error fetching article:", error);
@@ -127,15 +147,17 @@ const BlogPage = async ({ searchParams }: BlogPageProps) => {
     return (
         <div
             className="flex flex-col small:flex-row small:items-start py-6 content-container"
-            data-testid="news-container"
+            data-testid="blog-container"
         >
-            <div className="w-full">
-                <div className="mb-16 small:mx-12">
-                    <div className="mb-8">
-                        <BackLink href={`/${article.Category}`} label={`Back to ${article.Category}`} className="text-ui-fg-base hover:text-koiOrange transition duration-500" />
-                    </div>
+            {article ? (
+                <div className="w-full">
 
-                    {article ? (
+                    <div className="mb-16 small:mx-12">
+                        <div className="mb-8">
+                            <BackLink href={`/${article.Category}`} label={`Back to ${article.Category}`} className="text-ui-fg-base hover:text-koiOrange transition duration-500" />
+                        </div>
+
+
                         <section>
                             {article.Content &&
                                 article.Content.map((contentItem: any, index: number) => {
@@ -148,17 +170,18 @@ const BlogPage = async ({ searchParams }: BlogPageProps) => {
                                         );
                                     }
                                     return (
-                            
-                                            <Component key={index} {...contentItem} />
-                                       
+
+                                        <Component key={index} {...contentItem} />
+
                                     );
                                 })}
                         </section>
-                    ) : (
-                        <p>No article found or missing ID.</p>
-                    )}
+
+                    </div>
                 </div>
-            </div>
+            ) : (
+                <p>No article found or missing ID.</p>
+            )}
         </div>
     );
 };

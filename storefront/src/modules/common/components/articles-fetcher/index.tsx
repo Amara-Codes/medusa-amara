@@ -77,31 +77,6 @@ async function getArticles(category: ArticleCategory = "*", limit?: number) {
   return transformData(data);
 }
 
-async function getArticleById(
-  articleId: string,
-  category: ArticleCategory = "*"
-) {
-  const baseUrl = process.env.AMARA_STRAPI_URL ?? "http://localhost:1337";
-  const path = `/api/articles/${articleId}`;
-  const url = new URL(path, baseUrl);
-
-  const query: Record<string, any> = {};
-
-  if (category !== "*") {
-    query.filters = { Category: category };
-  }
-
-  url.search = qs.stringify(query);
-  const res = await fetch(url);
-
-  if (!res.ok) {
-    throw new Error(`Failed to fetch article with ID: ${articleId}`);
-  }
-
-  const data = await res.json();
-  return transformData(data);
-}
-
 interface ArticleFetcherProps {
   articleCategory?: ArticleCategory;
   limit?: number;
@@ -146,7 +121,6 @@ export default async function ArticleFetcher({
             thumbnailUrl={article.ThumbnailUrl}
             slug={article.Slug}
             type={article.Category}
-            id={article.Id ?? ''}
           />
         ))}
       </div>

@@ -93,12 +93,20 @@ export async function middleware(request: NextRequest) {
   const onboardingCookie = request.cookies.get("_medusa_onboarding");
   const cartIdCookie = request.cookies.get("_medusa_cart_id");
 
+
   const regionMap = await getRegionMap();
   const countryCode = regionMap && (await getCountryCode(request, regionMap));
 
   const urlHasCountryCode =
     countryCode && request.nextUrl.pathname.split("/")[1].includes(countryCode);
 
+
+
+
+
+  const pathname = request.nextUrl.pathname
+
+  response.headers.set("x-current-path", pathname);
   if (
     urlHasCountryCode &&
     (!isOnboarding || onboardingCookie) &&
@@ -124,6 +132,10 @@ export async function middleware(request: NextRequest) {
   if (isOnboarding) {
     finalResponse.cookies.set("_medusa_onboarding", "true", { maxAge: 60 * 60 * 24 });
   }
+
+
+
+
 
   return finalResponse;
 }

@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import ArticlesList from "@modules/common/components/articles-fetcher";
 import CTABlock from "@modules/common/components/blocks/cta-block";
 export const metadata: Metadata = {
-  title: "AActivities: Engage & Explore",
+  title: "Activities: Engage & Explore",
   description: "Discover the social initiatives of our brewery, from community engagement to sustainability projects.",
 }
 

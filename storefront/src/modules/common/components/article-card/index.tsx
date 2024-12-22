@@ -9,7 +9,6 @@ interface ArticleCardProps {
   thumbnailUrl?: string;
   slug: string;
   type: string;
-  id: string
 }
 
 const ArticleCard: React.FC<ArticleCardProps> = ({
@@ -18,15 +17,13 @@ const ArticleCard: React.FC<ArticleCardProps> = ({
   thumbnailUrl,
   slug,
   type,
-  id
 }) => {
   return (
     <div className="border rounded-lg shadow-md p-4 mb-6 flex min-h-[500px]">
       <Link
         className="w-full h-full relative flex flex-col items-center text-ui-fg-base font-bold"
         href={{
-          pathname: `/${type}/${slug}`,
-          query: { id },
+          pathname: `/${type}/${slug}`
         }}
       >
         {/* Container per immagine e overlay */}
