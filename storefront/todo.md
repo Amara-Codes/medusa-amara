@@ -3,14 +3,15 @@
 5a. 5. cambia if del render 3d lattina - FATTO
 8. render 3d lattina che ruota - prima immagine - FATTO
 3. pagina brewery layout - prernde lista attivita da strapi - FATTO ora creare tutti i componenti
+11. contenuti editoriali fighi etc
+5. mostra immagini - iniza con lo stile di tutto il sito 
 -------------------------------
 
 
 
 4. invio email + pagine request info masnda mial a me. recaptcha sul form
-5. mostra immagini - iniza con lo stile di tutto il sito 
 10. effetti 3d, three.js, gsap etc
-11. contenuti editoriali fighi etc
+13. ripassa tutta la grafica 
 
 WAVE 2 
 6. controlla stile my account e checkout
