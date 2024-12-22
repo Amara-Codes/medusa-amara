@@ -2,7 +2,6 @@ import React from "react";
 import qs from "qs";
 import ArticleCard from "../article-card";
 import LocalizedClientLink from "../localized-client-link";
-import Chevron from "@modules/common/icons/chevron";
 import ThickChevron from "@modules/common/icons/thick-chevron";
 
 type ArticleCategory = "news" | "activities" | "blog" | "*";
