@@ -16,9 +16,9 @@ export default function Contacts() {
                 <div className="mb-8 small:mx-12">
                     <h1 className="mb-8 font-extrabold text-4xl text-center text-koiRed small:text-8xl" data-testid="contacts-page-title">Contacts</h1>
                     <div className="text-justify mb-16">
-                        <p className="text-koiYellow text-2xl">We’d love to hear from you! Whether you have a question, feedback, or just want to say hi, this is the place to reach out. Find all our social media links below to stay updated on the latest news, events, and creations at Amara Beer Lab.
+                        <p className="text-koiYellow text-2xl">We&apos;d love to hear from you! Whether you have a question, feedback, or just want to say hi, this is the place to reach out. Find all our social media links below to stay updated on the latest news, events, and creations at Amara Beer Lab.
 
-                            Follow us as we transform ideas into flavors and stories into unforgettable experiences. Let’s stay connected—because the best is yet to come!
+                            Follow us as we transform ideas into flavors and stories into unforgettable experiences. Let&apos;s stay connected—because the best is yet to come!
 
                             Need more info? Drop us a message or visit us in person. Cheers to great connections!</p>
                     </div>
@@ -90,7 +90,7 @@ export default function Contacts() {
                 <div className="my-8 small:mx-12">
                     <div className="text-justify my-16">
                         <p className="text-koiYellow text-xl">
-                        Soon, our brewery will also become a taproom! Stay tuned for the next chapter of Amara Beer Lab, where you'll be able to enjoy our craft beers fresh from the source in a cozy and vibrant atmosphere.
+                        Soon, our brewery will also become a taproom! Stay tuned for the next chapter of Amara Beer Lab, where you&apos;ll be able to enjoy our craft beers fresh from the source in a cozy and vibrant atmosphere.
                         </p>
                     </div>
                 </div>
