@@ -141,5 +141,5 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/((?!api|_next/static|_next/image|images/|icons/|3d/|favicon.ico|Beer-can.gltf|Beer-can.bin).*)"],
+  matcher: ["/((?!api|_next/static|_next/image|images/|icons/|3d/|favicon.ico|Beer-can.gltf|Beer-can.bin|logo.png|hero.png).*)"],
 };

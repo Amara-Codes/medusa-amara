@@ -1,70 +1,54 @@
-import ParagraphBlock from "@modules/common/components/blocks/par-block";
 import TypoParagraphBlock from "@modules/common/components/blocks/typo-par-block";
 import CTABlock from "@modules/common/components/blocks/cta-block";
-import ArticlesList from "@modules/common/components/articles-fetcher";
 export default function Brewery() {
   return (
     <div className="lg:pb-48 pt-24">
 
       <TypoParagraphBlock
         className="lg:mb-48 mx-12 pb-12"
-        fatText="Why I opened a brewery in Cambodia"
+        fatText="Why I opened a brewery in Cambodia?"
         fatTextPosition="sx"
-        fatTextCss="leading-relaxed text-ui-fg-base border-b-4 text-4xl"
-        paragraph={"Lorem ipsum dolor sit amet consectetur adipisicing elit. A doloremque magni ipsam provident ratione! Autem quam reiciendis fugit minus! Dolorum maxime sequi amet minus iure aut placeat vitae adipisci architecto?"}
+        fatTextCss="leading-relaxed text-ui-fg-base border-b-4 text-4xl font-dummy"
+        paragraph={"Cambodia is a land of vibrant flavors, rich culture, and amazing landscapes. I saw a chance to craft something truly unique —a fusion of bold, artisanal beer and the spirit of this incredible country. But it's; s about more than just beer. We’re committed to giving back to the local community by supporting local farmers, creating jobs, and fostering sustainable practices. Our brewery is a hub where great taste meets meaningful impact, bringing people together while making a difference"}
         paragraphWrapperCss="lg:w-2/5 mb-12 mt-4 lg:mt-0"
         paragraphCss="text-lg text-justify md:text-start text-ui-fg-base mt-4 lg:mt-0"
       ></TypoParagraphBlock>
 
       <TypoParagraphBlock
         className="lg:mb-48 mx-12 pb-12"
-        fatText="Who am I"
+        fatText="Who am I?"
         fatTextPosition="dx"
-        fatTextCss="leading-relaxed text-ui-fg-base border-b-8 text-4xl"
-        paragraph={"Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit suscipit obcaecati amet quas optio minus eius laboriosam maiores in quia itaque, veritatis alias officia molestias necessitatibus odio cum atque ullam. Natus alias distinctio porro voluptatibus! Quibusdam natus earum fugiat facere exercitationem tempore reiciendis quia molestias deleniti! Similique laborum blanditiis officia."}
+        fatTextCss="leading-relaxed text-ui-fg-base border-b-8 text-4xl font-dummy"
+        paragraph={"I’m someone driven by passion, creativity, and a deep respect for culture and community. With a love for craft beer and a belief in its power to bring people together, I’ve dedicated myself to creating something that’s more than just a product—it’s an experience. Rooted in a commitment to sustainability and giving back, I strive to blend craftsmanship with purpose, building connections that celebrate both people and place."}
         paragraphWrapperCss="lg:w-2/5 mb-12 mt-4 lg:mt-0"
         paragraphCss="text-lg text-justify md:text-start text-ui-fg-base mt-4 lg:mt-0"
       ></TypoParagraphBlock>
 
-      <ParagraphBlock
-        className="lg:mb-48"
-        title="Our Beers"
-        titleSize="h3"
-        titleCss="leading-relaxed mb-8 lg:mb-24 text-ui-fg-base text-4xl bold"
-        imgAlt="H ring"
-        imgPosition="sx"
-        paragraph={"Lorem ipsum dolor sit amet consectetur adipisicing elit."}
-        paragraphWrapperCss="md:w-2/5 my-12 md:mt-0"
-        paragraphCss="text-lg text-justify md:text-start text-ui-fg-base"
-      />
-
       <TypoParagraphBlock
         className="lg:mb-48 mx-12 py-12"
-        fatText="What else"
+        fatText="What Beers Do I Make?"
         fatTextPosition="sx"
-        fatTextCss="leading-relaxed text-ui-fg-base border-b-4 text-4xl"
-        paragraph={"Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit suscipit obcaecati amet quas optio minus eius laboriosam maiores in quia itaque, veritatis alias officia molestias necessitatibus odio cum atque ullam. Natus alias distinctio porro voluptatibus! Quibusdam natus earum fugiat facere exercitationem tempore reiciendis quia molestias deleniti! Similique laborum blanditiis officia."}
+        fatTextCss="leading-relaxed text-ui-fg-base border-b-4 text-4xl font-dummy"
+        paragraph={"Our beers are a blend of tradition, innovation, and a deep passion for the craft. Trained at one of Italy’s most prestigious brewing schools, I bring a wealth of expertise to every brew. Currently, I’m heavily inspired by American styles, focusing on modern techniques to extract the full potential of the hops we use. At the same time, I believe there’s still so much to explore in the rich Belgian brewing tradition and European styles as a whole. That’s why you’ll always find something unique on tap—whether it’s a bold English-style ale, a classic Belgian creation, or a reimagined historical brew adapted to the warm climate of Siem Reap. Every beer reflects my dedication to blending the old and the new, crafting flavors that align with the vision of our brand and the unique setting we call home."}
         paragraphWrapperCss="lg:w-2/5 mb-12 mt-4 lg:mt-0"
         paragraphCss="text-lg text-justify md:text-start text-ui-fg-base mt-4 lg:mt-0"
       ></TypoParagraphBlock>
 
       <CTABlock
-        className="min-h-[800px] lg:mx-12 lg:my-8 bg-bottom"
+        className="min-h-[300px] lg:mx-12 lg:my-8 bg-bottom"
         wrapperCss=""
         direction="dx"
-        title="Explore our campains"
+        title="Explore our Brews"
         titleSize="h3"
         titleCss="text-6xl text-ui-fg-base mb-16 lg:mg-0"
-        paragraph={"Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit suscipit obcaecati amet quas optio minus eius laboriosam maiores in quia itaque, veritatis alias officia molestias necessitatibus odio cum atque ullam. Natus alias distinctio porro voluptatibus! Quibusdam natus earum fugiat facere exercitationem tempore reiciendis quia molestias deleniti! Similique laborum blanditiis officia."}
+        paragraph={"Explore our lineup of handcrafted ales brewed with passion, innovation, and a touch of tradition"}
         parCss="text-justify text-ui-fg-base px-4"
         backgroundImgUrl={""}
         haveButton={true}
-        buttonLink="/"
-        buttonText="Our campains"
+        buttonLink="/beers"
+        buttonText="Our beers"
         buttonCss="block text-center mt-8"
       />
-
-     <ArticlesList limit={6} articleCategory="blog"/>
     </div>
   )
 }

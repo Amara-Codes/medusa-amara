@@ -46,12 +46,12 @@ const Hero: FC<HeroProps> = ({
       <div className="absolute inset-0 z-10 flex flex-col justify-center items-center text-center p-8 gap-6">
         <span>
           {title && (
-            <Heading level="h1" className="text-6xl leading-10 text-ui-fg-base font-normal">
+            <Heading level="h1" className="text-8xl leading-10 text-ui-fg-base font-bold">
               {title}
             </Heading>
           )}
           {subtitle && (
-            <Heading level="h2" className="text-4xl leading-10 text-ui-fg-subtle font-normal">
+            <Heading level="h2" className="text-6xl leading-10 text-koiOrange font-bold">
               {subtitle}
             </Heading>
           )}

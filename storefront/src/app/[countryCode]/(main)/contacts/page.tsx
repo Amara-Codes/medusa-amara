@@ -1,5 +1,6 @@
 import { Metadata } from "next";
-import { Heading, Text, Button } from "@medusajs/ui";
+import Image from "next/image";
+import { Heading, Button } from "@medusajs/ui";
 import Link from "next/link";
 export const metadata: Metadata = {
     title: "Contacts",
@@ -26,7 +27,7 @@ export default function Contacts() {
 
 
                 <div
-                    className="relative bg-cover bg-bottom rounded-lg grid gap-4 md:grid-cols-2 cta-block"
+                    className="relative bg-cover bg-bottom rounded-lg grid gap-4 md:grid-cols-2"
                 >
                     <div
                         className=
@@ -50,7 +51,7 @@ export default function Contacts() {
                         </Link>
 
                     </div>
-                    <div className="col-span-1 flex flex-col items-center text-center min-h-[400px] lg:mx-12 lg:my-8 bg-bottom order-2 mt-16 small:mt-0">
+                    <div className="col-span-1 flex flex-col items-center text-center min-h-[400px] lg:mx-12 lg:my-8 bg-bottom order-2 mt-16">
                         <Heading
                             className="text-center text-6xl mb-16 lg:mg-0 text-koiRed"
                             level="h2"
@@ -90,7 +91,7 @@ export default function Contacts() {
                 <div className="my-8 small:mx-12">
                     <div className="text-justify my-16">
                         <p className="text-koiYellow text-xl">
-                        Soon, our brewery will also become a taproom! Stay tuned for the next chapter of Amara Beer Lab, where you&apos;ll be able to enjoy our craft beers fresh from the source in a cozy and vibrant atmosphere.
+                            Soon, our brewery will also become a taproom! Stay tuned for the next chapter of Amara Beer Lab, where you&apos;ll be able to enjoy our craft beers fresh from the source in a cozy and vibrant atmosphere.
                         </p>
                     </div>
                 </div>

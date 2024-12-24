@@ -29,12 +29,13 @@ export default async function Home({
 
   return (
     <>
-      <Hero />
+      <Hero bgImage="/hero.png"/>
       <div className="py-6">
         <div>
           <Heading
             className="text-center text-6xl mb-4 lg:mg-0 text-koiRed font-dummy"
             level='h2'
+
           >
             Our Beers
           </Heading>
