@@ -6,9 +6,6 @@ import { getCollectionsWithProducts } from "@lib/data/collections"
 import { getRegion } from "@lib/data/regions"
 import CTABlock from "@modules/common/components/blocks/cta-block"
 
-
-const ctaPar = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi commodi minus expedita ut iusto consectetur cum. Dolore, quae ea. Ullam."
-
 export const metadata: Metadata = {
   title: "Amara Beer Lab - Craft Brewery in Siem Reap | Sustainability & Community Impact",
   description:
@@ -44,21 +41,21 @@ export default async function Home({
           <FeaturedProducts collections={collections} region={region} />
         </ul>
       </div>
-      <div className="py-12">
+      <div className="pt-12">
         <CTABlock
-          className="min-h-[800px] lg:mx-12 lg:my-8 bg-bottom"
+          className="min-h-[600px] lg:mt-8 bg-cover bg-center bg-no-repeat"
           wrapperCss=""
           direction="dx"
           title="Handcraft Brewery based in Siem Reap"
           titleSize="h3"
-          titleCss="text-6xl mb-16 lg:mg-0 text-koiRed"
-          paragraph={ctaPar}
-          parCss="text-justify px-4 text-ui-fg-base"
-          backgroundImgUrl={""}
+          titleCss="text-6xl mb-16 lg:mg-0 text-koiRed px-8"
+          paragraph="Check out the Brewery section to explore our footprint in Siem Reap and see how we craft our hand-brewed beers with passion and creativity."
+          parCss="text-justify px-4 text-ui-fg-base px-8"
+          backgroundImgUrl={"/images/malt.jpg"}
           haveButton={true}
           buttonLink="/brewery"
           buttonText="Discover more"
-          buttonCss="block text-center mt-8 bg-koiOrange text-ui-fg-base"
+          buttonCss="block text-center mt-8 bg-koiOrange text-ui-fg-base font-bold transition-all duration-500 hover:bg-koiRed"
         />
       </div>
     </>

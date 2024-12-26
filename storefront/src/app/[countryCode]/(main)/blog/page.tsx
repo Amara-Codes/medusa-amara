@@ -24,19 +24,19 @@ export default function BlogPage() {
 
         <div className="small:mx-12">
           <CTABlock
-            className="min-h-[800px] lg:mx-12 lg:my-8 bg-bottom"
+            className="min-h-[300px] lg:my-8 bg-center rounded-lg"
             wrapperCss=""
             direction="dx"
-            title="Read more about us"
+            title="Brewery Buzz"
             titleSize="h3"
-            titleCss="text-6xl text-ui-fg-base mb-16 lg:mg-0"
-            paragraph={"Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit suscipit obcaecati amet quas optio minus eius laboriosam maiores in quia itaque, veritatis alias officia molestias necessitatibus odio cum atque ullam. Natus alias distinctio porro voluptatibus! Quibusdam natus earum fugiat facere exercitationem tempore reiciendis quia molestias deleniti! Similique laborum blanditiis officia."}
-            parCss="text-justify text-ui-fg-base px-4"
-            backgroundImgUrl={""}
+            titleCss="text-6xl text-koiWhite my-8 px-4 lg:mg-0"
+            paragraph={"Stay updated with the latest news from Amara Beer Lab! From upcoming events in Siem Reap to new beer releases and collaborations, our News section is where you’ll find all the fresh updates from our brewery in Cambodia."}
+            parCss="text-justify text-koiWhite px-4"
+            backgroundImgUrl="/images/beer.jpg"
             haveButton={true}
-            buttonLink="/brewery"
-            buttonText="Discover now"
-            buttonCss="block text-center mt-8"
+            buttonLink="/news"
+            buttonText="Explore latest Updates"
+            buttonCss="block text-center my-8 font-bold"
           />
         </div>
       </div>

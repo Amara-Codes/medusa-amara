@@ -35,14 +35,14 @@ const CTABlock = ({
   return (
     <div
       className={clx(
-        "relative bg-cover bg-bottom rounded-lg grid gap-4 md:grid-cols-2 cta-block",
+        "relative bg-cover bg-bottom grid gap-4 md:grid-cols-2 cta-block",
         className
       )}
       style={{ backgroundImage: `url(${backgroundImgUrl})` }}
     >
       <div
         className={clx(
-          "col-span-1 flex flex-col justify-center items-center text-center",
+          "col-span-1 flex flex-col justify-center text-center",
           {
             "order-3": direction == "dx",
           },
@@ -50,7 +50,7 @@ const CTABlock = ({
         )}
       >
         <Heading
-          className={clx("text-center", titleCss)}
+          className={clx("", titleCss)}
           level={titleSize}
         >
           {title}

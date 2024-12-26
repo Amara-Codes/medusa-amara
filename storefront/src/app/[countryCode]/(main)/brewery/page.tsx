@@ -2,7 +2,7 @@ import TypoParagraphBlock from "@modules/common/components/blocks/typo-par-block
 import CTABlock from "@modules/common/components/blocks/cta-block";
 export default function Brewery() {
   return (
-    <div className="lg:pb-48 pt-24">
+    <div className="lg:pb-16 pt-24">
 
       <TypoParagraphBlock
         className="lg:mb-48 mx-12 pb-12"
@@ -35,19 +35,19 @@ export default function Brewery() {
       ></TypoParagraphBlock>
 
       <CTABlock
-        className="min-h-[300px] lg:mx-12 lg:my-8 bg-bottom"
-        wrapperCss=""
+        className="min-h-[400px] small:min-h-[600px] lg:mx-12 lg:my-8 bg-center bg-no-repeat mb-16"
+        wrapperCss="backdrop-contrast-200 backdrop-saturate-200 backdrop-blur-sm small:items-center"
         direction="dx"
         title="Explore our Brews"
         titleSize="h3"
-        titleCss="text-6xl text-ui-fg-base mb-16 lg:mg-0"
+        titleCss="text-6xl text-koiRed mb-8 lg:mg-0 px-4 small:text-center"
         paragraph={"Explore our lineup of handcrafted ales brewed with passion, innovation, and a touch of tradition"}
-        parCss="text-justify text-ui-fg-base px-4"
-        backgroundImgUrl={""}
+        parCss="text-justify text-2xl text-ui-fg-base px-4"
+        backgroundImgUrl="/images/beer-shop.jpg"
         haveButton={true}
         buttonLink="/beers"
         buttonText="Our beers"
-        buttonCss="block text-center mt-8"
+        buttonCss="block text-center mt-8 bg-koiRed font-bold"
       />
     </div>
   )

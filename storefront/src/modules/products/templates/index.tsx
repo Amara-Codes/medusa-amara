@@ -128,18 +128,18 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({
 
       <div className="content-container my-16 small:my-32" data-testid="cta-block-container">
       <CTABlock
-            className="min-h-[400px] lg:mx-12 lg:my-8 bg-bottom"
-            wrapperCss=""
+            className="min-h-[400px] lg:my-8 bg-bottom bg-no-repeat rounded-lg"
+            wrapperCss="bg-black/50"
             direction="dx"
-            title="Discover how we brew"
+            title="Behind the Beers: Stories from Our Brewery"
             titleSize="h3"
-            titleCss="text-4xl mb-16 lg:mg-0 text-koiOrange"
-            paragraph={'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum voluptas itaque neque laboriosam consequatur consectetur distinctio quidem provident asperiores tempore architecto ea, voluptatibus in tempora nulla voluptates impedit aut, veniam repellendus eum molestiae. Quos iste, assumenda ex autem facilis tenetur dignissimos vero distinctio impedit, cupiditate eaque asperiores eveniet. Dignissimos, vero.'}
-            parCss="text-justify px-4 text-ui-fg-base"
-            backgroundImgUrl={""}
+            titleCss="text-5xl mx-4 lg:mg-0 font-bold text-koiWhite"
+            paragraph={'Dive into the world of craft beers with our Blog! Discover brewing tips, behind-the-scenes stories from our Siem Reap brewery, and insights into Cambodia’s vibrant beer culture. Stay inspired and connected with everything Amara Beer Lab has to offer.'}
+            parCss="text-justify mx-4 py-6 px-8 text-ui-fg-base"
+            backgroundImgUrl="/images/craft-beer.jpg"
             haveButton={true}
-            buttonLink="/brewery"
-            buttonText="Discover more"
+            buttonLink="/blog"
+            buttonText="Dive in"
             buttonCss="block text-center mt-8 bg-koiRed text-ui-fg-base"
           />
       </div>
