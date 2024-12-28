@@ -13,9 +13,9 @@ const Paragraph: React.FC<ParagraphElement> = ({
   return (
     <div
       className={`prose max-w-none pb-8 flex gap-6 ${
-        classes.includes('flex-row') || classes.includes('flex-row-reverse')
+        classes.includes('small:flex-row') || classes.includes('small:flex-row-reverse')
           ? classes
-          : 'flex-row'
+          : 'small:flex-row'
       }`}
     >
       {ParagraphImg && (
