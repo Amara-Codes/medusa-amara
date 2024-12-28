@@ -63,15 +63,19 @@ async function transformData(tags: any): Promise<TransformedDataItem[]> {
 }
 
 
-async function getArticles(tags: string[]) {
+async function getArticles(tagString: string): Promise<TransformedDataItem[]> {
+    if (!tagString) {
+        return [];
+    }
+
+    const tags = tagString.replace(/-$/, "").split("-").map(tag => tag.trim());
     const baseUrl = process.env.AMARA_STRAPI_URL ?? "http://localhost:1337";
     const path = "/api/tags";
 
     const url = new URL(path, baseUrl);
     const query: Record<string, any> = {
-        populate: "*"
+        populate: "*",
     };
-
 
     url.search = qs.stringify(query);
     const res = await fetch(url);
@@ -84,12 +88,13 @@ async function getArticles(tags: string[]) {
 
     const matchingTags = data.data.filter((item: any) => {
         const attributes = item.attributes;
-        return tags.includes(attributes.Name)
-    })
+        return tags.includes(attributes.Name);
+    });
 
-    const articles = transformData(matchingTags)
+    const articles = await transformData(matchingTags);
     return articles;
 }
+
 
 function getRandomArticles(articles: TransformedDataItem[], count: number): TransformedDataItem[] {
     const shuffled = [...articles].sort(() => 0.5 - Math.random()); // Mescola l'array
@@ -98,39 +103,44 @@ function getRandomArticles(articles: TransformedDataItem[], count: number): Tran
 
 
 interface ArticlePostFetcherProps {
-    articleTags?: string[];
+    articleTagsStringCode?: string; // Stringa di tag concatenati con trattini
     limit?: number;
 }
 
 export default async function ArticlePostFetcher({
-    articleTags = [],
-    limit
+    articleTagsStringCode = "",
+    limit = 3,
 }: ArticlePostFetcherProps) {
-    let articles;
-    articles = await getArticles(articleTags);
-    articles = getRandomArticles(articles, 3);
+    let articles: TransformedDataItem[] = [];
+
+    if (articleTagsStringCode) {
+        articles = await getArticles(articleTagsStringCode);
+        articles = getRandomArticles(articles, limit);
+    }
 
     return (
         <div className="mt-16">
-          {(articleTags.length && articles.length) && (
-            <div className="my-16">
-              <div className="text-center">
-              <h3 className="capitalize text-koiRed text-4xl font-bold ">Highlights from this beer</h3>
-              </div>
+            {articleTagsStringCode && articles.length > 0 && (
+                <div className="my-16">
+                    <div className="text-center">
+                        <h3 className="capitalize text-koiRed text-4xl font-bold">
+                            Highlights from this beer
+                        </h3>
+                    </div>
+                </div>
+            )}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:mb-24 pb-12">
+                {articles.map((article) => (
+                    <ArticleCard
+                        key={article.Slug}
+                        title={article.Title}
+                        caption={article.Summary ?? ""}
+                        thumbnailUrl={article.ThumbnailUrl}
+                        slug={article.Slug}
+                        type={article.Category}
+                    />
+                ))}
             </div>
-          )}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:mb-24  pb-12">
-            {articles.map((article) => (
-              <ArticleCard
-                key={article.Slug}
-                title={article.Title}
-                caption={article.Summary ?? ''}
-                thumbnailUrl={article.ThumbnailUrl}
-                slug={article.Slug}
-                type={article.Category}
-              />
-            ))}
-          </div>
         </div>
-      );
+    );
 }

@@ -48,27 +48,30 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({
     }
   }
 
-  const getTagArr = (product: HttpTypes.StoreProduct): string[] | undefined => {
+  const getTagStringCode = (product: HttpTypes.StoreProduct): string  => {
     if (product.subtitle) {
       try {
         const parsedSubtitle = JSON.parse(product.subtitle) as Record<string, unknown>;
         const tags = Object.values(parsedSubtitle);
-        const tagArr: string[] = []; // Tipizza tagArr come array di stringhe
+        let tagCodeStr: string = ""; // Tipizza tagArr come array di stringhe
 
         tags.forEach(e => {
           if (typeof e === "string") {
-            tagArr.push(e);
+            tagCodeStr += (e + "-");
           } else if (Array.isArray(e)) {
-            tagArr.push(...(e as string[])); // Assumi che l'array contenga stringhe
+            e.forEach(element => {
+              tagCodeStr += (element + "-");
+            });
+            
           }
         });
 
-        return tagArr;
+        return tagCodeStr;
       } catch {
         console.error("Failed to parse product.subtitle");
       }
     }
-    return undefined; // In caso non ci sia un sottotitolo o si verifichi un errore
+    return ""; // In caso non ci sia un sottotitolo o si verifichi un errore
   };
 
   return (
@@ -114,7 +117,7 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({
               </p>
             </div>
           </div>
-          <ArticlePostFetcher articleTags={getTagArr(product)} limit={5} />
+          <ArticlePostFetcher articleTagsStringCode={getTagStringCode(product)}/>
         </div>
       )}
       <div
