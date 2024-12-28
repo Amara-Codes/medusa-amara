@@ -115,4 +115,18 @@
   .text-3xl-semi {
     @apply text-[32px] leading-[44px] font-semibold;
   }
+
+  .big-square {
+    position: relative;
+  }
+
+  .big-square.checked::after {
+   content: "\2713";
+   position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 50px;
+    transform: translate(-50%, -50%);
+    color: green;
+  }
 }

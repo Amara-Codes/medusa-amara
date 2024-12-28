@@ -53,6 +53,7 @@ async function getArticles(category: ArticleCategory = "*", limit?: number) {
     populate: {
       Thumbnail: { fields: ["formats"] },
       Content: { fields: "*" },
+      ActivityCompleted: { fields: "*" }
     },
     pagination: {},
   };
