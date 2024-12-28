@@ -11,6 +11,18 @@ module.exports = {
     "./src/modules/**/*.{js,ts,jsx,tsx}",
     "./node_modules/@medusajs/ui/dist/**/*.{js,jsx,ts,tsx}",
   ],
+  safelist: [
+    'flex',
+    'flex-col',
+    'flex-row',
+    'flex-col-reverse',
+    'flex-row-reverse',
+    'small:flex',
+    'small:flex-col',
+    'small:flex-row',
+    'small:flex-col-reverse',
+    'small:flex-row-reverse',
+  ],
   theme: {
     extend: {
       transitionProperty: {

@@ -8,24 +8,12 @@ const Paragraph: React.FC<ParagraphElement> = ({
   ParagraphCssClasses = '',
   ParagraphImg,
 }) => {
-  const classes = ParagraphCssClasses || ''; // Evita errori di null o undefined
-
+ 
   return (
-    <div
-      className={`prose max-w-none pb-8 flex gap-6 ${
-        classes.includes('small:flex-row') || classes.includes('small:flex-row-reverse')
-          ? classes
-          : 'small:flex-row'
-      }`}
-    >
+
+    <div className={`prose max-w-none pb-8 flex flex-col small:gap-x-4 ${ParagraphCssClasses?? ""}`}>
       {ParagraphImg && (
-        <div
-          className={`relative ${
-            classes.includes('image-center')
-              ? 'mx-auto w-full'
-              : 'flex-shrink-0 small:w-1/3'
-          }`}
-        >
+        <div className="flex-shrink-0 small:w-1/3">
           <Image
             src={ParagraphImg}
             alt="Paragraph Image"
@@ -33,33 +21,21 @@ const Paragraph: React.FC<ParagraphElement> = ({
             width={300}
             height={200}
             objectFit="cover"
-            className={`rounded-md ${
-              classes.includes('image-center') ? 'w-full' : ''
-            }`}
+            className=""
           />
         </div>
       )}
       {ParagraphContent && (
-        <div
-          className={`flex-1 ${
-            classes.includes('text-center') ? 'text-center' : ''
-          }`}
-        >
+        <div className="flex-1">
           <ReactMarkdown
             components={{
               h1: ({ children, ...props }) => (
-                <h1
-                  className="text-4xl font-extrabold text-ui-fg-base"
-                  {...props}
-                >
+                <h1 className="text-4xl font-extrabold text-ui-fg-base" {...props}>
                   {children}
                 </h1>
               ),
               h2: ({ children, ...props }) => (
-                <h2
-                  className="text-3xl font-semibold text-ui-fg-base"
-                  {...props}
-                >
+                <h2 className="text-3xl font-semibold text-ui-fg-base" {...props}>
                   {children}
                 </h2>
               ),
@@ -74,18 +50,12 @@ const Paragraph: React.FC<ParagraphElement> = ({
                 </h4>
               ),
               p: ({ children, ...props }) => (
-                <p
-                  className="text-base leading-relaxed text-ui-fg-base"
-                  {...props}
-                >
+                <p className="text-base leading-relaxed text-ui-fg-base" {...props}>
                   {children}
                 </p>
               ),
               strong: ({ children, ...props }) => (
-                <strong
-                  className="text-base leading-relaxed font-bold text-ui-fg-base"
-                  {...props}
-                >
+                <strong className="text-base leading-relaxed font-bold text-ui-fg-base" {...props}>
                   {children}
                 </strong>
               ),
