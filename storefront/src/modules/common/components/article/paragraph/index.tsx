@@ -8,10 +8,24 @@ const Paragraph: React.FC<ParagraphElement> = ({
   ParagraphCssClasses = '',
   ParagraphImg,
 }) => {
+  const classes = ParagraphCssClasses || ''; // Evita errori di null o undefined
+
   return (
-    <div className={`prose max-w-none pb-8 flex ${ParagraphCssClasses}`}>
+    <div
+      className={`prose max-w-none pb-8 flex gap-6 ${
+        classes.includes('flex-row') || classes.includes('flex-row-reverse')
+          ? classes
+          : 'flex-row'
+      }`}
+    >
       {ParagraphImg && (
-        <div className={`relative ${ParagraphCssClasses.includes('image-center') ? 'mx-auto w-full' : 'flex-shrink-0'}`}>
+        <div
+          className={`relative ${
+            classes.includes('image-center')
+              ? 'mx-auto w-full'
+              : 'flex-shrink-0 small:w-1/3'
+          }`}
+        >
           <Image
             src={ParagraphImg}
             alt="Paragraph Image"
@@ -19,13 +33,17 @@ const Paragraph: React.FC<ParagraphElement> = ({
             width={300}
             height={200}
             objectFit="cover"
-            className={`rounded-md ${ParagraphCssClasses.includes('image-center') ? 'w-full' : ''}`}
+            className={`rounded-md ${
+              classes.includes('image-center') ? 'w-full' : ''
+            }`}
           />
         </div>
       )}
       {ParagraphContent && (
         <div
-          className={`flex-1 ${ParagraphCssClasses.includes('text-center') ? 'text-center' : ''}`}
+          className={`flex-1 ${
+            classes.includes('text-center') ? 'text-center' : ''
+          }`}
         >
           <ReactMarkdown
             components={{
