@@ -29,7 +29,6 @@ type TransformedDataItem = {
 
 function transformData(json: any): TransformedDataItem {
     const item = json.data[0];
-
     const attributes = item.attributes;
     const Content = attributes.Content?.map((contentItem: any) => {
         const contentComponentItem = { ...contentItem };
@@ -81,6 +80,9 @@ async function getArticleById(slug: string) {
                 CtaBgImg: {
                     fields: ["url", "formats"],
                 },
+                CtaButton: {
+                    fields: "*"
+                }
             }
 
         }
@@ -170,9 +172,7 @@ const BlogPage = async () => {
                                         );
                                     }
                                     return (
-
                                         <Component key={index} {...contentItem} />
-
                                     );
                                 })}
                         </section>

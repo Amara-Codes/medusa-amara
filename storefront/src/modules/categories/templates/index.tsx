@@ -53,11 +53,14 @@ export default function CategoryTemplate({
                 /
               </span>
             ))}
-          <h1 data-testid="category-page-title">{category.name}</h1>
+          <h1 className="mb-8 font-extrabold text-4xl text-center text-koiRed small:text-8xl small:text-start"  data-testid="category-page-title">{category.name}</h1>
         </div>
         {category.description && (
-          <div className="mb-8 text-base-regular">
-            <p>{category.description}</p>
+          <div className="text-justify mb-16">
+            <p className="text-koiYellow text-2xl">
+            {category.description}
+            </p>
+
           </div>
         )}
         {category.category_children && (
