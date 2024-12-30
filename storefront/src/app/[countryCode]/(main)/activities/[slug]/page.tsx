@@ -4,6 +4,8 @@ import componentMapping from "@modules/common/components/article/componentMappin
 import BackLink from "@modules/common/components/back-link";
 import { Metadata } from 'next';
 
+import RelatedArticlesFetcher from "@modules/common/components/related-articles-fetcher";
+
 //Parte che serve a mappare i nomi delle immagini nei componenti
 const componentImageMap = {
     hero: 'HeroBgImg',
@@ -25,11 +27,11 @@ type TransformedDataItem = {
     Summary: string | null;
     ThumbnailUrl?: string;
     Content?: any[];
+    ArticleTags?: any[]
 };
 
 function transformData(json: any): TransformedDataItem {
     const item = json.data[0];
-
     const attributes = item.attributes;
     const Content = attributes.Content?.map((contentItem: any) => {
         const contentComponentItem = { ...contentItem };
@@ -45,6 +47,14 @@ function transformData(json: any): TransformedDataItem {
         return { ...contentComponentItem, Component };
     });
 
+    const tags = attributes.tags;
+    const articleFetchedTags: any[] = [];
+
+    if (tags?.data?.length) {
+        tags.data.forEach((tag: { id: any; }) => {
+            articleFetchedTags.push(tag.id)
+        });
+    }
 
     return {
         Title: attributes.Title,
@@ -53,6 +63,7 @@ function transformData(json: any): TransformedDataItem {
         Summary: attributes.Summary,
         Content,
         Id: item.id,
+        ArticleTags: articleFetchedTags
     };
 }
 
@@ -81,9 +92,11 @@ async function getArticleById(slug: string) {
                 CtaBgImg: {
                     fields: ["url", "formats"],
                 },
+
             }
 
-        }
+        },
+        tags: { fields: "*" }
     };
 
     url.search = qs.stringify(query);
@@ -99,7 +112,7 @@ async function getArticleById(slug: string) {
 
 
 export async function generateMetadata(): Promise<Metadata> {
- let slug: string = "";
+    let slug: string = "";
     const headerList = headers();
     const path = headerList.get("x-current-path");
     if (path) {
@@ -125,7 +138,7 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 const ActivitiesPage = async () => {
- let slug: string = "";
+    let slug: string = "";
     const headerList = headers();
     const path = headerList.get("x-current-path");
     if (path) {
@@ -170,13 +183,19 @@ const ActivitiesPage = async () => {
                                         );
                                     }
                                     return (
-
                                         <Component key={index} {...contentItem} />
-
                                     );
                                 })}
                         </section>
 
+<section>
+{article.ArticleTags.length &&
+
+<div>
+   <RelatedArticlesFetcher tags={article.ArticleTags} currentArticleId={article.Id}/>
+</div>
+}
+</section>
                     </div>
                 </div>
             ) : (

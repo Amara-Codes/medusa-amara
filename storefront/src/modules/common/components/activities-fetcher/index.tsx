@@ -92,7 +92,7 @@ export default async function ActivitiesFetcher({
 
   return (
     <div className="small:mx-12">
-      <div className="grid grid-cols-1 lg:mb-48 pb-12">
+      <div className="grid grid-cols-1 lg:mb-16 pb-12">
         {articles.data.map((article) => (
 
           

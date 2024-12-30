@@ -22,21 +22,21 @@ export default function ActivitiesPage() {
         </div>
         <ActivitiesFetcher />
 
-        <div className="small:mx-12">
+        <div>
           <CTABlock
-            className="min-h-[800px] lg:mx-12 lg:my-8 bg-bottom"
+            className="h-[500px] lg:mx-12 lg:mb-8 bg-top rounded-lg"
             wrapperCss=""
             direction="dx"
-            title="Read more about us"
+            title="Let's keep in touch"
             titleSize="h3"
             titleCss="text-6xl text-ui-fg-base mb-16 lg:mg-0"
-            paragraph={"Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit suscipit obcaecati amet quas optio minus eius laboriosam maiores in quia itaque, veritatis alias officia molestias necessitatibus odio cum atque ullam. Natus alias distinctio porro voluptatibus! Quibusdam natus earum fugiat facere exercitationem tempore reiciendis quia molestias deleniti! Similique laborum blanditiis officia."}
+            paragraph="Want to stay updated on all our exciting activities? Connect with us on social media or find us on Google Maps to visit in person. Let’s keep the conversation going and grow something amazing together!"
             parCss="text-justify text-ui-fg-base px-4"
-            backgroundImgUrl={""}
+            backgroundImgUrl="/images/contacts.jpg"
             haveButton={true}
-            buttonLink="/brewery"
-            buttonText="Discover now"
-            buttonCss="block text-center mt-8"
+            buttonLink="/contacts"
+            buttonText="Find Us"
+            buttonCss="block text-center mt-8 bg-koiRed"
           />
         </div>
       </div>
