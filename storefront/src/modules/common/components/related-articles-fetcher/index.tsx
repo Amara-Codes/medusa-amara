@@ -34,7 +34,7 @@ async function getArticleById(id: string): Promise<any> {
 
 
 async function transformData(tags: any, currentArticleId: string): Promise<TransformedDataItem[]> {
-    const transformedArray: TransformedDataItem[] = []; // Array per raccogliere gli oggetti trasformati
+    const transformedArray: TransformedDataItem[] = []; 
     if (tags.length) {
         for (const tag of tags) {
             const articles = tag.attributes.articles;
@@ -60,7 +60,7 @@ async function transformData(tags: any, currentArticleId: string): Promise<Trans
         }
     }
 
-    return transformedArray; // Ritorna l'array con tutti gli oggetti
+    return transformedArray; 
 }
 
 
@@ -101,7 +101,7 @@ async function getArticles(tags: string[], currentArticleId: string): Promise<Tr
 
 interface RelatedArticlesFetcherProps {
     tags?: string[],
-    currentArticleId?: string // Stringa di tag concatenati con trattini
+    currentArticleId?: string 
 }
 
 export default async function RelatedArticlesFetcher({
@@ -112,7 +112,6 @@ export default async function RelatedArticlesFetcher({
 
     if (tags) {
         articles = await getArticles(tags, currentArticleId);
-        //articles = getRandomArticles(articles);
     }
 
     return (

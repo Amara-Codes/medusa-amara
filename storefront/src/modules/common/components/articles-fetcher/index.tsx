@@ -77,16 +77,16 @@ async function getArticles(category: ArticleCategory = "*", limit?: number) {
   return transformData(data);
 }
 
-interface ArticleFetcherProps {
+interface ArticlesFetcherProps {
   articleCategory?: ArticleCategory;
   limit?: number;
   articleId?: string;
 }
 
-export default async function ArticleFetcher({
+export default async function ArticlesFetcher({
   articleCategory = "*",
   limit
-}: ArticleFetcherProps) {
+}: ArticlesFetcherProps) {
   let articles;
 
 
@@ -112,7 +112,7 @@ export default async function ArticleFetcher({
 
 
       )}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:mb-48  pb-12">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pb-12">
         {articles.data.map((article) => (
           <ArticleCard
             key={article.Slug}

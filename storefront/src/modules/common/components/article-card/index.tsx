@@ -26,7 +26,6 @@ const ArticleCard: React.FC<ArticleCardProps> = ({
           pathname: `/${type}/${slug}`
         }}
       >
-        {/* Container per immagine e overlay */}
         <div className="relative w-full h-full">
           {thumbnailUrl && (
             <Image
@@ -37,7 +36,6 @@ const ArticleCard: React.FC<ArticleCardProps> = ({
             />
           )}
 
-          {/* Overlay con titolo e descrizione */}
           <div className="absolute bottom-0 left-0 w-full backdrop-blur-sm bg-black/40 p-4 rounded-b-md h-60 max-h-60 flex flex-col">
           <div className="grow flex  flex-col justify-between">
             <h2 className="text-xl font-bold text-ui-fg-base mb-2">{title}</h2>

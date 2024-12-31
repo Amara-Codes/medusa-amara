@@ -2,8 +2,6 @@ import React from "react";
 import qs from "qs";
 import ActivityCard from "../activity-card";
 
-
-
 type TransformedDataItem = {
   Title: string;
   Slug: string;
@@ -58,9 +56,7 @@ async function getActivities(limit?: number) {
     pagination: {},
   };
 
-
   query.filters = { Category: "activities" };
-
 
   if (limit) {
     query.pagination.limit = limit;
@@ -74,9 +70,6 @@ async function getActivities(limit?: number) {
   }
 
   const data = await res.json();
-  console.log("--------------------------------")
-  console.log(JSON.stringify(data))
-  console.log("--------------------------------")
   return transformData(data);
 }
 
@@ -94,8 +87,6 @@ export default async function ActivitiesFetcher({
     <div className="small:mx-12">
       <div className="grid grid-cols-1 lg:mb-16 pb-12">
         {articles.data.map((article) => (
-
-          
             <ActivityCard
               key={article.Slug}
               title={article.Title}
@@ -104,12 +95,9 @@ export default async function ActivitiesFetcher({
               completed={article.Completed ?? false}              
               slug={article.Slug}
               type={article.Category}
-
             />
-
         ))}
       </div>
     </div>
   );
-
 }

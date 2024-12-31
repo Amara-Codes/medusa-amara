@@ -118,7 +118,7 @@ let slug: string = "";
     }
 
     return {
-        title: "News and Insights - " + article?.Title || 'News and Insights',
+        title: "Brewery in Siem Reap - Amara Beer Lab | News and Insights - " + article?.Title || 'News and Insights',
         description: article?.Summary || 'Stay informed with the latest news from our brewery in Siem Reap, Cambodia. Explore stories about craft beers, sustainability, community initiatives, and the rich local culture we celebrate in our tap room.',
     };
 }

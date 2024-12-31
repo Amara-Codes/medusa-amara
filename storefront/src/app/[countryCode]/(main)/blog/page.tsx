@@ -1,8 +1,8 @@
 import { Metadata } from "next";
-import ArticlesList from "@modules/common/components/articles-fetcher";
+import ArticlesFetcher from "@modules/common/components/articles-fetcher";
 import CTABlock from "@modules/common/components/blocks/cta-block";
 export const metadata: Metadata = {
-  title: "Blog and Stories",
+  title: "Brewery in Siem Reap - Amara Beer Lab | Blog and Stories",
   description: "Discover the social initiatives of our brewery, from community engagement to sustainability projects.",
 }
 
@@ -20,7 +20,7 @@ export default function BlogPage() {
             <p className="text-koiYellow text-2xl">Welcome to our blog, a vibrant tapestry of stories, insights, and reflections that go beyond the brewery walls. Here, we share the pulse of everyday life, unravel the art and science of brewing, and explore the rich culture and hidden gems of Siem Reap. From heartfelt narratives about our community to practical tips, event highlights, and deep dives into the world of craft beer, this space is where creativity flows freely. Dive into a mosaic of diverse content that celebrates the connections, flavors, and moments that inspire us every day.</p>
           </div>
         </div>
-        <ArticlesList articleCategory="blog" />
+        <ArticlesFetcher articleCategory="blog" />
 
         <div className="small:mx-12">
           <CTABlock
@@ -36,7 +36,7 @@ export default function BlogPage() {
             haveButton={true}
             buttonLink="/news"
             buttonText="Explore latest Updates"
-            buttonCss="block text-center my-8 font-bold"
+            buttonCss="block text-center my-8 font-bold bg-koiWhite text-koiOrange hover:bg-koiOrange hover:text-koiWhite"
           />
         </div>
       </div>

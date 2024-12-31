@@ -34,10 +34,13 @@ const CTABlock = ({
 }: ctaBlockProps) => {
   return (
     <div
-      className={clx(
-        "relative bg-cover bg-bottom grid gap-4 md:grid-cols-2 cta-block",
-        className
-      )}
+    className={clx(
+      "relative bg-cover bg-bottom grid gap-4 cta-block",
+      {
+        "md:grid-cols-2": direction !== "center",
+      },
+      className
+    )}
       style={{ backgroundImage: `url(${backgroundImgUrl})` }}
     >
       <div

@@ -5,13 +5,24 @@
 3. pagina brewery layout - prernde lista attivita da strapi - FATTO ora creare tutti i componenti
 11. contenuti editoriali fighi etc
 5. mostra immagini - iniza con lo stile di tutto il sito 
+13. ripassa tutta la grafica 
 -------------------------------
+
+PDP levocita rtazione, non seguire il mouse
+
+griglia plp mobile
+
+thumbnail prodotto
+
+carousel
+
+omogeneizza strutture, interfacce, nomi etc 
 
 
 
 4. invio email + pagine request info masnda mial a me. recaptcha sul form
 10. effetti 3d, three.js, gsap etc
-13. ripassa tutta la grafica 
+
 
 WAVE 2 
 6. controlla stile my account e checkout

@@ -121,7 +121,7 @@ export async function generateMetadata(): Promise<Metadata> {
     }
 
     return {
-        title: article ? "Blog and Stories - " + article.Title : 'Blog and Stories',
+        title: article ? "Brewery in Siem Reap - Amara Beer Lab | Blog and Stories - " + article.Title : 'Blog and Stories',
         description: article?.Summary || 'Dive into our blog to uncover stories from our brewery in Siem Reap, Cambodia. Explore craft beer culture, sustainable brewing practices, and reflections on community and local traditions.',
     };
 }

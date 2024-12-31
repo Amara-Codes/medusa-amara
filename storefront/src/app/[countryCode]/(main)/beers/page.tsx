@@ -2,7 +2,7 @@ import { Metadata } from "next"
 import BeersTemplate from "@modules/beers/templates"
 
 export const metadata: Metadata = {
-  title: "Beers",
+  title: "Brewery in Siem Reap - Amara Beer Lab | Our Beers",
   description: "Explore all of our products",
 }
 

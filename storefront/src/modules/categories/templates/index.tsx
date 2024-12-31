@@ -33,57 +33,36 @@ export default function CategoryTemplate({
       className="flex flex-col small:flex-row small:items-start py-6 content-container"
       data-testid="category-container"
     >
-            {process.env.AMARA_ECOM_ACTIVATED && (
+      {process.env.AMARA_ECOM_ACTIVATED && (
 
 
-      <RefinementList sortBy={sort} data-testid="sort-by-container" />
-)}
+        <RefinementList sortBy={sort} data-testid="sort-by-container" />
+      )}
       <div className="w-full">
-        <div className="flex flex-row mb-8 text-2xl-semi gap-4">
-          {parents &&
-            parents.map((parent) => (
-              <span key={parent.id} className="text-ui-fg-subtle">
-                <LocalizedClientLink
-                  className="mr-4 hover:text-black"
-                  href={`/categories/${parent.handle}`}
-                  data-testid="sort-by-link"
-                >
-                  {parent.name}
-                </LocalizedClientLink>
-                /
-              </span>
-            ))}
-          <h1 className="mb-8 font-extrabold text-4xl text-center text-koiRed small:text-8xl small:text-start"  data-testid="category-page-title">{category.name}</h1>
-        </div>
-        {category.description && (
-          <div className="text-justify mb-16">
-            <p className="text-koiYellow text-2xl">
-            {category.description}
-            </p>
+        <div className="mb-8 small:mx-12">
 
-          </div>
-        )}
-        {category.category_children && (
-          <div className="mb-8 text-base-large">
-            <ul className="grid grid-cols-1 gap-2">
-              {category.category_children?.map((c) => (
-                <li key={c.id}>
-                  <InteractiveLink href={`/categories/${c.handle}`}>
-                    {c.name}
-                  </InteractiveLink>
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
-        <Suspense fallback={<SkeletonProductGrid />}>
-          <PaginatedProducts
-            sortBy={sort}
-            page={pageNumber}
-            categoryId={category.id}
-            countryCode={countryCode}
-          />
-        </Suspense>
+          <h1 className="mb-8 font-extrabold text-4xl text-center text-koiRed small:text-8xl small:text-start" data-testid="category-page-title">{category.name}</h1>
+          {category.description && (
+            <div className="text-justify mb-16">
+              <p className="text-koiYellow text-2xl">
+                {category.description}
+              </p>
+
+            </div>
+          )}
+        </div>
+
+        <div className="small:mx-12">
+
+          <Suspense fallback={<SkeletonProductGrid />}>
+            <PaginatedProducts
+              sortBy={sort}
+              page={pageNumber}
+              categoryId={category.id}
+              countryCode={countryCode}
+            />
+          </Suspense>
+        </div>
       </div>
     </div>
   )

@@ -7,7 +7,7 @@ import { getRegion } from "@lib/data/regions"
 import CTABlock from "@modules/common/components/blocks/cta-block"
 
 export const metadata: Metadata = {
-  title: "Amara Beer Lab - Craft Brewery in Siem Reap | Sustainability & Community Impact",
+  title: "Brewery in Siem Reap - Amara Beer Lab | Craft Beers, Sustainability and Community Impact",
   description:
     "Discover Amara Beer Lab, a craft brewery based in Siem Reap, Cambodia, dedicated to sustainability and supporting local communities. With high-quality beers crafted using technical excellence and modern methods to offer carefully designed, contemporary flavors, Amara Beer Lab blends authentic taste with social responsibility.",
 }

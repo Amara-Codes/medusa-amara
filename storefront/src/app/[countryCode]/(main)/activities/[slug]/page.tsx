@@ -132,7 +132,7 @@ export async function generateMetadata(): Promise<Metadata> {
     }
 
     return {
-        title: article ? "Activities: Engage & Explore - " + article.Title : 'Activities: Engage & Explore',
+        title: article ? "Brewery in Siem Reap - Amara Beer Lab | Activities: Engage & Explore - " + article.Title : 'Brewery in Siem Reap - Amara Beer Lab | Activities: Engage & Explore',
         description: article?.Summary || 'Discover exciting activities at our brewery in Siem Reap, Cambodia. From community events and cultural workshops to exploring our sustainable craft beer tap room, there’s always something to enjoy.',
     };
 }
@@ -188,14 +188,14 @@ const ActivitiesPage = async () => {
                                 })}
                         </section>
 
-<section>
-{article.ArticleTags.length &&
+                        <section>
+                            {article.ArticleTags.length &&
 
-<div>
-   <RelatedArticlesFetcher tags={article.ArticleTags} currentArticleId={article.Id}/>
-</div>
-}
-</section>
+                                <div>
+                                    <RelatedArticlesFetcher tags={article.ArticleTags} currentArticleId={article.Id} />
+                                </div>
+                            }
+                        </section>
                     </div>
                 </div>
             ) : (

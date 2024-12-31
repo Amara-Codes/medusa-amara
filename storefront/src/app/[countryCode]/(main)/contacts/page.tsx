@@ -1,9 +1,8 @@
 import { Metadata } from "next";
-import Image from "next/image";
 import { Heading, Button } from "@medusajs/ui";
 import Link from "next/link";
 export const metadata: Metadata = {
-    title: "Contacts",
+    title: "Brewery in Siem Reap - Amara Beer Lab | Contacts",
     description: "Get in touch with Amara Beer Lab! Find our social media links, send your inquiries, or visit us in Siem Reap. Follow our journey and stay updated—great beer and exciting stories await!",
 }
 

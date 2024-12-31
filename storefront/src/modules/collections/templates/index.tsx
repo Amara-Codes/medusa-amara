@@ -24,20 +24,23 @@ export default function CollectionTemplate({
     <div className="flex flex-col small:flex-row small:items-start py-6 content-container">
       {process.env.AMARA_ECOM_ACTIVATED && (
 
-      <RefinementList sortBy={sort} />
+        <RefinementList sortBy={sort} />
       )}
       <div className="w-full">
-        <div className="mb-8 text-2xl-semi">
-          <h1>{collection.title}</h1>
+        <div className="mb-8 small:mx-12">
+          <h1 className="mb-8 font-extrabold text-4xl text-center text-koiRed small:text-8xl small:text-start" data-testid="activities-page-title">{collection.title}</h1>
         </div>
-        <Suspense fallback={<SkeletonProductGrid />}>
-          <PaginatedProducts
-            sortBy={sort}
-            page={pageNumber}
-            collectionId={collection.id}
-            countryCode={countryCode}
-          />
-        </Suspense>
+        <div className="small:mx-12">
+
+          <Suspense fallback={<SkeletonProductGrid />}>
+            <PaginatedProducts
+              sortBy={sort}
+              page={pageNumber}
+              collectionId={collection.id}
+              countryCode={countryCode}
+            />
+          </Suspense>
+        </div>
       </div>
     </div>
   )

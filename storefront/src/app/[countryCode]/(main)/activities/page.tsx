@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import ActivitiesFetcher from "@modules/common/components/activities-fetcher";
 import CTABlock from "@modules/common/components/blocks/cta-block";
 export const metadata: Metadata = {
-  title: "Activities: Engage & Explore",
+  title: "Brewery in Siem Reap - Amara Beer Lab | Activities: Engage & Explore",
   description: "Discover the social initiatives of our brewery, from community engagement to sustainability projects.",
 }
 
