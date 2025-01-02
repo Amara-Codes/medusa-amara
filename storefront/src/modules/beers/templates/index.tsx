@@ -1,9 +1,7 @@
 import { Suspense } from "react"
-
 import SkeletonProductGrid from "@modules/skeletons/templates/skeleton-product-grid"
-import CategoryFilter from "../filters/categories"
-import CollectionFilter from "../filters/collections"
 import PaginatedProducts from "./paginated-products"
+import Filters from "../filters"
 
 const StoreTemplate = ({
   page,
@@ -24,8 +22,7 @@ const StoreTemplate = ({
 
         <div className="flex small:mx-12 flex-wrap small:flex-nowrap">
           <div className="w-full mb-16 small:w-auto small:mb-none">
-            <CategoryFilter  />
-            <CollectionFilter />
+            <Filters /> 
           </div>
          
             <Suspense fallback={<SkeletonProductGrid />}>

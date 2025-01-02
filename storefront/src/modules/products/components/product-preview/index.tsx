@@ -1,15 +1,12 @@
 import { Text } from "@medusajs/ui"
 
-import { getProductPrice } from "@lib/util/get-product-price"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 import Thumbnail from "../thumbnail"
-import PreviewPrice from "./price"
 import { getProductsById } from "@lib/data/products"
 import { HttpTypes } from "@medusajs/types"
 
 export default async function ProductPreview({
   product,
-  isFeatured,
   region,
 }: {
   product: HttpTypes.StoreProduct
@@ -25,13 +22,10 @@ export default async function ProductPreview({
     return null
   }
 
-  const { cheapestPrice } = getProductPrice({
-    product: pricedProduct,
-  })
 
   return (
     <LocalizedClientLink href={`/products/${product.handle}`} className="group">
-      <div className="relative" data-testid="product-wrapper">
+      <div className="bg-black/30 rounded-lg" data-testid="product-wrapper">
         <Thumbnail
           thumbnail={product.thumbnail}
           images={product.images}
@@ -40,13 +34,9 @@ export default async function ProductPreview({
           objectFit="contain"
         />
 
-        {/* Overlay e testo */}
-        <div className="absolute bottom-0 left-0 w-full backdrop-blur-sm bg-black/30 p-4">
-          <Text className="text-koiOrange text-2xl sm:text-6xl font-bold" data-testid="product-title">
+        <div className="p-4">
+          <Text className="text-koiOrange text-2xl sm:text-3xl font-bold text-nowrap" data-testid="product-title">
             {product.title}
-          </Text>
-          <Text className="text-koiYellow truncate max-w-80">
-            {product.description}
           </Text>
         </div>
 

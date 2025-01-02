@@ -5,6 +5,7 @@ import RefinementList from "@modules/store/components/refinement-list"
 import { SortOptions } from "@modules/store/components/refinement-list/sort-products"
 import PaginatedProducts from "@modules/store/templates/paginated-products"
 import { HttpTypes } from "@medusajs/types"
+import CTABlock from "@modules/common/components/blocks/cta-block"
 
 export default function CollectionTemplate({
   sortBy,
@@ -41,6 +42,24 @@ export default function CollectionTemplate({
             />
           </Suspense>
         </div>
+
+        <div className="my-16 small:my-32" data-testid="cta-block-container">
+        <CTABlock
+        className="min-h-[400px] lg:mx-12 lg:my-8 bg-no-repeat bg-bottom mb-16 "
+        wrapperCss="backdrop-saturate-200 backdrop-blur-sm small:items-center"
+        direction="center"
+        title="Explore our Brews"
+        titleSize="h3"
+        titleCss="text-6xl text-koiWhite mb-8 lg:mg-0 px-4 small:text-center"
+        paragraph={"Explore our lineup of handcrafted ales brewed with passion, innovation, and a touch of tradition"}
+        parCss="text-justify text-2xl text-ui-fg-base px-4"
+        backgroundImgUrl="/images/craft-beer.jpg"
+        haveButton={true}
+        buttonLink="/beers"
+        buttonText="Our beers"
+        buttonCss="block text-center mt-8 bg-koiRed font-bold"
+      />
+      </div>
       </div>
     </div>
   )

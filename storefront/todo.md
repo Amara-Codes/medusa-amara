@@ -6,19 +6,21 @@
 11. contenuti editoriali fighi etc
 5. mostra immagini - iniza con lo stile di tutto il sito 
 13. ripassa tutta la grafica 
+14. PDP levocita rtazione, non seguire il mouse
+15. griglia plp mobile
+16. thumbnail prodotto
 -------------------------------
 
-PDP levocita rtazione, non seguire il mouse
 
-griglia plp mobile
 
-thumbnail prodotto
 
 carousel
 
 omogeneizza strutture, interfacce, nomi etc 
 
+cta su categories e collection explore all our beers
 
+read more read less su categories mobile 
 
 4. invio email + pagine request info masnda mial a me. recaptcha sul form
 10. effetti 3d, three.js, gsap etc

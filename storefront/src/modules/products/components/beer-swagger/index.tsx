@@ -4,7 +4,7 @@ import { useGLTF, useTexture } from "@react-three/drei";
 import * as THREE from "three";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Float } from "@react-three/drei";
-import { useRef, useState, useEffect } from "react";
+import { useRef, useEffect } from "react";
 import { Group } from "three";
 import { GLTF } from "three-stdlib";
 
@@ -30,30 +30,10 @@ export type BeerSwaggerProps = {
   scale?: number;
 };
 
-const DEFAULT_ROTATION_SPEED = 0.005;
+const DEFAULT_ROTATION_SPEED = 0.015;
 const DEFAULT_DAMPING = 0.0002;
 
 export function BeerSwagger({ urlImg, scale = 10 }: BeerSwaggerProps) {
-  const [isHovered, setIsHovered] = useState(false);
-  const [isPaused, setIsPaused] = useState(false);
-  const isTouchDevice = useRef(false);
-
-  useEffect(() => {
-    // Detect if the device is touchscreen
-    isTouchDevice.current = window.matchMedia("(pointer: coarse)").matches;
-  }, []);
-
-  const handleMouseEnter = () => {
-    if (!isTouchDevice.current) setIsHovered(true);
-  };
-
-  const handleMouseLeave = () => {
-    if (!isTouchDevice.current) setIsHovered(false);
-  };
-
-  const handleTouch = () => {
-    if (isTouchDevice.current) setIsPaused((prev) => !prev);
-  };
 
   return (
     <div
@@ -78,9 +58,6 @@ export function BeerSwagger({ urlImg, scale = 10 }: BeerSwaggerProps) {
         camera={{
           fov: 30,
         }}
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-        onTouchStart={handleTouch}
       >
         <ambientLight intensity={.5} color={"#ffffff"} />
         <directionalLight position={[8, -8, 8]} intensity={2.5} />
@@ -88,8 +65,6 @@ export function BeerSwagger({ urlImg, scale = 10 }: BeerSwaggerProps) {
         <Scene
           urlImg={urlImg}
           scale={scale}
-          isHovered={isHovered}
-          isPaused={isPaused}
         />
       </Canvas>
     </div>
@@ -99,11 +74,9 @@ export function BeerSwagger({ urlImg, scale = 10 }: BeerSwaggerProps) {
 type SceneProps = {
   urlImg: string;
   scale: number;
-  isHovered: boolean;
-  isPaused: boolean;
 };
 
-function Scene({ urlImg, scale, isHovered, isPaused }: SceneProps) {
+function Scene({ urlImg, scale }: SceneProps) {
   const { scene, materials } = useGLTF("/3d/Beer-Can.gltf") as GLTFResult;
   const label = useTexture(
     urlImg ?? "/images/beer-swagger/label-placeholder.png"
@@ -123,18 +96,8 @@ function Scene({ urlImg, scale, isHovered, isPaused }: SceneProps) {
 
   const groupRef = useRef<Group>(null);
   const rotationSpeed = useRef(DEFAULT_ROTATION_SPEED);
-  const [isFollowingMouse, setIsFollowingMouse] = useState(false);
-  const [initialMousePosition, setInitialMousePosition] = useState<{
-    x: number;
-    y: number;
-  } | null>(null);
-  const [initialRotation, setInitialRotation] = useState<{
-    x: number;
-    y: number;
-  } | null>(null);
 
-  // Add a target rotation to smoothly interpolate towards
-  const targetRotation = useRef<{ x: number; y: number }>({ x: 0, y: 0 });
+
 
   // Update the 'Can Label' material with the new texture
   useEffect(() => {
@@ -145,78 +108,22 @@ function Scene({ urlImg, scale, isHovered, isPaused }: SceneProps) {
   }, [materials, label]);
 
   // Handle rotation and interaction
-  useEffect(() => {
-    const handleMouseMove = (event: MouseEvent) => {
-      if (initialMousePosition && initialRotation) {
-        const deltaX =
-          (event.clientX - initialMousePosition.x) / window.innerWidth;
-        const deltaY =
-          (event.clientY - initialMousePosition.y) / window.innerHeight;
-
-        // Update target rotation instead of directly setting the rotation
-        targetRotation.current.x =
-          initialRotation.x + deltaY * Math.PI * 0.2; // Reduced sensitivity
-        targetRotation.current.y =
-          initialRotation.y + deltaX * Math.PI * 0.8; // Reduced sensitivity
-      }
-    };
-
-    if (isFollowingMouse) {
-      window.addEventListener("mousemove", handleMouseMove);
-    }
-
-    return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, [isFollowingMouse, initialMousePosition, initialRotation]);
+ 
 
   useFrame(() => {
     if (groupRef.current) {
-      if (isPaused) {
-        // Do not change rotation if paused
-        return;
-      }
-
-      if (isHovered) {
-        if (rotationSpeed.current > 0) {
-          rotationSpeed.current = 0;
-        } else if (!isFollowingMouse) {
-          setInitialRotation({
-            x: groupRef.current.rotation.x,
-            y: groupRef.current.rotation.y,
-          });
-          setInitialMousePosition({
-            x: window.innerWidth / 2,
-            y: window.innerHeight / 2,
-          });
-          targetRotation.current.x = groupRef.current.rotation.x;
-          targetRotation.current.y = groupRef.current.rotation.y;
-          setIsFollowingMouse(true);
-        }
-
-        // Smoothly interpolate towards the target rotation
-        const damping = 0.1; // Adjust damping factor for smoothness
-        groupRef.current.rotation.x +=
-          (targetRotation.current.x - groupRef.current.rotation.x) * damping;
-        groupRef.current.rotation.y +=
-          (targetRotation.current.y - groupRef.current.rotation.y) * damping;
-      } else {
-        if (isFollowingMouse) {
-          setIsFollowingMouse(false);
-          setInitialRotation(null);
-          setInitialMousePosition(null);
-        }
         if (rotationSpeed.current < DEFAULT_ROTATION_SPEED) {
           rotationSpeed.current += DEFAULT_DAMPING;
         }
         groupRef.current.rotation.y += rotationSpeed.current;
       }
-    }
   });
 
   return (
     <Float
-      speed={2.5}
-      rotationIntensity={2}
-      floatIntensity={1}
+      speed={2}
+      rotationIntensity={1.5}
+      floatIntensity={.5}
       floatingRange={[-0.05, 0.05]}
     >
       <group
