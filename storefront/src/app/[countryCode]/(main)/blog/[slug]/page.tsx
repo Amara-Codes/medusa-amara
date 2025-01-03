@@ -37,9 +37,21 @@ function transformData(json: any): TransformedDataItem {
 
         if (isComponentType(ComponentRaw)) {
             const imageName = componentImageMap[ComponentRaw],
-                componentImg = contentItem[imageName]?.data?.attributes?.formats?.medium?.url;
+            componentImg = imageName === 'paragraphImg' 
+            ? contentItem[imageName]?.data?.attributes?.formats?.small?.url
+            : contentItem[imageName]?.data?.attributes?.formats?.medium?.url;
 
             contentComponentItem[imageName] = typeof (componentImg) === 'string' ? componentImg : ""
+        } else {
+
+            if (ComponentRaw === "carousel") {
+                const images: any[] = [];
+                contentItem.CarouselImgs.data.forEach((img: { attributes: { formats: { small: { url: any; }; }; }; }) => {
+                    images.push(img.attributes.formats.small.url)
+                });
+                contentComponentItem["CarouselImgs"] = images;
+            }
+
         }
         return { ...contentComponentItem, Component };
     });
@@ -56,7 +68,6 @@ function transformData(json: any): TransformedDataItem {
 }
 
 async function getArticleById(slug: string) {
-    console.log(slug)
     const baseUrl = process.env.AMARA_STRAPI_URL ?? "http://localhost:1337";
     const path = `/api/articles/`;
     const url = new URL(path, baseUrl);
@@ -81,6 +92,9 @@ async function getArticleById(slug: string) {
                     fields: ["url", "formats"],
                 },
                 CtaButton: {
+                    fields: "*"
+                },
+                CarouselImgs: {
                     fields: "*"
                 }
             }
@@ -130,6 +144,7 @@ const BlogPage = async () => {
     let slug: string = "";
     const headerList = headers();
     const path = headerList.get("x-current-path");
+
     if (path) {
         const pathnameFields = path.split('/');
         if (pathnameFields.length) {

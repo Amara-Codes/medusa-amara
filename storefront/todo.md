@@ -9,16 +9,13 @@
 14. PDP levocita rtazione, non seguire il mouse
 15. griglia plp mobile
 16. thumbnail prodotto
+17. cta su categories e collection explore all our beers
 -------------------------------
-
-
 
 
 carousel
 
 omogeneizza strutture, interfacce, nomi etc 
-
-cta su categories e collection explore all our beers
 
 read more read less su categories mobile 
 
