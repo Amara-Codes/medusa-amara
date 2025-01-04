@@ -30,7 +30,7 @@ export default function Contacts() {
                 >
                     <div
                         className=
-                        "col-span-1 flex flex-col items-center text-center min-h-[400px] lg:mx-12 lg:my-8 bg-bottom"
+                        "col-span-1 flex flex-col items-center text-center lg:mx-12 lg:my-8 bg-bottom"
                     >
                         <Heading
                             className="text-center text-6xl text-ui-fg-base mb-16 lg:mg-0"
@@ -50,7 +50,7 @@ export default function Contacts() {
                         </Link>
 
                     </div>
-                    <div className="col-span-1 flex flex-col items-center text-center min-h-[400px] lg:mx-12 lg:my-8 bg-bottom order-2 mt-16">
+                    <div className="col-span-1 flex flex-col items-center text-center  lg:mx-12 lg:my-8 bg-bottom order-2 mt-16">
                         <Heading
                             className="text-center text-6xl mb-16 lg:mg-0 text-koiRed"
                             level="h2"
@@ -58,7 +58,7 @@ export default function Contacts() {
                             Our socials
                         </Heading>
 
-                        <div className="grid grid-cols-1 h-full">
+                        <div className="grid grid-cols-3 gap-x-6 small:grid-cols-1 small:h-full">
                             <div className="social-wrapper">
 
                                 <Link href="https://www.instagram.com/amarabeerlab/" rel="noopener noreferrer" target="_blank" className="text-koiOrange">

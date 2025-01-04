@@ -4,8 +4,6 @@ import componentMapping from "@modules/common/components/article/componentMappin
 import BackLink from "@modules/common/components/back-link";
 import { Metadata } from 'next';
 
-import RelatedArticlesFetcher from "@modules/common/components/related-articles-fetcher";
-
 //Parte che serve a mappare i nomi delle immagini nei componenti
 const componentImageMap = {
     hero: 'HeroBgImg',
@@ -27,7 +25,6 @@ type TransformedDataItem = {
     Summary: string | null;
     ThumbnailUrl?: string;
     Content?: any[];
-    ArticleTags?: any[]
 };
 
 function transformData(json: any): TransformedDataItem {
@@ -40,21 +37,25 @@ function transformData(json: any): TransformedDataItem {
 
         if (isComponentType(ComponentRaw)) {
             const imageName = componentImageMap[ComponentRaw],
-                componentImg = contentItem[imageName]?.data?.attributes?.formats?.medium?.url;
+            componentImg = imageName === 'paragraphImg' 
+            ? contentItem[imageName]?.data?.attributes?.formats?.small?.url
+            : contentItem[imageName]?.data?.attributes?.formats?.medium?.url;
 
             contentComponentItem[imageName] = typeof (componentImg) === 'string' ? componentImg : ""
+        } else {
+
+            if (ComponentRaw === "carousel") {
+                const images: any[] = [];
+                contentItem.CarouselImgs.data.forEach((img: { attributes: { formats: { small: { url: any; }; }; }; }) => {
+                    images.push(img.attributes.formats.small.url)
+                });
+                contentComponentItem["CarouselImgs"] = images;
+            }
+
         }
         return { ...contentComponentItem, Component };
     });
 
-    const tags = attributes.tags;
-    const articleFetchedTags: any[] = [];
-
-    if (tags?.data?.length) {
-        tags.data.forEach((tag: { id: any; }) => {
-            articleFetchedTags.push(tag.id)
-        });
-    }
 
     return {
         Title: attributes.Title,
@@ -63,12 +64,10 @@ function transformData(json: any): TransformedDataItem {
         Summary: attributes.Summary,
         Content,
         Id: item.id,
-        ArticleTags: articleFetchedTags
     };
 }
 
 async function getArticleById(slug: string) {
-    console.log(slug)
     const baseUrl = process.env.AMARA_STRAPI_URL ?? "http://localhost:1337";
     const path = `/api/articles/`;
     const url = new URL(path, baseUrl);
@@ -92,11 +91,15 @@ async function getArticleById(slug: string) {
                 CtaBgImg: {
                     fields: ["url", "formats"],
                 },
-
+                CtaButton: {
+                    fields: "*"
+                },
+                CarouselImgs: {
+                    fields: "*"
+                }
             }
 
-        },
-        tags: { fields: "*" }
+        }
     };
 
     url.search = qs.stringify(query);
@@ -109,7 +112,6 @@ async function getArticleById(slug: string) {
     const data = await res.json();
     return transformData(data);
 }
-
 
 export async function generateMetadata(): Promise<Metadata> {
     let slug: string = "";

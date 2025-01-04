@@ -15,6 +15,7 @@ type AccordionItemProps = AccordionPrimitive.AccordionItemProps & {
   active?: boolean
   triggerable?: boolean
   children: React.ReactNode
+  naked?: boolean
 }
 
 type AccordionProps =
@@ -42,6 +43,7 @@ const Item: React.FC<AccordionItemProps> = ({
   customTrigger = undefined,
   forceMountContent = undefined,
   triggerable,
+  naked = false,
   ...props
 }) => {
   return (
@@ -49,7 +51,7 @@ const Item: React.FC<AccordionItemProps> = ({
     <AccordionPrimitive.Item
       {...props}
       className={clx(
-        "border-grey-20 group border-t last:mb-0 last:border-b",
+        !naked && "border-grey-20 group border-t last:mb-0 last:border-b", // Apply borders only if `naked` is false
         "py-3",
         className
       )}
@@ -59,7 +61,7 @@ const Item: React.FC<AccordionItemProps> = ({
         <div className="flex flex-col">
           <div className="flex w-full items-center justify-between">
             <div className="flex items-center gap-4">
-              <Text className="text-ui-fg-base font-bold text-lg font-dummy">{title}</Text>
+              <Text className="font-bold text-lg font-dummy">{title}</Text>
             </div>
             {/* x@ts-expect-error */}
             <AccordionPrimitive.Trigger>
@@ -88,6 +90,7 @@ const Item: React.FC<AccordionItemProps> = ({
     </AccordionPrimitive.Item>
   )
 }
+
 
 Accordion.Item = Item
 

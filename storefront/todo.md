@@ -10,18 +10,16 @@
 15. griglia plp mobile
 16. thumbnail prodotto
 17. cta su categories e collection explore all our beers
+18. carousel
+19. read more read less su categories mobile 
 -------------------------------
-
-
-carousel
 
 omogeneizza strutture, interfacce, nomi etc 
 
-read more read less su categories mobile 
+
 
 4. invio email + pagine request info masnda mial a me. recaptcha sul form
 10. effetti 3d, three.js, gsap etc
-
 
 WAVE 2 
 6. controlla stile my account e checkout
