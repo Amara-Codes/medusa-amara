@@ -46,7 +46,7 @@ export default function CollectionTemplate({
         <div className="my-16 small:my-32" data-testid="cta-block-container">
         <CTABlock
         className="min-h-[400px] lg:mx-12 lg:my-8 bg-no-repeat bg-bottom mb-16 "
-        wrapperCss="backdrop-saturate-200 backdrop-blur-sm small:items-center"
+        wrapperCss="backdrop-saturate-[.5] backdrop-blur-md backdrop-contrast-200 small:items-center"
         direction="center"
         title="Explore our Brews"
         titleSize="h3"

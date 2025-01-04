@@ -20,9 +20,9 @@ type AccordionItemProps = AccordionPrimitive.AccordionItemProps & {
 
 type AccordionProps =
   | (AccordionPrimitive.AccordionSingleProps &
-      React.RefAttributes<HTMLDivElement>)
+    React.RefAttributes<HTMLDivElement>)
   | (AccordionPrimitive.AccordionMultipleProps &
-      React.RefAttributes<HTMLDivElement>)
+    React.RefAttributes<HTMLDivElement>)
 
 const Accordion: React.FC<AccordionProps> & {
   Item: React.FC<AccordionItemProps>
@@ -61,7 +61,14 @@ const Item: React.FC<AccordionItemProps> = ({
         <div className="flex flex-col">
           <div className="flex w-full items-center justify-between">
             <div className="flex items-center gap-4">
-              <Text className="font-bold text-lg font-dummy">{title}</Text>
+              <Text
+                className={clx(
+                  "font-bold text-lg font-dummy",
+                  !naked && "text-koiWhite" // Aggiunge text-koiWhite solo se naked è falso
+                )}
+              >
+                {title}
+              </Text>
             </div>
             {/* x@ts-expect-error */}
             <AccordionPrimitive.Trigger>

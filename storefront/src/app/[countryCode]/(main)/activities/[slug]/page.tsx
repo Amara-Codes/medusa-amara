@@ -193,7 +193,7 @@ const ActivitiesPage = async () => {
                         </section>
 
                         <section>
-                            {article.ArticleTags.length &&
+                            {article.ArticleTags?.length &&
 
                                 <div>
                                     <RelatedArticlesFetcher tags={article.ArticleTags} currentArticleId={article.Id} />

@@ -133,12 +133,12 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({
       <CTABlock
             className="min-h-[400px] lg:my-8 bg-bottom bg-no-repeat rounded-lg"
             wrapperCss="bg-black/50"
-            direction="dx"
+            direction="center"
             title="Behind the Beers: Stories from Our Brewery"
             titleSize="h3"
-            titleCss="text-5xl mx-4 lg:mg-0 font-bold text-koiWhite"
+            titleCss="text-5xl mt-8 small:mt-0 mx-4 lg:mg-0 font-bold text-koiWhite"
             paragraph={'Dive into the world of craft beers with our Blog! Discover brewing tips, behind-the-scenes stories from our Siem Reap brewery, and insights into Cambodia’s vibrant beer culture. Stay inspired and connected with everything Amara Beer Lab has to offer.'}
-            parCss="text-justify mx-4 py-6 px-8 text-ui-fg-base"
+            parCss="text-justify mx-4 py-6 small:px-24 text-ui-fg-base"
             backgroundImgUrl="/images/craft-beer.jpg"
             haveButton={true}
             buttonLink="/blog"
