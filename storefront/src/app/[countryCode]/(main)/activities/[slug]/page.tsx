@@ -3,6 +3,8 @@ import { headers } from "next/headers";
 import componentMapping from "@modules/common/components/article/componentMapping";
 import BackLink from "@modules/common/components/back-link";
 import { Metadata } from 'next';
+import RelatedArticlesFetcher from "@modules/common/components/related-articles-fetcher";
+
 
 //Parte che serve a mappare i nomi delle immagini nei componenti
 const componentImageMap = {
