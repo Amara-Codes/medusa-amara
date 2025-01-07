@@ -29,7 +29,7 @@ export default function CollectionTemplate({
       )}
       <div className="w-full">
         <div className="mb-8 small:mx-12">
-          <h1 className="mb-8 font-extrabold text-4xl text-center text-koiRed small:text-8xl small:text-start" data-testid="activities-page-title">{collection.title}</h1>
+          <h1 className="mb-8 font-extrabold text-4xl text-center text-koiRed small:text-6xl small:text-start font-fatboy" data-testid="activities-page-title">{collection.title}</h1>
         </div>
         <div className="small:mx-12">
 
@@ -50,7 +50,7 @@ export default function CollectionTemplate({
         direction="center"
         title="Explore our Brews"
         titleSize="h3"
-        titleCss="text-6xl text-koiWhite mb-8 lg:mg-0 px-4 small:text-center"
+        titleCss="text-6xl text-koiWhite mb-8 lg:mg-0 px-4 small:text-center font-fatboy"
         paragraph={"Explore our lineup of handcrafted ales brewed with passion, innovation, and a touch of tradition"}
         parCss="text-justify text-2xl text-ui-fg-base px-4"
         backgroundImgUrl="/images/craft-beer.jpg"

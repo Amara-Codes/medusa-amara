@@ -59,7 +59,7 @@ export function BeerSwagger({ urlImg, scale = 10 }: BeerSwaggerProps) {
           fov: 30,
         }}
       >
-        <ambientLight intensity={.5} color={"#ffffff"} />
+        <ambientLight intensity={1} color={"#ffffff"} />
         <directionalLight position={[8, -8, 8]} intensity={2.5} />
         <directionalLight position={[-5, 5, 5]} intensity={3} />
         <Scene

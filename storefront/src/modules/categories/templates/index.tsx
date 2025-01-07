@@ -36,7 +36,7 @@ export default function CategoryTemplate({
     return (
       <div className="rounded-rounded group relative p-4 custom-trigger">
         <div className="h-5 w-5 group-radix-state-open:rotate-180">
-          {/* Ensure the SVG is part of the element affected by `group-radix-state-open` */}
+         
           <div className="absolute top-1/2 left-1/2 duration-300 svg-wrapper">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -67,7 +67,7 @@ export default function CategoryTemplate({
       <div className="w-full">
         <div className="mb-8 small:mx-12">
 
-          <h1 className="mb-8 font-extrabold text-4xl text-center text-koiRed small:text-8xl small:text-start" data-testid="category-page-title">{category.name}</h1>
+          <h1 className="mb-8 font-extrabold text-4xl text-center text-koiRed small:text-6xl small:text-start font-fatboy" data-testid="category-page-title">{category.name}</h1>
           {category.description && (
             <div className="text-justify mb-16">
               <div className="hidden small:block">
@@ -116,7 +116,7 @@ export default function CategoryTemplate({
             direction="center"
             title="Explore our Brews"
             titleSize="h3"
-            titleCss="text-6xl text-koiWhite mb-8 lg:mg-0 px-4 small:text-center"
+            titleCss="text-6xl text-koiWhite mb-8 lg:mg-0 px-4 small:text-center font-fatboy"
             paragraph={"Explore our lineup of handcrafted ales brewed with passion, innovation, and a touch of tradition"}
             parCss="text-justify text-2xl text-ui-fg-base px-4"
             backgroundImgUrl="/images/craft-beer.jpg"

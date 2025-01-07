@@ -7,6 +7,11 @@
   src: url("../../public/fonts/DummyDaze.ttf");
 }
 
+@font-face {
+  font-family: "FatBoy";
+  src: url("../../public/fonts/FatBoy.ttf");
+}
+
 @layer utilities {
   /* Chrome, Safari and Opera */
   .no-scrollbar::-webkit-scrollbar {

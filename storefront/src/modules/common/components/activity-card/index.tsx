@@ -50,7 +50,7 @@ const ActivityCard: React.FC<ActivityCardProps> = ({
               {caption && <p className="text-koiYellow font-light overflow-hidden text-ellipsis line-clamp-3">{caption}</p>}
               <div className="mt-8 flex w-full justify-end items-end hover:text-koiOrange transition duration-500">
                 <div className="flex items-center">
-                  <p className="pb-1 pe-2">Read more</p>
+                  <p className="pb-1 pe-2 font-fatboy mt-2">Read more</p>
                   <ThickChevron direction="right" size={16} />
                 </div>
               </div>

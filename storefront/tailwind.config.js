@@ -110,7 +110,8 @@ module.exports = {
           "Ubuntu",
           "sans-serif",
         ],
-        dummy: ["Dummy", "serif"]
+        dummy: ["Dummy", "serif"],
+        fatboy: ["FatBoy", "sans-serif"],
       },
       keyframes: {
         ring: {

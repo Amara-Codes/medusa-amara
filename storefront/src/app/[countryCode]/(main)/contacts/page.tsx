@@ -14,7 +14,7 @@ export default function Contacts() {
         >
             <div className="w-full">
                 <div className="mb-8 small:mx-12">
-                    <h1 className="mb-8 font-extrabold text-4xl text-center text-koiRed small:text-8xl" data-testid="contacts-page-title">Contacts</h1>
+                    <h1 className="mb-8 font-extrabold text-5xl text-center text-koiRed small:text-8xl font-fatboy" data-testid="contacts-page-title">Contacts</h1>
                     <div className="text-justify mb-16">
                         <p className="text-koiYellow text-2xl">We&apos;d love to hear from you! Whether you have a question, feedback, or just want to say hi, this is the place to reach out. Find all our social media links below to stay updated on the latest news, events, and creations at Amara Beer Lab.
 
@@ -26,14 +26,14 @@ export default function Contacts() {
 
 
                 <div
-                    className="relative bg-cover bg-bottom rounded-lg grid gap-4 md:grid-cols-2"
+                    className="relative bg-cover bg-bottom rounded-lg grid gap-4 small:grid-cols-2"
                 >
                     <div
                         className=
                         "col-span-1 flex flex-col items-center text-center lg:mx-12 lg:my-8 bg-bottom"
                     >
                         <Heading
-                            className="text-center text-6xl text-ui-fg-base mb-16 lg:mg-0"
+                            className="text-center text-4xl text-ui-fg-base mb-16 lg:mg-0 font-fatboy"
                             level="h2"
                         >
                             Find us
@@ -52,7 +52,7 @@ export default function Contacts() {
                     </div>
                     <div className="col-span-1 flex flex-col items-center text-center  lg:mx-12 lg:my-8 bg-bottom order-2 mt-16">
                         <Heading
-                            className="text-center text-6xl mb-16 lg:mg-0 text-koiRed"
+                            className="text-center text-4xl mb-16 lg:mg-0 text-koiRed font-fatboy"
                             level="h2"
                         >
                             Our socials

@@ -13,8 +13,8 @@ export default async function Footer() {
   return (
     <footer className="border-t bg-koiOrange w-full">
       <div className="content-container flex flex-col w-full">
-        <div className="flex flex-col gap-y-6 small:flex-row items-start gap-x-8 py-40">
-          <div>
+        <div className="flex flex-col gap-y-6 small:flex-row items-start small:items-end gap-x-8 pt-10 pb-6">
+          <div className="ps-2 small:ps-0">
             <LocalizedClientLink
               href="/"
               className="txt-compact-xlarge-plus text-ui-fg-base hover:text-ui-fg-base uppercase"
@@ -60,15 +60,15 @@ export default async function Footer() {
           </div>
           <div className="w-full mt-16 small:mt-0">
 
-            <div className="flex flex-col gap-y-2 lg:ps-64">
+            <div className="flex flex-col gap-y-2 lg:pe-16">
 
               <ul
                 className=
-                "grid grid-cols-1 gap-6 text-ui-fg-base text-small"
+                "grid grid-cols-2 gap-y-6 text-ui-fg-base text-small"
 
               >
 
-                <li className="text-ui-fg-base text-xl font-bold">
+                <li className="text-ui-fg-base text-xl ps-2 small:ps-0 font-bold text-start small:text-end">
                   <LocalizedClientLink
                     className="hover:text-koiRed transition duration-500"
                     href="/brewery"
@@ -76,7 +76,7 @@ export default async function Footer() {
                     Brewery
                   </LocalizedClientLink>
                 </li>
-                <li className="text-ui-fg-base text-xl font-bold">
+                <li className="text-ui-fg-base text-xl ps-2 small:ps-0 font-bold text-start small:text-end">
                   <LocalizedClientLink
                     className="hover:text-koiRed transition duration-500"
                     href="/beers"
@@ -84,7 +84,7 @@ export default async function Footer() {
                     Our Beers
                   </LocalizedClientLink>
                 </li>
-                <li className="text-ui-fg-base text-xl font-bold">
+                <li className="text-ui-fg-base text-xl ps-2 small:ps-0 font-bold text-start small:text-end">
                   <LocalizedClientLink
                     className="hover:text-koiRed transition duration-500"
                     href="/blog"
@@ -92,7 +92,7 @@ export default async function Footer() {
                     Blog
                   </LocalizedClientLink>
                 </li>
-                <li className="text-ui-fg-base text-xl font-bold">
+                <li className="text-ui-fg-base text-xl ps-2 small:ps-0 font-bold text-start small:text-end">
                   <LocalizedClientLink
                     className="hover:text-koiRed transition duration-500"
                     href="/activities"
@@ -100,7 +100,23 @@ export default async function Footer() {
                     Activities
                   </LocalizedClientLink>
                 </li>
-                <li className="text-ui-fg-base text-xl font-bold">
+                <li className="text-ui-fg-base text-xl ps-2 small:ps-0 font-bold text-start small:text-end">
+                  <LocalizedClientLink
+                    className="hover:text-koiRed transition duration-500"
+                    href="/categories/khmer-ingredients-beers"
+                  >
+                    Khmer Beers
+                  </LocalizedClientLink>
+                </li>
+                <li className="text-ui-fg-base text-xl ps-2 small:ps-0 font-bold text-start small:text-end">
+                  <LocalizedClientLink
+                    className="hover:text-koiRed transition duration-500"
+                    href="/collections/first-drop"
+                  >
+                    First Drop
+                  </LocalizedClientLink>
+                </li>
+                <li className="text-ui-fg-base text-xl ps-2 small:ps-0 font-bold text-start small:text-end">
                   <LocalizedClientLink
                     className="hover:text-koiRed transition duration-500"
                     href="/news"
@@ -109,7 +125,7 @@ export default async function Footer() {
                   </LocalizedClientLink>
                 </li>
         
-                <li className="text-ui-fg-base text-xl font-bold">
+                <li className="text-ui-fg-base text-xl ps-2 small:ps-0 font-bold text-start small:text-end">
                   <LocalizedClientLink
                     className="hover:text-koiRed transition duration-500"
                     href="/contacts"
@@ -123,7 +139,7 @@ export default async function Footer() {
 
           </div>
         </div>
-        <div className="flex w-full mb-8 justify-between">
+        <div className="flex w-full pt-16 pb-8  justify-center">
           <Text className="txt-compact-small">
             © {new Date().getFullYear()} Amara Beer Lab. All rights reserved.
           </Text>

@@ -26,7 +26,7 @@ export default async function Home({
 
   return (
     <>
-      <Hero bgImage="/hero.png"/>
+      <Hero bgImage="/hero.png" mobileBgImage="/hero-mobile.png"/>
       <div className="py-6">
         <div>
           <Heading

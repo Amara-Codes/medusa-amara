@@ -17,7 +17,7 @@ const StoreTemplate = ({
     <div className="flex flex-col small:flex-row small:items-start py-6 content-container">
       <div className="w-full">
         <div className="mb-16 small:mx-12">
-          <h1 className="mb-16 font-extrabold text-4xl text-center text-koiRed small:text-8xl small:text-start" data-testid="activities-page-title">Our Beers</h1>
+          <h1 className="mb-16 font-extrabold text-4xl text-center text-koiRed small:text-8xl small:text-start font-fatboy" data-testid="activities-page-title">Our Beers</h1>
         </div>
 
         <div className="flex small:mx-12 flex-wrap small:flex-nowrap">

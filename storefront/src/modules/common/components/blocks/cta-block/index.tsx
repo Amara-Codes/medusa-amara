@@ -34,20 +34,20 @@ const CTABlock = ({
 }: ctaBlockProps) => {
   return (
     <div
-    className={clx(
-      "relative bg-cover bg-bottom grid gap-4 cta-block",
-      {
-        "md:grid-cols-2": direction !== "center",
-      },
-      className
-    )}
+      className={clx(
+        "relative bg-cover bg-bottom grid gap-4 cta-block",
+        {
+          "md:grid-cols-2": direction !== "center",
+        },
+        className
+      )}
       style={{ backgroundImage: `url(${backgroundImgUrl})` }}
     >
       <div
         className={clx(
-          "col-span-1 flex flex-col justify-center text-center",
+          "col-span-1 flex flex-col justify-center text-center py-16",
           {
-            "order-3": direction == "dx",
+            "order-3": direction === "dx",
           },
           wrapperCss
         )}
@@ -62,16 +62,24 @@ const CTABlock = ({
           {paragraph}
         </Text>
         {haveButton && (
-          <LocalizedClientLink href={buttonLink ?? ""} >
-            <Button className={clx("mx-auto rounded-none transition duration-500", buttonCss)} size="large">
+          <LocalizedClientLink href={buttonLink ?? ""}>
+            <Button
+              className={clx(
+                "mx-auto rounded-none transition duration-500",
+                buttonCss
+              )}
+              size="large"
+            >
               {buttonText}
             </Button>
           </LocalizedClientLink>
         )}
       </div>
-      <div className="order-2">
-
-      </div>
+      <div
+        className={clx("order-2", {
+          "hidden": direction === "center",
+        })}
+      ></div>
     </div>
   )
 }
