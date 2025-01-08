@@ -25,11 +25,11 @@ export default function ActivitiesPage() {
         <div>
           <CTABlock
             className="h-[500px] lg:mx-12 lg:mb-8 bg-top rounded-lg"
-            wrapperCss=""
+            wrapperCss="h-full"
             direction="dx"
             title="Let's keep in touch"
             titleSize="h3"
-            titleCss="text-6xl text-ui-fg-base mb-16 lg:mg-0"
+            titleCss="text-6xl text-ui-fg-base mb-4 small:mb-16 lg:mg-0"
             paragraph="Want to stay updated on all our exciting activities? Connect with us on social media or find us on Google Maps to visit in person. Let’s keep the conversation going and grow something amazing together!"
             parCss="text-justify text-ui-fg-base px-4"
             backgroundImgUrl="/images/contacts.jpg"

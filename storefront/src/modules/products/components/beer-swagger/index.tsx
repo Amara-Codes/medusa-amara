@@ -75,7 +75,6 @@ type SceneProps = {
 };
 
 function Scene({ urlImg, scale }: SceneProps) {
-  console.time("Function Scene");
   const { scene, materials } = useGLTF("/3d/Beer-Can.gltf") as GLTFResult;
   const label = useTexture(
     urlImg ?? "/images/beer-swagger/label-placeholder.png"
@@ -116,7 +115,6 @@ function Scene({ urlImg, scale }: SceneProps) {
       }
   });
 
-  console.timeEnd("Function Scene");
   return (
     <Float
       speed={2}

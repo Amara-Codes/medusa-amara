@@ -13,7 +13,7 @@ export default function Brewery() {
     <div className="lg:pb-16 pt-24">
 
       <TypoParagraphBlock
-        className="lg:mb-48 mx-12 pb-12"
+        className="lg:mb-48 px-6 pb-12"
         fatText="Why I opened a brewery in Cambodia?"
         fatTextPosition="sx"
         fatTextCss="leading-relaxed text-ui-fg-base border-b-4 text-4xl font-fatboy"
@@ -23,7 +23,7 @@ export default function Brewery() {
       ></TypoParagraphBlock>
 
       <TypoParagraphBlock
-        className="lg:mb-48 mx-12 pb-12"
+        className="lg:mb-48 px-6 pb-12"
         fatText="Who am I?"
         fatTextPosition="dx"
         fatTextCss="leading-relaxed text-ui-fg-base border-b-8 text-4xl font-fatboy"
@@ -33,7 +33,7 @@ export default function Brewery() {
       ></TypoParagraphBlock>
 
       <TypoParagraphBlock
-        className="lg:mb-48 mx-12 py-12"
+        className="lg:mb-48 px-6 py-12"
         fatText="What Beers Do I Make?"
         fatTextPosition="sx"
         fatTextCss="leading-relaxed text-ui-fg-base border-b-4 text-4xl font-fatboy"
