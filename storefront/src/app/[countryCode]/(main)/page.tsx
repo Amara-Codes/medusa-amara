@@ -49,12 +49,12 @@ export default async function Home({
           title="Handcraft Brewery based in Siem Reap"
           titleSize="h3"
           titleCss="text-6xl mb-16 lg:mg-0 text-koiRed px-8"
-          paragraph="Check out the Brewery section to explore our footprint in Siem Reap and see how we craft our hand-brewed beers with passion and creativity."
+          paragraph="Ready to dive into our vision and the story behind opening a brewery in Siem Reap? Discover what makes us unique and how we brew with passion and creativity"
           parCss="text-justify px-4 text-ui-fg-base px-8"
           backgroundImgUrl={"/images/malt.jpg"}
           haveButton={true}
           buttonLink="/brewery"
-          buttonText="Discover more"
+          buttonText="The Brewery"
           buttonCss="block text-center mt-8 bg-koiOrange text-ui-fg-base font-bold transition-all duration-500 hover:bg-koiRed"
         />
       </div>

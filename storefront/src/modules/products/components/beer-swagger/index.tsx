@@ -8,8 +8,6 @@ import { useRef, useEffect } from "react";
 import { Group } from "three";
 import { GLTF } from "three-stdlib";
 
-const isEcom = process.env.AMARA_ECOM_ACTIVATED;
-
 // Define the GLTFResult type to match the new GLTF file
 type GLTFResult = GLTF & {
   scene: THREE.Group;
@@ -77,6 +75,7 @@ type SceneProps = {
 };
 
 function Scene({ urlImg, scale }: SceneProps) {
+  console.time("Function Scene");
   const { scene, materials } = useGLTF("/3d/Beer-Can.gltf") as GLTFResult;
   const label = useTexture(
     urlImg ?? "/images/beer-swagger/label-placeholder.png"
@@ -91,8 +90,6 @@ function Scene({ urlImg, scale }: SceneProps) {
 
   label.repeat.set(1, repeatY);
   label.offset.set(0, (1 - repeatY) / 2);
-  label.needsUpdate = true;
-
 
   const groupRef = useRef<Group>(null);
   const rotationSpeed = useRef(DEFAULT_ROTATION_SPEED);
@@ -119,6 +116,7 @@ function Scene({ urlImg, scale }: SceneProps) {
       }
   });
 
+  console.timeEnd("Function Scene");
   return (
     <Float
       speed={2}

@@ -30,7 +30,7 @@ export default function BlogPage() {
             title="Brewery Buzz"
             titleSize="h3"
             titleCss="text-6xl text-koiWhite my-8 px-4 lg:mg-0"
-            paragraph={"Stay updated with the latest news from Amara Beer Lab! From upcoming events in Siem Reap to new beer releases and collaborations, our News section is where you’ll find all the fresh updates from our brewery in Cambodia."}
+            paragraph={"Stay updated with the latest news from Amara Beer Lab! From upcoming events in Siem Reap to new beer releases and collaborations, our News section is where you’ll find all the fresh updates!"}
             parCss="text-justify text-koiWhite px-4"
             backgroundImgUrl="/images/beer.jpg"
             haveButton={true}
