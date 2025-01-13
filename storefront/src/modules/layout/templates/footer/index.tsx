@@ -145,6 +145,8 @@ export default async function Footer() {
           </Text>
         </div>
       </div>
+
+      
     </footer>
   )
 }

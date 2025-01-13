@@ -39,11 +39,10 @@ export default function Contacts() {
                             Find us
                         </Heading>
                         <div className="mapswrapper w-full min-h-64 h-64">
-                            <iframe className="w-full h-full" loading="lazy" allowFullScreen src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=Siem%20Reap%2084%2C%20palm%20street&zoom=16&maptype=roadmap">
-                            </iframe>
+                        <iframe  className="w-full h-full" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3882.12630476145!2d103.86326547479896!3d13.342418406640485!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3110173824530e15%3A0x58989ffc8660d3b!2sAmara%20Beer%20Lab!5e0!3m2!1sit!2skh!4v1736759672255!5m2!1sit!2skh" loading="lazy"></iframe>
                         </div>
 
-                        <Link href="https://www.google.com/maps/dir//138+Palm+St,+Krong+Siem+Reap/@13.3422825,103.8632729,17z/data=!4m8!4m7!1m0!1m5!1m1!1s0x311019d56df94709:0x424b2d9bfac80507!2m2!1d103.8658478!2d13.3422773?entry=ttu&g_ep=EgoyMDI0MTIxMS4wIKXMDSoASAFQAw%3D%3D" rel="noopener noreferrer" target="_blank">
+                        <Link href="https://www.google.com/maps/dir//Amara+Beer+Lab,+86+Palm+St,+Krong+Siem+Reap+17204/@13.3424184,103.8632655,17z/data=!4m8!4m7!1m0!1m5!1m1!1s0x3110173824530e15:0x58989ffc8660d3b!2m2!1d103.8658404!2d13.3424132?entry=ttu&g_ep=EgoyMDI1MDEwOC4wIKXMDSoASAFQAw%3D%3D" rel="noopener noreferrer" target="_blank">
                             <Button className="mx-auto rounded-none transition duration-500 mt-8 bg-koiRed text-ui-fg-base font-bold" size="large">
                                 Open Maps
                             </Button>

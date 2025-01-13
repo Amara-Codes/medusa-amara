@@ -1,14 +1,13 @@
 "use client";
 
-import { useGLTF, useTexture } from "@react-three/drei";
+import { useGLTF, useTexture, Html } from "@react-three/drei";
 import * as THREE from "three";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Float } from "@react-three/drei";
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, Suspense } from "react";
 import { Group } from "three";
 import { GLTF } from "three-stdlib";
 
-// Define the GLTFResult type to match the new GLTF file
 type GLTFResult = GLTF & {
   scene: THREE.Group;
   nodes: {
@@ -32,7 +31,6 @@ const DEFAULT_ROTATION_SPEED = 0.015;
 const DEFAULT_DAMPING = 0.0002;
 
 export function BeerSwagger({ urlImg, scale = 10 }: BeerSwaggerProps) {
-
   return (
     <div
       className="w-full h-full rounded-lg bg-transparent contrast-[1.45] saturate-[1.3] brightness-[1.05] top-16 md:top-8"
@@ -45,10 +43,9 @@ export function BeerSwagger({ urlImg, scale = 10 }: BeerSwaggerProps) {
         zIndex: 30,
       }}
     >
-
       <Canvas
         style={{
-          aspectRatio: "1/1"
+          aspectRatio: "1/1",
         }}
         shadows
         dpr={[1, 1.5]}
@@ -60,10 +57,15 @@ export function BeerSwagger({ urlImg, scale = 10 }: BeerSwaggerProps) {
         <ambientLight intensity={1} color={"#ffffff"} />
         <directionalLight position={[8, -8, 8]} intensity={2.5} />
         <directionalLight position={[-5, 5, 5]} intensity={3} />
-        <Scene
-          urlImg={urlImg}
-          scale={scale}
-        />
+        <Suspense
+          fallback={
+            <Html center>
+              <div className="beer-loader"></div>
+            </Html>
+          }
+        >
+          <Scene urlImg={urlImg} scale={scale} />
+        </Suspense>
       </Canvas>
     </div>
   );
@@ -79,12 +81,11 @@ function Scene({ urlImg, scale }: SceneProps) {
   const label = useTexture(
     urlImg ?? "/images/beer-swagger/label-placeholder.png"
   );
-  
   const aspect = 778 / 1440;
   label.flipY = false;
-  label.center.set(0.5, 0.5); // Set the rotation center to the middle of the texture
+  label.center.set(0.5, 0.5);
   label.rotation = Math.PI / 2;
-  const canAspect = 1.1; // Adjust if the can's UV mapping is not square
+  const canAspect = 1.1;
   const repeatY = canAspect / aspect;
 
   label.repeat.set(1, repeatY);
@@ -93,9 +94,6 @@ function Scene({ urlImg, scale }: SceneProps) {
   const groupRef = useRef<Group>(null);
   const rotationSpeed = useRef(DEFAULT_ROTATION_SPEED);
 
-
-
-  // Update the 'Can Label' material with the new texture
   useEffect(() => {
     if (materials["Can Label"]) {
       materials["Can Label"].map = label;
@@ -103,23 +101,20 @@ function Scene({ urlImg, scale }: SceneProps) {
     }
   }, [materials, label]);
 
-  // Handle rotation and interaction
- 
-
   useFrame(() => {
     if (groupRef.current) {
-        if (rotationSpeed.current < DEFAULT_ROTATION_SPEED) {
-          rotationSpeed.current += DEFAULT_DAMPING;
-        }
-        groupRef.current.rotation.y += rotationSpeed.current;
+      if (rotationSpeed.current < DEFAULT_ROTATION_SPEED) {
+        rotationSpeed.current += DEFAULT_DAMPING;
       }
+      groupRef.current.rotation.y += rotationSpeed.current;
+    }
   });
 
   return (
     <Float
       speed={2}
       rotationIntensity={1.5}
-      floatIntensity={.5}
+      floatIntensity={0.5}
       floatingRange={[-0.05, 0.05]}
     >
       <group
