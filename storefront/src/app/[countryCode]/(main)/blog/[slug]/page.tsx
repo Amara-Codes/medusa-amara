@@ -3,6 +3,7 @@ import { headers } from "next/headers";
 import componentMapping from "@modules/common/components/article/componentMapping";
 import BackLink from "@modules/common/components/back-link";
 import { Metadata } from 'next';
+import RelatedArticlesFetcher from "@modules/common/components/related-articles-fetcher";
 
 //Parte che serve a mappare i nomi delle immagini nei componenti
 const componentImageMap = {
@@ -25,7 +26,9 @@ type TransformedDataItem = {
     Summary: string | null;
     ThumbnailUrl?: string;
     Content?: any[];
+    ArticleTags?: string[]
 };
+
 
 function transformData(json: any): TransformedDataItem {
     const item = json.data[0];
@@ -37,9 +40,9 @@ function transformData(json: any): TransformedDataItem {
 
         if (isComponentType(ComponentRaw)) {
             const imageName = componentImageMap[ComponentRaw],
-            componentImg = imageName === 'paragraphImg' 
-            ? contentItem[imageName]?.data?.attributes?.formats?.small?.url
-            : contentItem[imageName]?.data?.attributes?.formats?.medium?.url;
+                componentImg = imageName === 'paragraphImg'
+                    ? contentItem[imageName]?.data?.attributes?.formats?.small?.url
+                    : contentItem[imageName]?.data?.attributes?.formats?.medium?.url;
 
             contentComponentItem[imageName] = typeof (componentImg) === 'string' ? componentImg : ""
         } else {
@@ -56,6 +59,11 @@ function transformData(json: any): TransformedDataItem {
         return { ...contentComponentItem, Component };
     });
 
+    let tags = [];
+
+    if (attributes?.tags?.data?.length) {
+        tags = attributes.tags.data.map((e: { id: any; }) => e.id.toString())
+    }
 
     return {
         Title: attributes.Title,
@@ -64,6 +72,7 @@ function transformData(json: any): TransformedDataItem {
         Summary: attributes.Summary,
         Content,
         Id: item.id,
+        ArticleTags: tags
     };
 }
 
@@ -96,9 +105,13 @@ async function getArticleById(slug: string) {
                 },
                 CarouselImgs: {
                     fields: "*"
-                }
+                },
+
             }
 
+        },
+        tags: {
+            populate: "*"
         }
     };
 
@@ -192,6 +205,14 @@ const BlogPage = async () => {
                                 })}
                         </section>
 
+
+           <section>
+                            {article.ArticleTags?.length &&
+                                <div>
+                                    <RelatedArticlesFetcher tags={article.ArticleTags} currentArticleId={article.Id} />
+                                </div>
+                            }
+                        </section>
                     </div>
                 </div>
             ) : (

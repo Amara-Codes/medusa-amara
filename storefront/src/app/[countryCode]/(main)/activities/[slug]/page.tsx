@@ -27,6 +27,7 @@ type TransformedDataItem = {
     Summary: string | null;
     ThumbnailUrl?: string;
     Content?: any[];
+    ArticleTags?: string[]
 };
 
 function transformData(json: any): TransformedDataItem {
@@ -39,9 +40,9 @@ function transformData(json: any): TransformedDataItem {
 
         if (isComponentType(ComponentRaw)) {
             const imageName = componentImageMap[ComponentRaw],
-            componentImg = imageName === 'paragraphImg' 
-            ? contentItem[imageName]?.data?.attributes?.formats?.small?.url
-            : contentItem[imageName]?.data?.attributes?.formats?.medium?.url;
+                componentImg = imageName === 'paragraphImg'
+                    ? contentItem[imageName]?.data?.attributes?.formats?.small?.url
+                    : contentItem[imageName]?.data?.attributes?.formats?.medium?.url;
 
             contentComponentItem[imageName] = typeof (componentImg) === 'string' ? componentImg : ""
         } else {
@@ -58,6 +59,11 @@ function transformData(json: any): TransformedDataItem {
         return { ...contentComponentItem, Component };
     });
 
+    let tags = [];
+
+    if (attributes?.tags?.data?.length) {
+        tags = attributes.tags.data.map((e: { id: any; }) => e.id.toString())
+    }
 
     return {
         Title: attributes.Title,
@@ -66,6 +72,7 @@ function transformData(json: any): TransformedDataItem {
         Summary: attributes.Summary,
         Content,
         Id: item.id,
+        ArticleTags: tags
     };
 }
 
@@ -98,9 +105,13 @@ async function getArticleById(slug: string) {
                 },
                 CarouselImgs: {
                     fields: "*"
-                }
+                },
+
             }
 
+        },
+        tags: {
+            populate: "*"
         }
     };
 

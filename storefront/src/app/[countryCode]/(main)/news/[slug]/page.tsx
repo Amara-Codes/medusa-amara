@@ -3,6 +3,7 @@ import { headers } from "next/headers";
 import componentMapping from "@modules/common/components/article/componentMapping";
 import BackLink from "@modules/common/components/back-link";
 import { Metadata } from 'next';
+import RelatedArticlesFetcher from "@modules/common/components/related-articles-fetcher";
 
 //Parte che serve a mappare i nomi delle immagini nei componenti
 const componentImageMap = {
@@ -25,6 +26,7 @@ type TransformedDataItem = {
     Summary: string | null;
     ThumbnailUrl?: string;
     Content?: any[];
+    ArticleTags?: string[]
 };
 
 function transformData(json: any): TransformedDataItem {
@@ -37,9 +39,9 @@ function transformData(json: any): TransformedDataItem {
 
         if (isComponentType(ComponentRaw)) {
             const imageName = componentImageMap[ComponentRaw],
-            componentImg = imageName === 'paragraphImg' 
-            ? contentItem[imageName]?.data?.attributes?.formats?.small?.url
-            : contentItem[imageName]?.data?.attributes?.formats?.medium?.url;
+                componentImg = imageName === 'paragraphImg'
+                    ? contentItem[imageName]?.data?.attributes?.formats?.small?.url
+                    : contentItem[imageName]?.data?.attributes?.formats?.medium?.url;
 
             contentComponentItem[imageName] = typeof (componentImg) === 'string' ? componentImg : ""
         } else {
@@ -56,6 +58,11 @@ function transformData(json: any): TransformedDataItem {
         return { ...contentComponentItem, Component };
     });
 
+    let tags = [];
+
+    if (attributes?.tags?.data?.length) {
+        tags = attributes.tags.data.map((e: { id: any; }) => e.id.toString())
+    }
 
     return {
         Title: attributes.Title,
@@ -64,6 +71,7 @@ function transformData(json: any): TransformedDataItem {
         Summary: attributes.Summary,
         Content,
         Id: item.id,
+        ArticleTags: tags
     };
 }
 
@@ -96,9 +104,13 @@ async function getArticleById(slug: string) {
                 },
                 CarouselImgs: {
                     fields: "*"
-                }
+                },
+
             }
 
+        },
+        tags: {
+            populate: "*"
         }
     };
 
@@ -114,7 +126,7 @@ async function getArticleById(slug: string) {
 }
 
 export async function generateMetadata(): Promise<Metadata> {
-let slug: string = "";
+    let slug: string = "";
     const headerList = headers();
     const path = headerList.get("x-current-path");
     if (path) {
@@ -140,7 +152,7 @@ let slug: string = "";
 }
 
 const NewsPage = async () => {
-let slug: string = "";
+    let slug: string = "";
     const headerList = headers();
     const path = headerList.get("x-current-path");
     if (path) {
@@ -161,43 +173,51 @@ let slug: string = "";
 
     return (
         <div
-        className="flex flex-col small:flex-row small:items-start py-6 content-container"
-        data-testid="news-container"
-    >
-        {article ? (
-            <div className="w-full">
+            className="flex flex-col small:flex-row small:items-start py-6 content-container"
+            data-testid="news-container"
+        >
+            {article ? (
+                <div className="w-full">
 
-                <div className="mb-16 small:mx-12">
-                    <div className="mb-8">
-                        <BackLink href={`/${article.Category}`} label={`Back to ${article.Category}`} className="text-ui-fg-base hover:text-koiOrange transition duration-500" />
-                    </div>
+                    <div className="mb-16 small:mx-12">
+                        <div className="mb-8">
+                            <BackLink href={`/${article.Category}`} label={`Back to ${article.Category}`} className="text-ui-fg-base hover:text-koiOrange transition duration-500" />
+                        </div>
 
 
-                    <section>
-                        {article.Content &&
-                            article.Content.map((contentItem: any, index: number) => {
-                                const Component = componentMapping[contentItem.Component];
-                                if (!Component) {
+                        <section>
+                            {article.Content &&
+                                article.Content.map((contentItem: any, index: number) => {
+                                    const Component = componentMapping[contentItem.Component];
+                                    if (!Component) {
+                                        return (
+                                            <pre key={index}>
+                                                {JSON.stringify(contentItem, null, 2)}
+                                            </pre>
+                                        );
+                                    }
                                     return (
-                                        <pre key={index}>
-                                            {JSON.stringify(contentItem, null, 2)}
-                                        </pre>
+
+                                        <Component key={index} {...contentItem} />
+
                                     );
-                                }
-                                return (
+                                })}
+                        </section>
+                   
 
-                                    <Component key={index} {...contentItem} />
-
-                                );
-                            })}
-                    </section>
-
+                        <section>
+                            {article.ArticleTags?.length &&
+                                <div>
+                                    <RelatedArticlesFetcher tags={article.ArticleTags} currentArticleId={article.Id} />
+                                </div>
+                            }
+                        </section>
+                    </div>
                 </div>
-            </div>
-        ) : (
-            <p>No article found or missing ID.</p>
-        )}
-    </div>
+            ) : (
+                <p>No article found or missing ID.</p>
+            )}
+        </div>
     );
 };
 

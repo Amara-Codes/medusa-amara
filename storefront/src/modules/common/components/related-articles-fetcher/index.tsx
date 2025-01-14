@@ -87,7 +87,7 @@ async function getArticles(tags: string[], currentArticleId: string): Promise<Tr
     const data = await res.json();
 
     const matchingTags = data.data.filter((item: any) => {
-     return tags.includes(item.id)
+     return tags.includes(item.id.toString())
     });
 
 
