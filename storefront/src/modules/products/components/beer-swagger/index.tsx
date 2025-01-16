@@ -32,7 +32,7 @@ const DEFAULT_DAMPING = 0.0002;
 
 const BeerLoader = (
 
-  <div className="wrapper">
+  <div className="beer-glass-wrapper">
     <div className="glass-wrapper">
       <div className="glass">
         <div className="beer">
