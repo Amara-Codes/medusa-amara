@@ -84,7 +84,7 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({
           <ProductInfo product={product} />
           <ProductTabs product={product} />
         </div>
-        <div className="block w-full relative order-3">
+        <div className="block w-full relative order-3 overflow-x-hidden">
           <ImageGallery images={product?.images || []} />
         </div>
 

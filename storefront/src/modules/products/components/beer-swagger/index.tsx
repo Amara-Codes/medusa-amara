@@ -30,6 +30,43 @@ export type BeerSwaggerProps = {
 const DEFAULT_ROTATION_SPEED = 0.015;
 const DEFAULT_DAMPING = 0.0002;
 
+const BeerLoader = (
+
+  <div className="wrapper">
+    <div className="glass-wrapper">
+      <div className="glass">
+        <div className="beer">
+          <div className="foam">
+            <span className="foambubble"></span>
+            <span className="foambubble"></span>
+            <span className="foambubble"></span>
+            <span className="foambubble"></span>
+            <span className="foambubble"></span>
+          </div>
+          <div className="bubbles">
+            <span className="bubble"></span>
+            <span className="bubble"></span>
+            <span className="bubble"></span>
+            <span className="bubble"></span>
+            <span className="bubble"></span>
+            <span className="bubble"></span>
+            <span className="bubble"></span>
+            <span className="bubble"></span>
+            <span className="bubble"></span>
+          </div>
+          <div className="foamtop">
+            <span className="ft-bubble"></span>
+            <span className="ft-bubble"></span>
+            <span className="ft-bubble"></span>
+            <span className="ft-bubble"></span>
+          </div>
+          <div className="coaster"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+);
+
 export function BeerSwagger({ urlImg, scale = 10 }: BeerSwaggerProps) {
   return (
     <div
@@ -60,7 +97,7 @@ export function BeerSwagger({ urlImg, scale = 10 }: BeerSwaggerProps) {
         <Suspense
           fallback={
             <Html center>
-              <div className="beer-loader"></div>
+              {BeerLoader}
             </Html>
           }
         >

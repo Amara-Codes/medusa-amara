@@ -1,21 +1,21 @@
-import { Text, Heading, clx, Button } from "@medusajs/ui"
-import LocalizedClientLink from "@modules/common/components/localized-client-link"
+import { Text, Heading, clx, Button } from "@medusajs/ui";
+import LocalizedClientLink from "@modules/common/components/localized-client-link";
 
 type ctaBlockProps = {
-  className?: string
-  wrapperCss?: string
-  direction?: string
-  title?: string
-  titleSize?: "h1" | "h2" | "h3"
-  titleCss?: string
-  paragraph?: string
-  parCss?: string
-  haveButton?: boolean
-  buttonText?: string
-  buttonCss?: string
-  buttonLink?: string
-  backgroundImgUrl?: string
-}
+  className?: string;
+  wrapperCss?: string;
+  direction?: string;
+  title?: string;
+  titleSize?: "h1" | "h2" | "h3";
+  titleCss?: string;
+  paragraph?: string;
+  parCss?: string;
+  haveButton?: boolean;
+  buttonText?: string;
+  buttonCss?: string;
+  buttonLink?: string;
+  backgroundImgUrl?: string;
+};
 
 const CTABlock = ({
   className,
@@ -32,12 +32,14 @@ const CTABlock = ({
   buttonLink,
   backgroundImgUrl,
 }: ctaBlockProps) => {
+  const isCentered = direction === "center" || className?.includes("centered");
+
   return (
     <div
       className={clx(
         "relative bg-cover bg-bottom grid gap-4 cta-block",
         {
-          "md:grid-cols-2": direction !== "center",
+          "md:grid-cols-2": !isCentered,
         },
         className
       )}
@@ -52,10 +54,7 @@ const CTABlock = ({
           wrapperCss
         )}
       >
-        <Heading
-          className={clx("", titleCss)}
-          level={titleSize}
-        >
+        <Heading className={clx("", titleCss)} level={titleSize}>
           {title}
         </Heading>
         <Text className={clx("mt-4", parCss)} size="xlarge">
@@ -75,13 +74,15 @@ const CTABlock = ({
           </LocalizedClientLink>
         )}
       </div>
-      <div
-        className={clx("order-2", {
-          "hidden": direction === "center",
-        })}
-      ></div>
+      {!isCentered && (
+        <div
+          className={clx("order-2", {
+            hidden: isCentered,
+          })}
+        ></div>
+      )}
     </div>
-  )
-}
+  );
+};
 
-export default CTABlock
+export default CTABlock;
