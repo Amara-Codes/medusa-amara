@@ -7,7 +7,6 @@ const Cta: React.FC<CtaElement> = ({
   CtaTitle,
   CtaCaption,
   CtaCssClasses = "",
-  CtaType = "default",
   CtaButton,
 }) => {
 
@@ -24,7 +23,7 @@ const Cta: React.FC<CtaElement> = ({
         titleSize="h3"
         titleCss="text-6xl text-ui-fg-base mb-16 lg:mg-0"
         paragraph={CtaCaption ?? ''}
-        parCss="text-justify text-ui-fg-base px-4"
+        parCss="text-ui-fg-base px-4"
         backgroundImgUrl={""}
         haveButton={!!button}
         buttonLink={button?.ButtonLink ?? '/'}
