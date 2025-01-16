@@ -65,11 +65,11 @@ export default function CategoryTemplate({
         <RefinementList sortBy={sort} data-testid="sort-by-container" />
       )}
       <div className="w-full">
-        <div className="mb-8 small:mx-12">
+        <div className="mt-8 small:mx-12">
 
           <h1 className="mb-8 font-extrabold text-4xl text-center text-koiRed small:text-6xl small:text-start font-fatboy" data-testid="category-page-title">{category.name}</h1>
           {category.description && (
-            <div className="text-justify mb-16">
+            <div className="text-justify mb-8">
               <div className="hidden small:block">
                 <p className="text-koiYellow text-2xl">
                   {category.description}
