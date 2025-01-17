@@ -55,7 +55,7 @@ export default async function Home({
           haveButton={true}
           buttonLink="/brewery"
           buttonText="The Brewery"
-          buttonCss="block text-center mt-8 bg-koiOrange text-ui-fg-base font-bold transition-all duration-500 hover:bg-koiRed"
+          buttonCss="block text-center mt-8 bg-koiOrange text-ui-fg-base font-bold transition-all duration-500 hover:bg-koiRed shadow-none rounded-md"
         />
       </div>
     </>

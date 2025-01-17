@@ -36,7 +36,7 @@ export default function NewsPage() {
             haveButton={true}
             buttonLink="/activities"
             buttonText="Our Activities"
-            buttonCss="block text-center mt-8 bg-koiRed text-koiWhite hover:bg-koiOrange"
+            buttonCss="block text-center mt-8 bg-koiRed text-koiWhite hover:bg-koiOrange shadow-none rounded-md"
           />
         </div>
       </div>

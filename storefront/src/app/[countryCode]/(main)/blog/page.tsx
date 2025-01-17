@@ -36,7 +36,7 @@ export default function BlogPage() {
             haveButton={true}
             buttonLink="/news"
             buttonText="Explore latest Updates"
-            buttonCss="block text-center my-8 font-bold bg-koiWhite text-koiOrange hover:bg-koiOrange hover:text-koiWhite"
+            buttonCss="block text-center my-8 font-bold bg-koiWhite text-koiOrange hover:bg-koiOrange hover:text-koiWhite shadow-none rounded-md"
           />
         </div>
       </div>

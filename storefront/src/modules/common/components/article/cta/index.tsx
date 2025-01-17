@@ -28,7 +28,7 @@ const Cta: React.FC<CtaElement> = ({
         haveButton={!!button}
         buttonLink={button?.ButtonLink ?? '/'}
         buttonText={button?.ButtonLabel ?? 'Home'}
-        buttonCss={button?.ButtonCssClasses ?? 'mt-12'}
+        buttonCss={button?.ButtonCssClasses ?? 'mt-12 shadow-none rounded-md'}
       />
     </div>
   );

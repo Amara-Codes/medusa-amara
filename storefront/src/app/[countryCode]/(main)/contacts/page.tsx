@@ -43,7 +43,7 @@ export default function Contacts() {
                         </div>
 
                         <Link href="https://www.google.com/maps/dir//Amara+Beer+Lab,+86+Palm+St,+Krong+Siem+Reap+17204/@13.3424184,103.8632655,17z/data=!4m8!4m7!1m0!1m5!1m1!1s0x3110173824530e15:0x58989ffc8660d3b!2m2!1d103.8658404!2d13.3424132?entry=ttu&g_ep=EgoyMDI1MDEwOC4wIKXMDSoASAFQAw%3D%3D" rel="noopener noreferrer" target="_blank">
-                            <Button className="mx-auto rounded-none transition duration-500 mt-8 bg-koiRed text-ui-fg-base font-bold" size="large">
+                            <Button className="mx-auto rounded-md transition duration-500 mt-8 bg-koiRed hover:bg-koiOrange text-ui-fg-base font-bold shadow-none" size="large">
                                 Open Maps
                             </Button>
                         </Link>

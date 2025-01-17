@@ -36,7 +36,7 @@ export default function ActivitiesPage() {
             haveButton={true}
             buttonLink="/contacts"
             buttonText="Find Us"
-            buttonCss="block text-center mt-8 bg-koiRed"
+            buttonCss="block text-center mt-8 bg-koiRed shadow-none rounded-md"
           />
         </div>
       </div>

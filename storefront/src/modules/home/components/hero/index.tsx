@@ -48,7 +48,7 @@ const Hero = ({
           <Image
             src={haveMobileBgImage ? mobileBgImage : bgImage}
             alt="Hero Background"
-            layout="fill"
+            
             objectFit={haveMobileBgImage ? mobileBgSize : bgSize}
             objectPosition={
               haveMobileBgImage
@@ -57,16 +57,18 @@ const Hero = ({
             }
             priority
             className={clx("z-0", haveMobileBgImage && "block small:hidden")}
+            fill
           />
           {haveMobileBgImage && (
             <Image
               src={bgImage}
               alt="Hero Background Desktop"
-              layout="fill"
+             
               objectFit={bgSize}
               objectPosition={`${bgPositionX} ${bgPositionY}`}
               priority
               className="z-0 hidden small:block"
+              fill
             />
           )}
         </>

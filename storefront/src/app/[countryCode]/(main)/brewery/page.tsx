@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 export default function Brewery() {
   return (
-    <div className="lg:pb-16 pt-24">
+    <div className="pt-24">
 
       <TypoParagraphBlock
         className="lg:mb-48 px-6 pb-12"
@@ -33,7 +33,7 @@ export default function Brewery() {
       ></TypoParagraphBlock>
 
       <TypoParagraphBlock
-        className="lg:mb-48 px-6 py-12"
+        className="lg:mb-24 px-6 py-12"
         fatText="What Beers Do I Make?"
         fatTextPosition="sx"
         fatTextCss="leading-relaxed text-ui-fg-base border-b-4 text-4xl font-fatboy"
@@ -43,19 +43,19 @@ export default function Brewery() {
       ></TypoParagraphBlock>
 
       <CTABlock
-        className="min-h-[400px] small:min-h-[600px] lg:mx-12 lg:my-8 bg-center bg-no-repeat mb-16"
-        wrapperCss="backdrop-contrast-200 backdrop-saturate-200 backdrop-blur-sm small:items-center"
+        className="min-h-[400px] lg:mt-8 bg-center bg-no-repeat border-t-4 border-b-4 border-koiYellow"
+        wrapperCss="backdrop-contrast-200 backdrop-saturate-200 backdrop-blur-md md:backdrop-blur-sm small:items-center"
         direction="dx"
         title="Ready to find your new favorite beer?"
         titleSize="h3"
-        titleCss="text-6xl text-koiRed mb-8 lg:mg-0 px-4 small:text-center"
+        titleCss="text-4xl leading-normal small:text-6xl text-koiRed small:mb-8 px-4 small:text-center"
         paragraph={"Explore our lineup of handcrafted ales brewed with passion, innovation, and a touch of tradition"}
         parCss="text-justify text-2xl text-ui-fg-base px-4"
         backgroundImgUrl="/images/beer-shop.jpg"
         haveButton={true}
         buttonLink="/beers"
         buttonText="Our beers"
-        buttonCss="block text-center mt-8 bg-koiRed font-bold"
+        buttonCss="block text-center mt-8 bg-koiRed font-bold shadow-none rounded-md hover:bg-koiOrange"
       />
     </div>
   )

@@ -123,7 +123,7 @@ export default function CategoryTemplate({
             haveButton={true}
             buttonLink="/beers"
             buttonText="Our beers"
-            buttonCss="block text-center mt-8 bg-koiRed font-bold"
+            buttonCss="block text-center mt-8 bg-koiRed hover:bg-koiOrange font-bold shadow-none rounded-md"
           />
         </div>
       </div>

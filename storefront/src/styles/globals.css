@@ -139,36 +139,7 @@
 }
 
 
-.beer-loader {
-  width: 80px;
-  height: 165px;
-  display: inline-block;
-  left: 5px;
-  position: relative;
-  border: 2px solid #FFF;
-  box-sizing: border-box;
-  animation: animloader 2s linear infinite alternate;
-  color: #F7E16C;
-  border-radius: 0 0 4px 4px;
-  transform: perspective(200px) rotateX(-25deg) translateY(-50%);
-}
 
-@keyframes animloader {
-  0% {
-    box-shadow: 0 0  inset;
-  }
-  100% {
-    box-shadow: 0 -155px inset;
-  }
-}
-
-
-
-
-body {
-  margin: 0;
-  padding: 0;
-}
 
 .beer-glass-wrapper {
   height: 100%;
@@ -184,21 +155,22 @@ body {
 }
 
 .beer-glass-wrapper .glass {
-  border: 8px solid white;
-  border-bottom-width: 16px;
+  border: 2px solid white;
+  border-bottom-width: 4px;
   border-top: transparent;
   border-radius: 0 0 4px 4px;
-  height: 240px;
-  width: 144px;
-  transform: perspective(240px) rotateX(-10deg);
+  height: 120px;
+  width: 72px;
+  transform: perspective(120px) rotateX(-10deg);
   position: relative;
   overflow: hidden;
+  margin-bottom: 100%;
 }
 
 .beer-glass-wrapper .beer {
   height: 90%;
   width: 100%;
-  background-color: gold;
+  background-color: #FFFF00;
   position: absolute;
   bottom: 0;
   transform: scaleY(1);
@@ -207,62 +179,66 @@ body {
 }
 
 .beer-glass-wrapper .bubble {
-  display: inline-block;
-  width: 8px;
-  height: 8px;
-  background-color: rgba(0,0,0,0.2);
+  width: 6px;
+  height: 6px;
+  background-color: rgba(0,0,0,0.4);
   border-radius: 50%;
   position: absolute;
-  bottom: 0;
   animation: bubble-rise 4000ms infinite;
 }
 
 .beer-glass-wrapper .bubble:nth-child(1) {
   left: 3.7%;
   bottom: 0.4%;
-  animation-duration: 4000ms - 140ms;
+  animation-duration: 3860ms;
   animation-delay: 140ms;
 }
 .beer-glass-wrapper .bubble:nth-child(2) {
   left: 51%;
   bottom: 6.4%;
-  animation-duration: 4000ms - 360ms;
+  width: 4px;
+  height: 4px;
+  animation-duration: 3640ms;
   animation-delay: 360ms;
 }
 .beer-glass-wrapper .bubble:nth-child(3) {
   left: 18%;
   bottom: 1.4%;
-  animation-duration: 4000ms - 60ms;
+  animation-duration: 3940ms;
   animation-delay: 60ms;
 }
 .beer-glass-wrapper .bubble:nth-child(4) {
   left: 83%;
   bottom: 9.1%;
-  animation-duration: 4000ms - 410ms;
+  animation-duration: 3590ms;
   animation-delay: 410ms;
 }
 .beer-glass-wrapper .bubble:nth-child(5) {
   left: 58%;
   bottom: 14.7%;
-  animation-duration: 4000ms - 70ms;
+  width: 3px;
+  height: 3px;
+  animation-duration: 3930ms;
   animation-delay: 70ms;
 }
 .beer-glass-wrapper .bubble:nth-child(6) {
   left: 13%;
   bottom: 3.6%;
-  animation-duration: 4000ms - 230ms;
+  animation-duration: 3770ms;
   animation-delay: 230ms;
 }
 .beer-glass-wrapper .bubble:nth-child(7) {
   left: 73%;
   bottom: 0.4%;
-  animation-duration: 4000ms - 100ms;
+  width: 7px;
+  height: 7px;
+  animation-duration: 3900ms;
   animation-delay: 100ms;
 }
 .beer-glass-wrapper .bubble:nth-child(8) {
   left: 41%;
   bottom: 14.4%;
-  animation-duration: 4000ms - 310ms;
+  animation-duration: 3690ms;
   animation-delay: 310ms;
 }
 .beer-glass-wrapper .bubble:nth-child(9) {
@@ -273,8 +249,8 @@ body {
 
 .beer-glass-wrapper .foambubble {
   display: inline-block;
-  width: 70px;
-  height: 30px;
+  width: 32px;
+  height: 20px;
   border-radius: 50%;
   background-color: white;
   position: absolute;
