@@ -143,7 +143,7 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({
             haveButton={true}
             buttonLink="/blog"
             buttonText="Dive in"
-            buttonCss="block text-center mt-8 bg-koiRed text-ui-fg-base"
+            buttonCss="block text-center mt-8 bg-koiRed hover:bg-koiOrange text-ui-fg-base shadow-none rounded-md"
           />
       </div>
     </>
