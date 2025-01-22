@@ -37,7 +37,7 @@ const CTABlock = ({
   return (
     <div
       className={clx(
-        "relative bg-cover bg-bottom grid gap-4 cta-block",
+        "relative bg-cover grid gap-4 cta-block",
         {
           "md:grid-cols-2": !isCentered,
         },

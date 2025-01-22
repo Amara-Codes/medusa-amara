@@ -8,6 +8,7 @@ const Cta: React.FC<CtaElement> = ({
   CtaCaption,
   CtaCssClasses = "",
   CtaButton,
+  CtaBgImg
 }) => {
 
   // Se CtaButton è un array, prendi il primo elemento
@@ -24,7 +25,7 @@ const Cta: React.FC<CtaElement> = ({
         titleCss="text-6xl text-ui-fg-base mb-16 lg:mg-0"
         paragraph={CtaCaption ?? ''}
         parCss="text-ui-fg-base px-4"
-        backgroundImgUrl={""}
+        backgroundImgUrl={CtaBgImg ?? ""}
         haveButton={!!button}
         buttonLink={button?.ButtonLink ?? '/'}
         buttonText={button?.ButtonLabel ?? 'Home'}
