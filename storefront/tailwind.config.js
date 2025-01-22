@@ -22,6 +22,13 @@ module.exports = {
     'small:flex-row',
     'small:flex-col-reverse',
     'small:flex-row-reverse',
+    'border-2',
+    'border-4',
+    'border-koiRed',
+    'border-koiOrange',
+    'border-koiYellow',
+    'border-koiWhite'
+
   ],
   theme: {
     extend: {
