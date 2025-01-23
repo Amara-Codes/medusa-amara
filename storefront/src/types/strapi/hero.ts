@@ -5,5 +5,7 @@ export interface HeroElement {
     HeroSubtitle?: string;
     HeroCssClasses?: string;
     HeroButton?: ButtonElement;
-    HeroBgImg?: string
+    HeroBgImg?: string;
+    HeroWrapperCssClasses?: string;
+    HeroWrapperBgImg?: string;
   }

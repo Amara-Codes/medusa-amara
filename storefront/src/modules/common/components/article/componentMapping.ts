@@ -1,4 +1,4 @@
-import Hero from "./hero";
+import Hero from "./hero/index";
 import Paragraph from "./paragraph";
 import Cta from "./cta";
 import Quote from "./quote";

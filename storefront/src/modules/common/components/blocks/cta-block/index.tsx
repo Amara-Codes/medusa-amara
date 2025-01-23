@@ -43,7 +43,7 @@ const CTABlock = ({
         },
         className
       )}
-      style={{ backgroundImage: `url(${backgroundImgUrl})` }}
+      style={backgroundImgUrl ? { backgroundImage: `url(${backgroundImgUrl})` } : undefined}
     >
       <div
         className={clx(

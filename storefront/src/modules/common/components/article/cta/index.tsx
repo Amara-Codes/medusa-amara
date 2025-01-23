@@ -2,38 +2,42 @@ import React from 'react';
 import { CtaElement } from 'types/strapi/cta';
 import CTABlock from '@modules/common/components/blocks/cta-block';
 
-
 const Cta: React.FC<CtaElement> = ({
   CtaTitle,
   CtaCaption,
   CtaCssClasses = "",
   CtaButton,
-  CtaBgImg
+  CtaBgImg = ""
 }) => {
-
   // Se CtaButton è un array, prendi il primo elemento
   const button = Array.isArray(CtaButton) ? CtaButton[0] : CtaButton;
 
+  // Configura le props dinamiche per CTABlock
+  const ctaBlockProps: any = {
+    className: `${CtaCssClasses} ${!CtaBgImg?.length ? 'bg-gradient-to-bl from-koiBlack via-koiOrange/50 to-koiRed/90 text-koiWhite' : ''}`,
+    wrapperCss: "",
+    direction: "dx",
+    title: CtaTitle ?? '',
+    titleSize: "h3",
+    titleCss: "mb-4 px-8 small:mb-16 text-4xl small:text-6xl",
+    paragraph: CtaCaption ?? '',
+    parCss: "px-4",
+    haveButton: !!button,
+    buttonLink: button?.ButtonLink ?? '/',
+    buttonText: button?.ButtonLabel ?? 'Home',
+    buttonCss: button?.ButtonCssClasses ?? 'mt-8 text-koiWhite bg-koiRed hover:bg-koiOrange shadow-none rounded-md'
+  };
+
+  // Aggiungi la prop backgroundImgUrl solo se CtaBgImg ha lunghezza
+  if (CtaBgImg?.length) {
+    ctaBlockProps.backgroundImgUrl = CtaBgImg;
+  }
+
   return (
     <div className="">
-      <CTABlock
-        className={CtaCssClasses}
-        wrapperCss=""
-        direction="dx"
-        title={CtaTitle ?? ''}
-        titleSize="h3"
-        titleCss="text-6xl text-ui-fg-base mb-16 lg:mg-0"
-        paragraph={CtaCaption ?? ''}
-        parCss="text-ui-fg-base px-4"
-        backgroundImgUrl={CtaBgImg ?? ""}
-        haveButton={!!button}
-        buttonLink={button?.ButtonLink ?? '/'}
-        buttonText={button?.ButtonLabel ?? 'Home'}
-        buttonCss={button?.ButtonCssClasses ?? 'mt-12 shadow-none rounded-md'}
-      />
+      <CTABlock {...ctaBlockProps} />
     </div>
   );
 };
-
 
 export default Cta;
