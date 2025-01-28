@@ -119,6 +119,8 @@ module.exports = {
         ],
         dummy: ["Dummy", "serif"],
         fatboy: ["FatBoy", "sans-serif"],
+        dye: ["Dye", "serif"],
+        
       },
       keyframes: {
         ring: {

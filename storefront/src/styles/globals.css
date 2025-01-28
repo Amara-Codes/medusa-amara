@@ -12,6 +12,11 @@
   src: url("../../public/fonts/FatBoy.ttf");
 }
 
+@font-face {
+  font-family: "Dye";
+  src: url("../../public/fonts/Dye.ttf");
+}
+
 @layer utilities {
   /* Chrome, Safari and Opera */
   .no-scrollbar::-webkit-scrollbar {

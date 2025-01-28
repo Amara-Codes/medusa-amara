@@ -6,6 +6,7 @@ import CartButton from "@modules/layout/components/cart-button";
 import SideMenu from "@modules/layout/components/side-menu";
 import { clx } from "@medusajs/ui";
 import { StoreRegion } from "@medusajs/types";
+import Logo from "../logo";
 
 const isEcom = process.env.AMARA_ECOM_ACTIVATED;
 
