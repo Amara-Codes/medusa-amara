@@ -54,6 +54,7 @@ async function getActivities(limit?: number) {
       ActivityCompleted: {fields: "*"}
     },
     pagination: {},
+    sort: ["createdAt:desc"]
   };
 
   query.filters = { Category: "activities" };

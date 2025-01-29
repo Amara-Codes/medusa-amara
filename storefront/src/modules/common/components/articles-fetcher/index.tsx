@@ -56,6 +56,7 @@ async function getArticles(category: ArticleCategory = "*", limit?: number) {
       ActivityCompleted: { fields: "*" }
     },
     pagination: {},
+    sort: ["createdAt:desc"]
   };
 
   if (category !== "*") {
