@@ -25,10 +25,10 @@ const Hero: React.FC<HeroElement> = ({
             className='object-cover'
           />
         )}
-        <div className={`absolute bottom-0 w-full h-full ${HeroWrapperCssClasses}`}>
-          <div className="relative w-full h-full opacity-90">
+        <div className={`absolute bottom-0 w-full h-full ${HeroWrapperCssClasses ?? ""}`}>
+          {HeroWrapperBgImg?.length ? (
+            <div className="relative w-full h-full opacity-90">
 
-            {HeroWrapperBgImg?.length ? (
 
               <Image
                 src={HeroWrapperBgImg}
@@ -36,29 +36,29 @@ const Hero: React.FC<HeroElement> = ({
                 alt="Wrapper background image"
               />
 
-            ) : (
-
-              <Image
-                src="/images/heroWrapperBg.png"
-                fill
-                alt="Wrapper background image"
-              />
-            )}
-          </div>
-            <div className='text-center absolute bottom-0 w-full pb-4'>
-
-              <h1 className="text-4xl font-bold mb-4 px-4">{HeroTitle}</h1>
-              <p className="text-lg px-4 font-bold">{HeroSubtitle}</p>
-              {HeroButton && (
-
-                <LocalizedClientLink href={HeroButton.ButtonLink ?? "/"}
-                  className={`inline-block px-6 py-3 ${HeroButton.ButtonCssClasses}`}
-                  role="button">
-                  {HeroButton.ButtonLabel}
-
-                </LocalizedClientLink>
-              )}
             </div>
+          ) : (
+            <div className="relative w-full h-full">
+            <div className="backdrop-blur-sm w-full h-2/5 md:h-1/3 small:h-1/4 absolute bottom-0">
+              <div className="bg-black/40 w-full h-full absolute bottom-0"></div>
+
+              <div className='text-center absolute bottom-0 w-full pb-4'>
+
+                <h1 className="text-4xl font-bold mb-4 px-4 text-ui-fg-base">{HeroTitle}</h1>
+                <p className="text-lg px-4 font-bold text-koiYellow">{HeroSubtitle}</p>
+                {HeroButton && (
+
+                  <LocalizedClientLink href={HeroButton.ButtonLink ?? "/"}
+                    className={`inline-block px-6 py-3 ${HeroButton.ButtonCssClasses}`}
+                    role="button">
+                    {HeroButton.ButtonLabel}
+
+                  </LocalizedClientLink>
+                )}
+              </div>
+            </div>
+            </div>
+          )}
 
         </div>
       </div>
