@@ -96,7 +96,7 @@ export default async function GiftRedeemPage({ params }: Props) {
               <div>
                 <div className="flex gap-4 flex-col small:flex-row text-xl small:text-4xl items-center mb-8">
                   <p className="text-ui-fg-base">
-                    <strong>20% Coupon</strong> valid for:
+                    <strong>Free tasting Coupon</strong> valid for:
 
                   </p>
                   <p className="text-koiRed font-bold">{couponDetails.name}</p>

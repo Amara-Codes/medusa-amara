@@ -10,6 +10,8 @@ export const metadata: Metadata = {
 export default async function SecretGiftPage() {
 
   return (
-    <SecretGiftTemplate />
+    <div>
+      <SecretGiftTemplate />
+    </div>
   )
 }

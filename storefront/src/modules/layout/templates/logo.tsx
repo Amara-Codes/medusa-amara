@@ -1,15 +1,17 @@
-export default async function Logo() {
+export default  function Logo() {
 
 
     return (
-        <div className="bg-black border-2 border-black">
-        <div className="flex justify-center bottom-4 border-white mx-8 my-8">
-            <div className="flex flex-col justify-center my-8 px-12">
-                <p className="text-white m-0 mb-[8px] w-full relative font-dye text-[75px]">Amara</p>
-                <p className="text-white m-0 mb-[8px] w-full relative font-dye text-[64px]">Beer Lab</p>
+        <div className="w-[120px]">
+            <div className="bg-black border-2 border-black">
+                <div className="flex justify-center border-2 border-white m-[4px]">
+                    <div className="flex flex-col justify-center pt-[2px] pb-[6px] text-center">
+                        <p className="text-white m-0 w-full relative font-dye leading-none text-[32px]">Amara</p>
+                        <p className="text-white m-0 w-full relative font-dye leading-none text-[24px]">Beer Lab</p>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
     )
 }
 
