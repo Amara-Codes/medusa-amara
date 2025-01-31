@@ -14,9 +14,9 @@ export default function NotFound() {
     <div className="flex flex-col gap-4 items-center justify-center h-dvh bg-koiBlack relative">
       <div className="absolute opacity-50 h-dvh">
 
-      <Image src="/images/404.jpg" width={1920} height={1080} alt="File not found page image" className="h-full"/>
+      <Image src="/images/404.jpg" width={1920} height={1080} alt="File not found page image" className="h-full object-cover"/>
       </div>
-      <div className="absolute w-full h-full flex flex-col items-center justify-center">
+      <div className="absolute w-full h-full flex flex-col items-center justify-center text-center">
 
       <h1 className="text-6xl text-koiOrange font-fatboy mb-16">Something went wrong</h1>
       <p className="text-xl text-koiWhite font-bold mb-8">
