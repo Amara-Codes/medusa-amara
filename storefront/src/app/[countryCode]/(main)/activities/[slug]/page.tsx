@@ -4,7 +4,7 @@ import componentMapping from "@modules/common/components/article/componentMappin
 import BackLink from "@modules/common/components/back-link";
 import { Metadata } from 'next';
 import RelatedArticlesFetcher from "@modules/common/components/related-articles-fetcher";
-
+import { redirect } from 'next/navigation'
 
 //Parte che serve a mappare i nomi delle immagini nei componenti
 const componentImageMap = {
@@ -123,6 +123,9 @@ async function getArticleById(slug: string) {
     }
 
     const data = await res.json();
+    if (!data || !data.data || data.data.length === 0) { 
+        return null; 
+    }
     return transformData(data);
 }
 
@@ -213,9 +216,8 @@ const ActivitiesPage = async () => {
                         </section>
                     </div>
                 </div>
-            ) : (
-                <p>No article found or missing ID.</p>
-            )}
+            ) :
+            redirect("/not-found") }
         </div>
     );
 };
