@@ -45,7 +45,7 @@ const Hero: React.FC<HeroElement> = ({
               <div className='text-center absolute bottom-0 w-full pb-4'>
 
                 <h1 className="text-4xl font-bold mb-4 px-4 text-ui-fg-base">{HeroTitle}</h1>
-                <p className="text-lg px-4 font-bold text-koiYellow">{HeroSubtitle}</p>
+                <p className="text-lg px-4 text-koiYellow">{HeroSubtitle}</p>
                 {HeroButton && (
 
                   <LocalizedClientLink href={HeroButton.ButtonLink ?? "/"}

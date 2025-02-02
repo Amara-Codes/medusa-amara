@@ -126,7 +126,7 @@ export default async function Filters() {
                                         >
                                             <LocalizedClientLink
                                                 className={clx(
-                                                    "text-ui-fg-base hover:text-koiOrange",
+                                                    "text-ui-fg-base hover:text-koiOrange transition duration-500",
                                                     children && ""
                                                 )}
                                                 href={`/categories/${c.handle}`}
@@ -139,7 +139,7 @@ export default async function Filters() {
                                                         children.map((child) => (
                                                             <li key={child.id}>
                                                                 <LocalizedClientLink
-                                                                    className="text-ui-fg-base hover:text-koiOrange"
+                                                                    className="text-ui-fg-base hover:text-koiOrange transition duration-500"
                                                                     href={`/categories/${child.handle}`}
                                                                 >
                                                                     {child.name}
@@ -166,7 +166,7 @@ export default async function Filters() {
                                 {collections?.slice(0, 6).map((c) => (
                                     <li key={c.id}>
                                         <LocalizedClientLink
-                                            className="text-ui-fg-base hover:text-koiOrange"
+                                            className="text-ui-fg-base hover:text-koiOrange transition duration-500"
                                             href={`/collections/${c.handle}`}
                                         >
                                             {c.title}

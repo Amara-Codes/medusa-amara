@@ -28,9 +28,9 @@ export default async function Home({
     <>
       <Hero bgImage="/hero.png" mobileBgImage="/hero-mobile.png"/>
       <div className="py-6">
-        <div>
+        <div className="mt-8">
           <Heading
-            className="text-center text-6xl mb-4 lg:mg-0 text-koiRed font-dummy"
+            className="text-center text-6xl mb-4 lg:mg-0 text-koiRed font-fatboy"
             level='h2'
 
           >
