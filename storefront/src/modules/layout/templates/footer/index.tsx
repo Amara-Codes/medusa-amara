@@ -17,7 +17,7 @@ export default async function Footer() {
 					<div className="ps-2 small:ps-0">
 						<LocalizedClientLink
 							href="/"
-							className="txt-compact-xlarge-plus text-ui-fg-base hover:text-ui-fg-base uppercase"
+							className="txt-compact-xlarge-plus"
 						>
 					<Logo />
 						</LocalizedClientLink>

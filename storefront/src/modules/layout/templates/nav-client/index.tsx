@@ -27,7 +27,7 @@ const NavClient: React.FC<{ regions: StoreRegion[] }> = ({ regions }) => {
         >
           <LocalizedClientLink
             href="/"
-            className="txt-compact-xlarge-plus hover:text-ui-fg-base uppercase"
+            className="txt-compact-xlarge-plus"
             data-testid="nav-store-link"
           >
           <Logo />
