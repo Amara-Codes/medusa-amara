@@ -3,6 +3,7 @@
 import { useQRCode } from "next-qrcode";
 import Input from "@modules/common/components/input";
 import { useState } from "react";
+import LocalizedClientLink from "@modules/common/components/localized-client-link";
 
 const SecretGiftTemplate = () => {
   const { Canvas } = useQRCode();
@@ -63,13 +64,31 @@ const SecretGiftTemplate = () => {
     <div className="flex flex-col small:flex-row small:items-start py-6 content-container">
       <div className="w-full">
         <div className="mb-16 small:mx-12">
-          <h1 className="mb-16 font-extrabold text-4xl text-center text-koiRed small:text-8xl font-fatboy" data-testid="secret-gift-page-title">
+          <h1 className="mb-8 small:mb-16 font-extrabold text-4xl text-center text-koiRed small:text-8xl font-fatboy" data-testid="secret-gift-page-title">
             Secret Gift
           </h1>
           <div>
+            <p className="text-koiYellow text-xl small:text-2xl mb-4 small:mb-0">
+            Congratulations! You’ve just won a free tasting of all the beers we’ll have on tap when you visit our taproom! <br />
+            To claim your prize, follow these simple steps:
+            </p>
+            <ol className="list-decimal text-koiOrange font-bold ml-6 my-3">
+              <li>
+                <p className="text-lg font-bold pb-4 small:pb-0 text-koiWhite">Enter your name and surname in the form below</p>
+              </li>
+              <li>
+                <p className="text-lg font-bold pb-4 small:pb-0 text-koiWhite">Generate your personalized QR code</p>
+              </li>
+              <li>
+                <p className="text-lg font-bold pb-4 small:pb-0 text-koiWhite">Download the QR code and save it to your gallery</p>
+              </li>
+              <li>
+                <p className="text-lg font-bold pb-4 small:pb-0 text-koiWhite">Show it to our staff at the taproom to redeem your free tasting</p>
+              </li>
+            </ol>
             <p className="text-koiYellow text-xl small:text-2xl">
-              Congratulations! You’ve found the sticker we hid in Siem Reap and made it to this page. Add your name and surname, generate your personalized QR code, download it, and save it to your gallery.
-              Show your QR code in our Taproom, and you’ll get a free tasting of all the beers on tap when you visit us. The promotion is valid for one month starting from the opening party. Stay tuned!
+            The promotion is valid for one month starting from the opening party. <br />
+            <LocalizedClientLink href="/contacts" data-testid="contacts-link" className="underline hover:text-koiOrange transition duration-500">Stay connected</LocalizedClientLink> for updates on the opening party and more!
             </p>
             <div className="mt-4 text-ui-fg-muted text-lg small:text-xl">
               <p>
