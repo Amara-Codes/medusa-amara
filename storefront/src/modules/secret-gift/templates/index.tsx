@@ -59,7 +59,7 @@ const SecretGiftTemplate = () => {
       link.click();
     }
   };
-
+  
   return (
     <div className="flex flex-col small:flex-row small:items-start py-6 content-container">
       <div className="w-full">
@@ -105,17 +105,13 @@ const SecretGiftTemplate = () => {
 
         <div className="flex small:mx-12 justify-center">
           <div className="w-full">
-            <p className="text-ui-fg-base text-2xl small:text-4xl mb-4">
-              Generate your QR Code
-            </p>
-
+            <p className="text-ui-fg-base text-2xl small:text-4xl mb-4"> Generate your QR Code </p>
             <form onSubmit={handleSubmit} className="flex items-center w-full gap-x-4">
               <Input type="text" label="Enter your name" name="GiftOwnerName" value={name} onChange={(e) => setName(e.target.value)} />
               <button type="submit" className={`py-2 px-4 rounded text-white font-bold border-2 transition ${name.trim() ? "bg-koiRed hover:bg-koiOrange cursor-pointer border-koiRed hover:border-koiOrange" : "bg-gray-300 cursor-not-allowed opacity-50 border-gray-500"}`} disabled={!name.trim()}>
                 Generate
               </button>
             </form>
-
             {qrText && (
               <div className="mt-8 flex flex-col items-center">
                 <div className="border-4 border-koiOrange rounded-lg">
