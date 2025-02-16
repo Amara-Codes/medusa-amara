@@ -71,11 +71,11 @@ const ProductInfoTab = ({ product }: ProductTabsProps) => {
                             <strong>{key}:</strong>
                           </p>
                           {typeof value === "string" ? (
-                            <p className="font-normal text-koiYellow">{value}</p>
+                            <p className="font-normal text-koiWhite">{value}</p>
                           ) : Array.isArray(value) ? (
-                            <p className="font-normal text-koiYellow">{value.join(", ")}</p>
+                            <p className="font-normal text-koiWhite">{value.join(", ")}</p>
                           ) : (
-                            <p className="font-normal text-koiYellow">Info coming soon</p>
+                            <p className="font-normal text-koiWhite">Info coming soon</p>
                           )}
                         </li>
                       ))}
