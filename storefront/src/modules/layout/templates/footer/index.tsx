@@ -77,7 +77,7 @@ export default async function Footer() {
 										Brewery
 									</LocalizedClientLink>
 								</li>
-								<li className="text-xl ps-2 small:ps-0 font-bold text-start small:text-end">
+								<li className="text-xl pe-2 small:pe-0 font-bold text-end">
 									<LocalizedClientLink
 										className="text-ui-fg-base hover:text-koiOrange transition duration-500"
 										href="/beers"
@@ -93,7 +93,7 @@ export default async function Footer() {
 										Blog
 									</LocalizedClientLink>
 								</li>
-								<li className="text-xl ps-2 small:ps-0 font-bold text-start small:text-end">
+								<li className="text-xl pe-2 small:pe-0 font-bold text-end">
 									<LocalizedClientLink
 										className="text-ui-fg-base hover:text-koiOrange transition duration-500"
 										href="/activities"
@@ -109,7 +109,7 @@ export default async function Footer() {
 										Khmer Beers
 									</LocalizedClientLink>
 								</li>
-								<li className="text-xl ps-2 small:ps-0 font-bold text-start small:text-end">
+								<li className="text-xl pe-2 small:pe-0 font-bold text-end">
 									<LocalizedClientLink
 										className="text-ui-fg-base hover:text-koiOrange transition duration-500"
 										href="/collections/first-drop"
@@ -126,7 +126,7 @@ export default async function Footer() {
 									</LocalizedClientLink>
 								</li>
 
-								<li className="text-xl ps-2 small:ps-0 font-bold text-start small:text-end">
+								<li className="text-xl pe-2 small:pe-0 font-bold text-end">
 									<LocalizedClientLink
 										className="text-ui-fg-base hover:text-koiOrange transition duration-500"
 										href="/contacts"

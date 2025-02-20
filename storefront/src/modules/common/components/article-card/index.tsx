@@ -19,7 +19,7 @@ const ArticleCard: React.FC<ArticleCardProps> = ({
   type,
 }) => {
   return (
-    <div className="border rounded-lg shadow-md p-4 mb-6 flex min-h-[500px]">
+    <div className="border rounded-lg shadow-md mb-6 flex min-h-[500px]">
       <Link
         className="w-full h-full relative flex flex-col items-center text-ui-fg-base font-bold"
         href={{
