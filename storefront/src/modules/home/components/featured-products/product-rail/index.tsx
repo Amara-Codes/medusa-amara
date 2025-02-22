@@ -19,9 +19,9 @@ export default function ProductRail({
 
   return (
     <div className="content-container py-12 small:py-24">
-      <div className="flex justify-between mb-4">
-        <Text className="text-2xl text-bold text-koiOrange">{collection.title}</Text>
-        <InteractiveLink href={`/collections/${collection.handle}`}>
+      <div className="flex justify-between mb-4 flex-col small:flex-row">
+        <Text className="text-4xl text-bold text-koiOrange font-fatboy">{collection.title}</Text>
+        <InteractiveLink href={`/collections/${collection.handle}`} className="justify-end small:justify-start my-4 small:my-0">
           Explore this drop
         </InteractiveLink>
       </div>

@@ -15,16 +15,14 @@ const ImageGallery = ({ images }: ImageGalleryProps) => {
           return (
             <Container
               key={image.id}
-              className={`relative aspect-[29/34] w-full overflow-hidden shadow-none small:h-dvh ${i === 0 && image.url ? 'h-[60dvh]' : 'h-dvh'}`}
+              className={`relative p-0 small:py-4 w-full overflow-hidden shadow-none small:h-dvh`}
               id={image.id}
             >
 
-
               {i === 0 && image.url ? (
            
-
                   <BeerSwagger urlImg={image.url} />
-      
+  
               ) : image.url ? (
                 <Image
                   src={image.url}

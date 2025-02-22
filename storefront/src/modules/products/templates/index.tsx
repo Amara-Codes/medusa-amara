@@ -77,10 +77,10 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({
   return (
     <>
       <div
-        className="content-container flex flex-col small:flex-row small:items-start py-6 mt-8 relative"
+        className="content-container flex flex-col small:flex-row small:items-start py-6 small:mt-8 relative"
         data-testid="product-container"
       >
-        <div className="flex flex-col small:sticky small:py-0 small:max-w-[300px] w-full py-8 gap-y-6 order-4 md:order-2">
+        <div className="flex flex-col small:sticky py-0 small:max-w-[300px] w-full  gap-y-6 order-4 md:order-2">
           <ProductInfo product={product} />
           <ProductTabs product={product} />
         </div>

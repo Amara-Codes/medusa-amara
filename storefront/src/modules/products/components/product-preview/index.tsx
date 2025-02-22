@@ -18,6 +18,52 @@ export default async function ProductPreview({
     regionId: region.id,
   })
 
+  const placeholderStyles: string[] = [
+    "Bold and Tasty",
+    "Refreshing and Citric",
+    "Smooth and Balanced",
+    "Hoppy and Aromatic",
+    "Rich and Malty",
+    "Crisp and Clean",
+    "Spicy and Complex",
+    "Fruity and Vibrant",
+    "Dark and Roasty",
+    "Light and Zesty"
+  ];
+  
+  const extractBeerStyle = (json: string = ""): string => {
+    try {
+      // Verifica se la stringa JSON è vuota
+      if (!json.length) {
+        throw new Error("JSON string is empty");
+      }
+  
+      // Decodifica il JSON
+      const data = JSON.parse(json);
+  
+      // Verifica se l'oggetto decodificato è valido e contiene la chiave "Beer style"
+      if (data && typeof data === "object" && "Beer style" in data) {
+        const beerStyle = data["Beer style"];
+  
+        // Verifica se il valore di "Beer style" è una stringa non vuota
+        if (typeof beerStyle === "string" && beerStyle.trim().length > 0) {
+          return beerStyle.trim(); // Restituisce il valore pulito
+        }
+      }
+  
+      // Se qualcosa non va, restituisci un placeholder casuale
+      throw new Error("Invalid or missing 'Beer style'");
+    } catch (error) {
+      // Gestione dell'errore in TypeScript (error è di tipo unknown)
+      if (error instanceof Error) {
+        console.error("Error extracting beer style:", error.message);
+      } else {
+        console.error("Unknown error occurred:", error);
+      }
+      return placeholderStyles[Math.floor(Math.random() * placeholderStyles.length)];
+    }
+  };
+
   if (!pricedProduct) {
     return null
   }
@@ -38,6 +84,7 @@ export default async function ProductPreview({
           <Text className="text-koiOrange text-2xl sm:text-3xl font-bold text-nowrap" data-testid="product-title">
             {product.title}
           </Text>
+          <p className="text-koiYellow text-end">{extractBeerStyle(product.subtitle ?? "")}</p>
         </div>
 
       </div>

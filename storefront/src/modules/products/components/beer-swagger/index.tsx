@@ -70,14 +70,11 @@ const BeerLoader = (
 export function BeerSwagger({ urlImg, scale = 10 }: BeerSwaggerProps) {
   return (
     <div
-      className="w-full h-full rounded-lg bg-transparent contrast-[1.45] saturate-[1.3] brightness-[1.05] top-16 md:top-8"
+      className="w-full  rounded-lg bg-transparent contrast-[1.45] saturate-[1.3] brightness-[1.05] top-16 md:top-8"
       style={{
-        position: "absolute",
-        left: "50%",
-        transform: "translate(-50%, -0%)",
+        height: "calc(100dvh - 105px)", 
         overflow: "hidden",
         pointerEvents: "auto",
-        zIndex: 30,
       }}
     >
       <Canvas
@@ -159,7 +156,7 @@ function Scene({ urlImg, scale }: SceneProps) {
         dispose={null}
         scale={scale}
         rotation={[0, -Math.PI, 0]}
-        position={[0, 0, 0]}
+        position={[0, -0.5, 0]}
       >
         <primitive object={scene} />
       </group>
