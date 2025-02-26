@@ -3,7 +3,7 @@ import { headers } from "next/headers";
 import componentMapping from "@modules/common/components/article/componentMapping";
 import BackLink from "@modules/common/components/back-link";
 import { Metadata } from 'next';
-import RelatedArticlesFetcher from "@modules/common/components/related-articles-fetcher";
+import RelatedArticlesFetcher from "@modules/strapi/related-articles-fetcher";
 import { redirect } from 'next/navigation'
 
 //Parte che serve a mappare i nomi delle immagini nei componenti

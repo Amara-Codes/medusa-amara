@@ -1,6 +1,6 @@
 import React from "react";
 import qs from "qs";
-import ArticleCard from "@modules/common/components/article-card";
+import ArticleCard from "../article-card";
 
 type TransformedDataItem = {
     Title: string;

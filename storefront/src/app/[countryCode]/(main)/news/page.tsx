@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import ArticlesFetcher from "@modules/common/components/articles-fetcher";
+import ArticlesFetcherWrapper from "@modules/strapi/articles-fetcher-wrapper";
 import CTABlock from "@modules/common/components/blocks/cta-block";
 export const metadata: Metadata = {
   title: "Brewery in Siem Reap - Amara Beer Lab | News and Insights",
@@ -20,7 +20,7 @@ export default function NewsPage() {
             <p className="text-koiYellow text-xl">Delve into the heart of our brewery&apos;s evolution through a curated collection of compelling updates and stories. This is where innovation meets tradition, unveiling the creative pulse behind every initiative, collaboration, and milestone. From unveiling pioneering brews to sharing the narratives that shape our vision, this space offers an insider&apos;s perspective on our journey. Explore the dynamic interplay of culture, craftsmanship, and community that defines our identity, and immerse yourself in the stories that make our brewery a living, evolving canvas of ideas.</p>
           </div>
         </div>
-        <ArticlesFetcher articleCategory="news" />
+        <ArticlesFetcherWrapper initialCategory="news" articlesPerPage={3}/>
 
         <div className="small:mx-12">
           <CTABlock

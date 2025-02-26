@@ -10,7 +10,7 @@ import SkeletonRelatedProducts from "@modules/skeletons/templates/skeleton-relat
 import { notFound } from "next/navigation"
 import ProductActionsWrapper from "./product-actions-wrapper"
 import { HttpTypes } from "@medusajs/types"
-import ArticlePostFetcher from "../components/related-post-fetcher"
+import ArticlePostFetcher from "@modules/strapi/related-post-fetcher"
 import CTABlock from "@modules/common/components/blocks/cta-block"
 
 const isEcom = process.env.AMARA_ECOM_ACTIVATED;
