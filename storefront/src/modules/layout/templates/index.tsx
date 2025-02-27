@@ -11,7 +11,7 @@ export default async function Layout({ children }: { children: React.ReactNode }
   return (
     <div>
       <NavWrapper regions={regions}/>
-      <main className="relative">{children}</main>
+      <main className="relative mt-8">{children}</main>
       <Footer />
     </div>
   )

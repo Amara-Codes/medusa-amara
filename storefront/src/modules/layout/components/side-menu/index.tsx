@@ -49,36 +49,13 @@ const SideMenu = ({ regions }: { regions: HttpTypes.StoreRegion[] | null }) => {
               <div className="relative flex h-full">
                 <Popover.Button
                   data-testid="nav-menu-button"
-                  className="relative h-full flex items-center transition-all ease-out duration-200 focus:outline-none hover:text-ui-fg-base"
+                  className={`relative h-full flex items-center transition-all ease-out duration-200 focus:outline-none ${open ? 'text-koiBlack' : 'text-koiWhite'}`}
                   title="nav-menu-button"
                 >
-                  <svg
-                    width="22"
-                    height="22"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <g clipPath="url(#clip0_429_11066)">
-                      <path
-                        d="M3 6.00092H21M3 12.0009H21M3 18.0009H21"
-                        stroke="#292929"
-                        strokeWidth="2.5"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </g>
-                    <defs>
-                      <clipPath id="clip0_429_11066">
-                        <rect
-                          width="24"
-                          height="24"
-                          fill="white"
-                          transform="translate(0 0.000915527)"
-                        />
-                      </clipPath>
-                    </defs>
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="size-6">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
                   </svg>
+
                 </Popover.Button>
               </div>
 
