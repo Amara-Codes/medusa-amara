@@ -41,7 +41,7 @@ const Hero = ({
   const haveMobileBgImage = Boolean(mobileBgImage);
 
   return (
-    <div className="h-[100dvh] w-full relative bg-ui-bg-subtle">
+    <div className="h-[100dvh] w-full relative">
       {/* Background Image with next/image */}
       {bgImage && (
         <>

@@ -38,7 +38,7 @@ const NavWrapper: React.FC<{ regions: StoreRegion[] }> = ({ regions }) => {
 
   return (
     <div
-      className={`sticky top-0 inset-x-0 z-50 group transition-transform duration-700 ${
+      className={`fixed top-0 inset-x-0 z-50 group transition-transform duration-700 ${
         isVisible ? "translate-y-0" : "-translate-y-full"
       }`}
     >

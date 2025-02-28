@@ -61,7 +61,7 @@ const SecretGiftTemplate = () => {
   };
   
   return (
-    <div className="flex flex-col small:flex-row small:items-start py-6 content-container">
+    <div className="flex flex-col small:flex-row small:items-start py-6 content-container mt-32">
       <div className="w-full">
         <div className="mb-16 small:mx-12">
           <h1 className="mb-8 small:mb-16 font-extrabold text-4xl text-center text-koiRed small:text-8xl font-fatboy" data-testid="secret-gift-page-title">

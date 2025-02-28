@@ -3,6 +3,7 @@ import { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Brewery in Siem Reap - Amara Beer Lab | Gift Redeem",
   description: "QR Code gift redeem",
+ robots: "noindex, nofollow"
 };
 
 type Props = {
@@ -79,7 +80,7 @@ export default async function GiftRedeemPage({ params }: Props) {
   }
 
   return (
-    <div className="flex flex-col small:flex-row small:items-start py-6 content-container">
+    <div className="flex flex-col small:flex-row small:items-start py-6 content-container mt-32">
       <div className="w-full">
         <div className="mb-16 small:mx-12">
           <h1

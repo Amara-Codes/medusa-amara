@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 export default function NewsPage() {
   return (
     <div
-      className="flex flex-col small:flex-row small:items-start py-6 content-container"
+      className="flex flex-col small:flex-row small:items-start py-6 content-container mt-32"
       data-testid="news-container"
     >
       <div className="w-full">

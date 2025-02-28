@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 export default function NotFound() {
   return (
-    <div className="flex flex-col gap-4 items-center justify-center h-dvh bg-koiBlack relative">
+    <div className="flex flex-col gap-4 items-center justify-center h-dvh bg-koiBlack relative mt-32">
       <div className="absolute opacity-50 h-dvh">
 
       <Image src="/images/404.png" width={1920} height={1080} alt="File not found page image" className="h-full object-cover"/>

@@ -77,7 +77,7 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({
   return (
     <>
       <div
-        className="content-container flex flex-col small:flex-row small:items-start py-6 small:mt-8 relative"
+        className="content-container flex flex-col small:flex-row small:items-start py-6 relative mt-32"
         data-testid="product-container"
       >
         <div className="flex flex-col small:sticky py-0 small:max-w-[300px] w-full  gap-y-6 order-4 md:order-2">

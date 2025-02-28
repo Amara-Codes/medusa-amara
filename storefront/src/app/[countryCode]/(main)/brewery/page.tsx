@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 export default function Brewery() {
   return (
-    <div className="pt-24">
+    <div className="pt-24 mt-32">
 
       <TypoParagraphBlock
         className="lg:mb-48 px-6 pb-12"

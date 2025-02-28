@@ -12,8 +12,8 @@ const isEcom = process.env.AMARA_ECOM_ACTIVATED;
 
 const NavClient: React.FC<{ regions: StoreRegion[] }> = ({ regions }) => {
   return (
-    <header className="relative mx-auto duration-200 bg-transparent backdrop-blur-sm">
-      <nav className="content-container txt-xsmall-plus text-ui-fg flex items-center justify-between w-full h-full text-small-regular py-4 border-b">
+    <header className="relative mx-auto duration-200 bg-transparent">
+      <nav className="content-container txt-xsmall-plus text-ui-fg flex items-center justify-between w-full h-full text-small-regular py-4">
         <div className="flex-1 basis-0 h-full flex items-center">
           <div className="h-full">
             <SideMenu regions={regions} />
