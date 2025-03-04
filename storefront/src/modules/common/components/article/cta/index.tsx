@@ -1,13 +1,15 @@
 import React from 'react';
 import { CtaElement } from 'types/strapi/cta';
 import CTABlock from '@modules/common/components/blocks/cta-block';
+import internal from 'stream';
 
 const Cta: React.FC<CtaElement> = ({
   CtaTitle,
   CtaCaption,
   CtaCssClasses = "",
   CtaButton,
-  CtaBgImg = ""
+  CtaBgImg = "",
+  CtaType
 }) => {
   // Se CtaButton è un array, prendi il primo elemento
   const button = Array.isArray(CtaButton) ? CtaButton[0] : CtaButton;
@@ -25,12 +27,16 @@ const Cta: React.FC<CtaElement> = ({
     haveButton: !!button,
     buttonLink: button?.ButtonLink ?? '/',
     buttonText: button?.ButtonLabel ?? 'Home',
-    buttonCss: button?.ButtonCssClasses ?? 'mt-8 text-koiWhite bg-koiRed hover:bg-koiOrange shadow-none rounded-md'
+    buttonCss: button?.ButtonCssClasses ?? 'mt-8 text-koiWhite bg-koiRed hover:bg-koiOrange shadow-none rounded-md',
   };
 
   // Aggiungi la prop backgroundImgUrl solo se CtaBgImg ha lunghezza
   if (CtaBgImg?.length) {
     ctaBlockProps.backgroundImgUrl = CtaBgImg;
+  }
+
+  if (CtaType === "external") {
+    ctaBlockProps.internalLink = false
   }
 
   return (

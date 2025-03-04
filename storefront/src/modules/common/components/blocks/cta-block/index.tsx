@@ -1,6 +1,8 @@
 import { Text, Heading, clx, Button } from "@medusajs/ui";
 import LocalizedClientLink from "@modules/common/components/localized-client-link";
+import Link from "next/link";
 import Image from "next/image"; // Importa il componente Image di Next.js
+import internal from "stream";
 
 type ctaBlockProps = {
   className?: string;
@@ -17,6 +19,7 @@ type ctaBlockProps = {
   buttonLink?: string;
   backgroundImgUrl?: string;
   imageCss?: string;
+  internalLink?: boolean
 };
 
 const CTABlock = ({
@@ -34,6 +37,7 @@ const CTABlock = ({
   buttonLink,
   backgroundImgUrl,
   imageCss = "",
+  internalLink = true
 }: ctaBlockProps) => {
   const isCentered = direction === "center" || className?.includes("centered");
 
@@ -77,7 +81,8 @@ const CTABlock = ({
         <Text className={clx("mt-4", parCss)} size="xlarge">
           {paragraph}
         </Text>
-        {haveButton && (
+        {haveButton &&  (
+          internalLink ?(
           <LocalizedClientLink href={buttonLink ?? ""}>
             <Button
               className={clx(
@@ -88,7 +93,19 @@ const CTABlock = ({
             >
               {buttonText}
             </Button>
-          </LocalizedClientLink>
+          </LocalizedClientLink>) : [
+            <Link href={buttonLink ?? ""}>
+               <Button
+              className={clx(
+                "mx-auto rounded-none transition duration-500",
+                buttonCss
+              )}
+              size="large"
+            >
+              {buttonText}
+            </Button>
+            </Link>
+          ]
         )}
       </div>
 
