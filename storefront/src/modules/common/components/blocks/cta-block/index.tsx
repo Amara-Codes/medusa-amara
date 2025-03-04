@@ -92,7 +92,7 @@ const CTABlock = ({
             >
               {buttonText}
             </Button>
-          </LocalizedClientLink>) : [
+          </LocalizedClientLink>) : (
             <Link href={buttonLink ?? ""}>
                <Button
               className={clx(
@@ -104,7 +104,7 @@ const CTABlock = ({
               {buttonText}
             </Button>
             </Link>
-          ]
+          )
         )}
       </div>
 
