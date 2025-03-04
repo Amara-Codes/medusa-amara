@@ -2,7 +2,6 @@ import { Text, Heading, clx, Button } from "@medusajs/ui";
 import LocalizedClientLink from "@modules/common/components/localized-client-link";
 import Link from "next/link";
 import Image from "next/image"; // Importa il componente Image di Next.js
-import internal from "stream";
 
 type ctaBlockProps = {
   className?: string;
