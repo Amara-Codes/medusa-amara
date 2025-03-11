@@ -81,7 +81,7 @@ export default async function ProductPreview({
         />
 
         <div className="p-4">
-          <Text className="text-koiOrange text-2xl sm:text-3xl font-bold text-nowrap" data-testid="product-title">
+          <Text className="text-koiOrange text-2xl sm:text-3xl font-bold text-nowrap font-fatboy" data-testid="product-title">
             {product.title}
           </Text>
           <p className="text-koiYellow text-end">{extractBeerStyle(product.subtitle ?? "")}</p>

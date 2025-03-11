@@ -63,8 +63,8 @@ const TypoParagraphBlock = ({
         <div
           className={clx("paragraph-wrapper",
             {
-              "md:ps-12 order-2": fatTextPosition === "sx",
-              "lg:pe-12 md:ps-12 order-1": fatTextPosition === "dx",
+              "small:ps-12 order-2": fatTextPosition === "sx",
+              "lg:pe-12 small:ps-12 order-1": fatTextPosition === "dx",
             },
 
             paragraphWrapperCss

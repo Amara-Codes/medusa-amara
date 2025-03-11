@@ -456,3 +456,16 @@
     transform: translateY(0px) scale3d(1,1,0);
   }
 }
+
+@keyframes scroll {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.animate-scroll {
+  animation: scroll 20s linear infinite; /* Modifica la durata (20s) in base alla velocità desiderata */
+}
