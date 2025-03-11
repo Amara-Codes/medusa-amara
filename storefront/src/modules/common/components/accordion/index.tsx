@@ -60,10 +60,7 @@ const Item: React.FC<AccordionItemProps> = ({
       <AccordionPrimitive.Header className="px-1">
         <div className="flex flex-col">
           <div className="flex w-full items-center justify-between">
-           
-            {/* x@ts-expect-error */}
-            <AccordionPrimitive.Trigger className="w-full">
-            <div className="flex justify-between items-center w-full">
+            <div className="flex items-center gap-4">
               <Text
                 className={clx(
                   "font-bold text-lg font-dummy",
@@ -72,8 +69,10 @@ const Item: React.FC<AccordionItemProps> = ({
               >
                 {title}
               </Text>
-              {customTrigger || <MorphingTrigger />}
             </div>
+            {/* x@ts-expect-error */}
+            <AccordionPrimitive.Trigger>
+              {customTrigger || <MorphingTrigger />}
             </AccordionPrimitive.Trigger>
           </div>
           {subtitle && (
