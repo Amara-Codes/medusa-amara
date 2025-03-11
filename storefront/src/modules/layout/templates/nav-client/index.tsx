@@ -69,7 +69,7 @@ const NavClient: React.FC<{ regions: StoreRegion[] }> = ({ regions }) => {
         )}
       </nav>
       {hasInfoBanner && (
-  <div className="bg-koiRed overflow-hidden whitespace-nowrap relative">
+  <div className="bg-koiOrange overflow-hidden whitespace-nowrap relative">
     <p className="text-koiWhite font-bold inline-block animate-scroll">
       {infoBannerText}
       {infoBannerHasLink && (
