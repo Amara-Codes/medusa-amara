@@ -9,13 +9,6 @@ import { StoreRegion } from "@medusajs/types";
 import Logo from "../logo";
 
 const isEcom = process.env.AMARA_ECOM_ACTIVATED;
-
-const hasInfoBanner = process.env.AMARA_INFO_BANNER_ACTIVE;
-const infoBannerText = process.env.AMARA_INFO_BANNER_TEXT;
-const infoBannerHasLink = process.env.AMARA_INFO_BANNER_HAS_LINK;
-const infoBannerLinkLabel = process.env.AMARA_INFO_BANNER_LINK_LABEL;
-const infoBannerLinkHref = process.env.AMARA_INFO_BANNER_LINK_HREF;
-
 const NavClient: React.FC<{ regions: StoreRegion[] }> = ({ regions }) => {
   return (
     <header className="relative mx-auto duration-200 bg-transparent">
@@ -68,18 +61,6 @@ const NavClient: React.FC<{ regions: StoreRegion[] }> = ({ regions }) => {
           </div>
         )}
       </nav>
-      {hasInfoBanner === "true" && (
-  <div className="bg-koiOrange overflow-hidden whitespace-nowrap relative">
-    <p className="text-koiWhite font-bold inline-block animate-scroll">
-      {infoBannerText}
-      {infoBannerHasLink === "true" && (
-        <a className="underline" href={infoBannerLinkHref} title={infoBannerLinkHref}>
-          {infoBannerLinkLabel}
-        </a>
-      )}
-    </p>
-  </div>
-)}
     </header>
   );
 };
