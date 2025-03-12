@@ -1,6 +1,6 @@
-"use client";
+"use client"; 
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import LocalizedClientLink from "@modules/common/components/localized-client-link";
 import CartButton from "@modules/layout/components/cart-button";
 import SideMenu from "@modules/layout/components/side-menu";
@@ -8,8 +8,25 @@ import { clx } from "@medusajs/ui";
 import { StoreRegion } from "@medusajs/types";
 import Logo from "../logo";
 
-const isEcom = process.env.AMARA_ECOM_ACTIVATED;
+
+const isEcom = process.env.NEXT_PUBLIC_AMARA_ECOM_ACTIVATED;
+
 const NavClient: React.FC<{ regions: StoreRegion[] }> = ({ regions }) => {
+  const [hasInfoBanner, setHasInfoBanner] = useState<boolean>(false);
+  const [infoBannerText, setInfoBannerText] = useState<string>("");
+  const [infoBannerHasLink, setInfoBannerHasLink] = useState<boolean>(false);
+  const [infoBannerLinkLabel, setInfoBannerLinkLabel] = useState<string>("");
+  const [infoBannerLinkHref, setInfoBannerLinkHref] = useState<string>("");
+
+  // useEffect per caricare le variabili di ambiente
+  useEffect(() => {
+    setHasInfoBanner(process.env.NEXT_PUBLIC_AMARA_INFO_BANNER_ACTIVE === "true");
+    setInfoBannerText(process.env.NEXT_PUBLIC_AMARA_INFO_BANNER_TEXT || "Default message");
+    setInfoBannerHasLink(process.env.NEXT_PUBLIC_AMARA_INFO_BANNER_HAS_LINK === "true");
+    setInfoBannerLinkLabel(process.env.NEXT_PUBLIC_AMARA_INFO_BANNER_LINK_LABEL || "Click Here");
+    setInfoBannerLinkHref(process.env.NEXT_PUBLIC_AMARA_INFO_BANNER_LINK_HREF || "/");
+  }, []); // Questo effetto si esegue solo una volta, quando il componente viene montato
+
   return (
     <header className="relative mx-auto duration-200 bg-transparent">
       <nav className="content-container txt-xsmall-plus text-ui-fg flex items-center justify-between w-full h-full text-small-regular py-4">
@@ -61,6 +78,23 @@ const NavClient: React.FC<{ regions: StoreRegion[] }> = ({ regions }) => {
           </div>
         )}
       </nav>
+
+      {hasInfoBanner && (
+        <div className="bg-koiRed overflow-hidden whitespace-nowrap relative">
+          <p className="text-koiWhite font-bold inline-block animate-scroll">
+            {infoBannerText}
+            {infoBannerHasLink && (
+              <a
+                className="underline ps-2"
+                href={infoBannerLinkHref}
+                title={infoBannerLinkHref}
+              >
+                {infoBannerLinkLabel}
+              </a>
+            )}
+          </p>
+        </div>
+      )}
     </header>
   );
 };

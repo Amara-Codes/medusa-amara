@@ -12,7 +12,7 @@ const SecretGiftTemplate = () => {
 
   const getKeyFromEnv = (): Promise<CryptoKey> => {
     return new Promise((resolve, reject) => {
-      const secretKey = process.env.GIFT_SECRET_KEY || "default_secret_key";
+      const secretKey = process.env.NEXT_PUBLIC_GIFT_SECRET_KEY || "default_secret_key";
       const encoder = new TextEncoder();
       const keyData = encoder.encode(secretKey);
       crypto.subtle.digest("SHA-256", keyData).then((hashedKey) => {

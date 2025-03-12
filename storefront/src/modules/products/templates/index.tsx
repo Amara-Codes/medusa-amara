@@ -13,7 +13,7 @@ import { HttpTypes } from "@medusajs/types"
 import ArticlePostFetcher from "@modules/strapi/related-post-fetcher"
 import CTABlock from "@modules/common/components/blocks/cta-block"
 
-const isEcom = process.env.AMARA_ECOM_ACTIVATED;
+const isEcom = process.env.NEXT_PUBLIC_AMARA_ECOM_ACTIVATED;
 
 type ProductTemplateProps = {
   product: HttpTypes.StoreProduct

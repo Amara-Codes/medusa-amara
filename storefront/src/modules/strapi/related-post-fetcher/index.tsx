@@ -13,7 +13,7 @@ type TransformedDataItem = {
 
 
 async function getArticleById(id: string): Promise<any> {
-    const baseUrl = process.env.AMARA_STRAPI_URL ?? "http://localhost:1337";
+    const baseUrl = process.env.NEXT_PUBLIC_AMARA_STRAPI_URL ?? "http://localhost:1337";
     const path = `/api/articles/${id}`;
     const url = new URL(path, baseUrl);
     const query: Record<string, any> = {
@@ -69,7 +69,7 @@ async function getArticles(tagString: string): Promise<TransformedDataItem[]> {
     }
 
     const tags = tagString.replace(/-$/, "").split("-").map(tag => tag.trim());
-    const baseUrl = process.env.AMARA_STRAPI_URL ?? "http://localhost:1337";
+    const baseUrl = process.env.NEXT_PUBLIC_AMARA_STRAPI_URL ?? "http://localhost:1337";
     const path = "/api/tags";
 
     const url = new URL(path, baseUrl);

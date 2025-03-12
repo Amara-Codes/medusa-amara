@@ -49,7 +49,7 @@ async function getArticles(
   sort: "asc" | "desc" = "desc",
   page: number = 1
 ) {
-  const baseUrl = process.env.AMARA_STRAPI_URL ?? "https://strapi-production-8758a.up.railway.app";
+  const baseUrl = process.env.NEXT_PUBLIC_AMARA_STRAPI_URL ?? "http://localhost:1337";
   const path = "/api/articles";
 
   const url = new URL(path, baseUrl);

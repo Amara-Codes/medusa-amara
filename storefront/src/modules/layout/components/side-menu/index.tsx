@@ -8,7 +8,7 @@ import LocalizedClientLink from "@modules/common/components/localized-client-lin
 import CountrySelect from "../country-select";
 import { HttpTypes } from "@medusajs/types";
 
-const isEcom = process.env.AMARA_ECOM_ACTIVATED;
+const isEcom = process.env.NEXT_PUBLIC_AMARA_ECOM_ACTIVATED;
 
 const SideMenuItems = {
   "The Brewery": "/brewery",

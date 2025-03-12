@@ -7,7 +7,7 @@ import Accordion from "@modules/common/components/accordion"
 import { HttpTypes } from "@medusajs/types"
 import { clx } from "@medusajs/ui"
 
-const isEcom = process.env.AMARA_ECOM_ACTIVATED;
+const isEcom = process.env.NEXT_PUBLIC_AMARA_ECOM_ACTIVATED;
 
 type ProductTabsProps = {
   product: HttpTypes.StoreProduct

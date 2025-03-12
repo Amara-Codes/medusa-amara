@@ -43,7 +43,7 @@ function transformData(json: any): TransformedJson {
 }
 
 async function getActivities(limit?: number) {
-  const baseUrl = process.env.AMARA_STRAPI_URL ?? "http://localhost:1337";
+  const baseUrl = process.env.NEXT_PUBLIC_AMARA_STRAPI_URL ?? "http://localhost:1337";
   const path = "/api/articles";
 
   const url = new URL(path, baseUrl);

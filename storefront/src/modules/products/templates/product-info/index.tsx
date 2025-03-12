@@ -2,7 +2,7 @@ import { HttpTypes } from "@medusajs/types"
 import { Heading, Text } from "@medusajs/ui"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 
-const isEcom = process.env.AMARA_ECOM_ACTIVATED;
+const isEcom = process.env.NEXT_PUBLIC_AMARA_ECOM_ACTIVATED;
 
 type ProductInfoProps = {
   product: HttpTypes.StoreProduct
