@@ -39,10 +39,10 @@ export default function Contacts() {
                             Find us
                         </Heading>
                         <div className="mapswrapper w-full min-h-64 h-64">
-                            <iframe className="w-full h-full" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3882.12630476145!2d103.86326547479896!3d13.342418406640485!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3110173824530e15%3A0x58989ffc8660d3b!2sAmara%20Beer%20Lab!5e0!3m2!1sit!2skh!4v1736759672255!5m2!1sit!2skh" loading="lazy"></iframe>
+                        <iframe className="w-full h-full" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3881.8929820256712!2d103.85673399999999!3d13.35693!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3110173824530e15%3A0x58989ffc8660d3b!2sAmara%20Beer%20Lab!5e0!3m2!1sit!2skh!4v1742550188953!5m2!1sit!2skh" rel="noopener noreferrer" loading="lazy"></iframe>
                         </div>
 
-                        <Link href="https://www.google.com/maps/dir//Amara+Beer+Lab,+86+Palm+St,+Krong+Siem+Reap+17204/@13.3424184,103.8632655,17z/data=!4m8!4m7!1m0!1m5!1m1!1s0x3110173824530e15:0x58989ffc8660d3b!2m2!1d103.8658404!2d13.3424132?entry=ttu&g_ep=EgoyMDI1MDEwOC4wIKXMDSoASAFQAw%3D%3D" rel="noopener noreferrer" target="_blank">
+                        <Link href="https://www.google.com/maps/dir/13.3595047,103.8530454/Amara+Beer+Lab,+629+Central+Market+St,+Krong+Siem+Reap+12131/@13.358265,103.8532542,18z/data=!3m1!4b1!4m9!4m8!1m1!4e1!1m5!1m1!1s0x3110173824530e15:0x58989ffc8660d3b!2m2!1d103.856734!2d13.35693?entry=ttu&g_ep=EgoyMDI1MDMxOC4wIKXMDSoASAFQAw%3D%3D" rel="noopener noreferrer" target="_blank">
                             <Button className="mx-auto rounded-md transition duration-500 mt-8 bg-koiRed hover:bg-koiOrange text-ui-fg-base font-bold shadow-none" size="large">
                                 Open Maps
                             </Button>

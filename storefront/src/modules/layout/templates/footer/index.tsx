@@ -23,8 +23,8 @@ export default async function Footer() {
 						</LocalizedClientLink>
 						<div className="mt-4">
 							<p className="text-xl font-bold text-ui-fg-base">Amara Beer Lab</p>
-							<p className="text-ui-fg-base">84, Palm Street</p>
-							<p className="text-ui-fg-base">17204 - Sala Kamreuk</p>
+							<p className="text-ui-fg-base">629, Central Market St</p>
+							<p className="text-ui-fg-base">12131 - Krong</p>
 							<p className="text-ui-fg-base">Siem Reap - Cambodia</p>
 						</div>
 						<div className="mt-4">
