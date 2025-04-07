@@ -1,6 +1,6 @@
 import { getBaseURL } from "@lib/util/env"
 import { Metadata } from "next"
-import Head from "next/head"
+import Umami from "./analytics/Umami"
 import "styles/globals.css"
 
 export const metadata: Metadata = {
@@ -14,9 +14,9 @@ export const metadata: Metadata = {
 export default function RootLayout(props: { children: React.ReactNode }) {
   return (
     <html lang="en" data-mode="light" className="bg-koiBlack">
-            <Head>
-            <script defer src="https://umami-production-0c7c.up.railway.app/script.js" data-website-id="022b991e-53ec-42f3-b8a3-7b4a0a94d545"></script>
-      </Head>
+      <head>
+        <Umami />
+      </head>
       <body>
         <main className="relative">{props.children}</main>
       </body>
