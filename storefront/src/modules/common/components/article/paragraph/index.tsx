@@ -81,6 +81,11 @@ const Paragraph: React.FC<ParagraphElement> = ({
                   <li className="text-ui-fg-base" {...props}>
                     {children}
                   </li>
+                ),
+                a: ({ children, ...props }) => ( // Aggiunto override per <a>
+                  <a className="text-koiOrange" {...props}>
+                    {children}
+                  </a>
                 )
               }}
             >
