@@ -14,7 +14,7 @@ export default async function GiftRedeemPage({ params }: Props) {
   const encryptedCode = params.code;
 
   async function getKeyFromEnv(): Promise<CryptoKey> {
-    const secretKey = process.env.SECRET_KEY || "default_secret_key"; // Fallback se SECRET_KEY non è definito
+    const secretKey = process.env.NEXT_PUBLIC_GIFT_SECRET_KEY || "default_secret_key"; // Fallback se SECRET_KEY non è definito
 
     // Converte la chiave in Uint8Array
     const encoder = new TextEncoder();
